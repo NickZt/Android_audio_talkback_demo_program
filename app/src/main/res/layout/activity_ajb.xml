@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="自适应抖动缓冲器\n设置\n"
+            android:text="Adaptive jitter buffer\nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="音频自适应抖动缓冲器的最小需缓冲帧的数量，单位个，必须大于0：" />
+                android:text=" Audio Adaptive jitter bufferThe minimum number of frames to be buffered，unit: PCS，Must be greater than 0：" />
 
             <EditText
                 android:id="@+id/AAjbMinNeedBufFrameCnt"
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="音频自适应抖动缓冲器的最大需缓冲帧的数量，单位个，必须大于最小需缓冲帧的数量：" />
+                android:text=" Audio Adaptive jitter buffer The maximum number of frames to be buffered ，unit: PCS，Must be greater than Minimum number of frames to be buffered：" />
 
             <EditText
                 android:id="@+id/AAjbMaxNeedBufFrameCnt"
@@ -78,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="音频自适应抖动缓冲器的自适应灵敏度，灵敏度越大自适应计算当前需缓冲帧的数量越多，取值区间为[0.0,127.0]：" />
+                android:text=" Audio Adaptive jitter buffer Adaptive sensitivity ，The greater the sensitivity, the more adaptive calculations currently need to buffer the number of frames， The value range is [0.0,127.0]：" />
 
             <EditText
                 android:id="@+id/AAjbAdaptSensitivity"
@@ -100,7 +100,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="视频自适应抖动缓冲器的最小需缓冲帧的数量，单位个，必须大于0：" />
+                android:text="video Adaptive jitter bufferThe minimum number of frames to be buffered，unit: PCS，Must be greater than 0：" />
 
             <EditText
                 android:id="@+id/VAjbMinNeedBufFrameCnt"
@@ -122,7 +122,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="视频自适应抖动缓冲器的最大需缓冲帧的数量，单位个，必须大于最小需缓冲帧的数量：" />
+                android:text="videoAdaptive jitter buffer The maximum number of frames to be buffered ，unit: PCS，Must be greater than Minimum number of frames to be buffered：" />
 
             <EditText
                 android:id="@+id/VAjbMaxNeedBufFrameCnt"
@@ -144,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
-                android:text="视频自适应抖动缓冲器的自适应灵敏度，灵敏度越大自适应计算当前需缓冲帧的数量越多，取值区间为[0.0,127.0]：" />
+                android:text="videoAdaptive jitter buffer Adaptive sensitivity ，The greater the sensitivity, the more adaptive calculations currently need to buffer the number of frames， The value range is [0.0,127.0]：" />
 
             <EditText
                 android:id="@+id/VAjbAdaptSensitivity"
@@ -159,7 +159,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickAjbSettingOk" />
 
     </LinearLayout>

@@ -2,10 +2,10 @@ package HeavenTao.Audio;
 
 import HeavenTao.Data.*;
 
-//Wave文件读取器类。
+//Wavefile读取器类。
 public class WaveFileReader
 {
-    private long m_WaveFileReaderPt; //存放Wave文件读取器的内存指针。
+    private long m_WaveFileReaderPt; //存放Wavefile读取器的内存指针。
 
     static
     {
@@ -13,30 +13,30 @@ public class WaveFileReader
         System.loadLibrary( "WaveFile" ); //加载libWaveFile.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public WaveFileReader()
     {
         m_WaveFileReaderPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取Wave文件读取器的内存指针。
+    //获取Wavefile读取器的内存指针。
     public long GetWaveFileReaderPt()
     {
         return m_WaveFileReaderPt;
     }
 
-    //创建并初始化Wave文件读取器。
+    //创建并初始化Wavefile读取器。
     public native int Init( String WaveFileFullPathStrPt, HTShort NumChanlPt, HTInt SamplingRatePt, HTInt SamplingBitPt );
 
-    //用Wave文件读取器读取数据。
+    //用Wavefile读取器读取 number 据。
     public native int ReadData( short DataPt[], long DataSz, HTLong DataLenPt );
 
-    //销毁Wave文件读取器。
+    //destroyWavefile读取器。
     public native int Destroy();
 }

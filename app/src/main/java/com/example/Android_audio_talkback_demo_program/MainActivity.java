@@ -44,91 +44,91 @@ import HeavenTao.Media.*;
 import HeavenTao.Data.*;
 import HeavenTao.Sokt.*;
 
-//主界面消息处理类。
+//The main interface message processing class.
 class MainActivityHandler extends Handler
 {
-    String m_CurClsNameStrPt = this.getClass().getSimpleName(); //当前类名称字符串类对象的内存指针。
+    String m_CurClsNameStrPt = this.getClass().getSimpleName(); //当前类名称digit符串类对象的内存指针。
 
     MainActivity m_MainActivityPt; //存放主界面类对象的内存指针。
-    ServiceConnection m_FrgndSrvcCnctPt; //存放前台服务连接器类对象的内存指针。
+    ServiceConnection m_FrgndSrvcCnctPt; //存放 Reception 连接器类对象的内存指针。
 
     public void handleMessage( Message MessagePt )
     {
         if( MessagePt.what == 1 ) //如果是媒体处理线程启动的消息。
         {
-            if( m_MainActivityPt.m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt == 1 ) //如果是创建服务端。
+            if( m_MainActivityPt.m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt == 1 ) //如果是 Create server 。
             {
-                ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( false ); //设置IP地址控件为不可用。
-                ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( false ); //设置端口控件为不可用。
-                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( false ); //设置TCP协议按钮为不可用。
-                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( false ); //设置UDP协议按钮为不可用。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setText( "中断" ); //设置创建服务端按钮的内容为“中断”。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setEnabled( false ); //设置连接服务端按钮为不可用。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( false ); //设置设置按钮为不可用。
+                ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( false ); //НастраиватьIP地址控件 for 不可用。
+                ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( false ); //Настраиватьport控件 for 不可用。
+                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( false ); //НастраиватьTCPprotocol按钮 for 不可用。
+                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( false ); //НастраиватьUDPprotocol按钮 for 不可用。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setText( "in断" ); //Настраивать Create server 按钮的内容 for “in断”。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setEnabled( false ); //Настраивать Connect to the server 按钮 for 不可用。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( false ); //НастраиватьНастраивать按钮 for 不可用。
             }
             else //如果是创建客户端。
             {
-                ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( false ); //设置IP地址控件为不可用。
-                ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( false ); //设置端口控件为不可用。
-                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( false ); //设置TCP协议按钮为不可用。
-                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( false ); //设置UDP协议按钮为不可用。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setEnabled( false ); //设置创建服务端按钮为不可用。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setText( "中断" ); //设置连接服务端按钮的内容为“中断”。
-                ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( false ); //设置设置按钮为不可用。
+                ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( false ); //НастраиватьIP地址控件 for 不可用。
+                ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( false ); //Настраиватьport控件 for 不可用。
+                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( false ); //НастраиватьTCPprotocol按钮 for 不可用。
+                ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( false ); //НастраиватьUDPprotocol按钮 for 不可用。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setEnabled( false ); //Настраивать Create server 按钮 for 不可用。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setText( "in断" ); //Настраивать Connect to the server 按钮的内容 for “in断”。
+                ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( false ); //НастраиватьНастраивать按钮 for 不可用。
             }
 
-            //创建并绑定前台服务，从而确保本进程在转入后台或系统锁屏时不会被系统限制运行，且只能放在主线程中执行，因为要使用界面类对象。
+            //创建并绑定 Reception ，从而确保this 进程 в 转入后台或系统锁屏 Time 不会被系统限制运行，且只能放 в 主线程in执行，因 for 要 use 界面类对象。
             if( ( ( CheckBox ) m_MainActivityPt.m_LyotActivitySettingViewPt.findViewById( R.id.IsUseFrgndSrvcCheckBox ) ).isChecked() && m_FrgndSrvcCnctPt == null )
             {
-                m_FrgndSrvcCnctPt = new ServiceConnection() //创建存放前台服务连接器。
+                m_FrgndSrvcCnctPt = new ServiceConnection() //创建存放 Reception 连接器。
                 {
                     @Override
-                    public void onServiceConnected( ComponentName name, IBinder service ) //前台服务绑定成功。
+                    public void onServiceConnected( ComponentName name, IBinder service ) // Reception 绑定success.
                     {
-                        ( ( FrgndSrvc.FrgndSrvcBinder ) service ).SetForeground( m_MainActivityPt ); //将服务设置为前台服务。
+                        ( ( FrgndSrvc.FrgndSrvcBinder ) service ).SetForeground( m_MainActivityPt ); // will 服务Настраивать for  Reception 。
                     }
 
                     @Override
-                    public void onServiceDisconnected( ComponentName name ) //前台服务解除绑定。
+                    public void onServiceDisconnected( ComponentName name ) // Reception 解除绑定。
                     {
 
                     }
                 };
-                m_MainActivityPt.bindService( new Intent( m_MainActivityPt, FrgndSrvc.class ), m_FrgndSrvcCnctPt, Context.BIND_AUTO_CREATE ); //创建并绑定前台服务。
+                m_MainActivityPt.bindService( new Intent( m_MainActivityPt, FrgndSrvc.class ), m_FrgndSrvcCnctPt, Context.BIND_AUTO_CREATE ); //创建并绑定 Reception 。
             }
         }
         else if( MessagePt.what == 2 ) //如果是媒体处理线程退出的消息。
         {
             m_MainActivityPt.m_MyMediaProcThreadPt = null;
 
-            if( m_FrgndSrvcCnctPt != null ) //如果已经创建并绑定了前台服务。
+            if( m_FrgndSrvcCnctPt != null ) //如果已经创建并绑定了 Reception 。
             {
-                m_MainActivityPt.unbindService( m_FrgndSrvcCnctPt ); //解除绑定并销毁前台服务。
+                m_MainActivityPt.unbindService( m_FrgndSrvcCnctPt ); //解除绑定并destroy Reception 。
                 m_FrgndSrvcCnctPt = null;
             }
 
-            ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( true ); //设置IP地址控件为可用。
-            ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( true ); //设置端口控件为可用。
-            ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( true ); //设置TCP协议按钮为可用。
-            ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( true ); //设置UDP协议按钮为可用。
-            ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setText( "创建服务端" ); //设置创建服务端按钮的内容为“创建服务端”。
-            ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setEnabled( true ); //设置连接服务端按钮为可用。
-            ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setText( "连接服务端" ); //设置连接服务端按钮的内容为“连接服务端”。
-            ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setEnabled( true ); //设置创建服务端按钮为可用。
-            ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( true ); //设置设置按钮为可用。
+            ( ( EditText ) m_MainActivityPt.findViewById( R.id.IPAddrEdit ) ).setEnabled( true ); //НастраиватьIP Доступны элементы управления адресом.
+            ( ( EditText ) m_MainActivityPt.findViewById( R.id.PortEdit ) ).setEnabled( true ); //Настраиватьport控件 for 可用。
+            ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).setEnabled( true ); //НастраиватьTCPprotocol按钮 for 可用。
+            ( ( RadioButton ) m_MainActivityPt.findViewById( R.id.UseUdpPrtclRadioBtn ) ).setEnabled( true ); //НастраиватьUDPprotocol按钮 for 可用。
+            ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setText( " Create server " ); //Настраивать Create server 按钮的内容 for “ Create server ”。
+            ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setEnabled( true ); //Настраивать Connect to the server 按钮 for 可用。
+            ( ( Button ) m_MainActivityPt.findViewById( R.id.ConnectSrvrBtn ) ).setText( " Connect to the server " ); //Настраивать Connect to the server 按钮的内容 for “ Connect to the server ”。
+            ( ( Button ) m_MainActivityPt.findViewById( R.id.CreateSrvrBtn ) ).setEnabled( true ); //Настраивать Create server 按钮 for 可用。
+            ( ( Button ) m_MainActivityPt.findViewById( R.id.SettingBtn ) ).setEnabled( true ); //НастраиватьНастраивать按钮 for 可用。
         }
-        else if( MessagePt.what == 3 ) //如果是显示日志的消息。
+        else if( MessagePt.what == 3 ) //如果是显示Log的消息。
         {
             TextView p_LogTextView = new TextView( m_MainActivityPt );
             p_LogTextView.setText( ( new SimpleDateFormat( "HH:mm:ss SSS" ) ).format( new Date() ) + "：" + MessagePt.obj );
             ( ( LinearLayout ) m_MainActivityPt.m_LyotActivityMainViewPt.findViewById( R.id.LogLinearLyot ) ).addView( p_LogTextView );
         }
-        else if( MessagePt.what == 4 ) //如果是重建SurfaceView控件消息，用来清空残余画面。
+        else if( MessagePt.what == 4 ) //如果是重建SurfaceView控件消息，用来Empty残余画面。
         {
-            m_MainActivityPt.m_VideoInputPreviewSurfaceViewPt.setVisibility( View.GONE ); //销毁视频输入预览SurfaceView控件。
-            m_MainActivityPt.m_VideoInputPreviewSurfaceViewPt.setVisibility( View.VISIBLE ); //创建视频输入预览SurfaceView控件。
-            m_MainActivityPt.m_VideoOutputDisplaySurfaceViewPt.setVisibility( View.GONE ); //销毁视频输出显示SurfaceView控件。
-            m_MainActivityPt.m_VideoOutputDisplaySurfaceViewPt.setVisibility( View.VISIBLE ); //创建视频输出显示SurfaceView控件。
+            m_MainActivityPt.m_VideoInputPreviewSurfaceViewPt.setVisibility( View.GONE ); //destroyvideo enter 预览SurfaceView控件。
+            m_MainActivityPt.m_VideoInputPreviewSurfaceViewPt.setVisibility( View.VISIBLE ); //创建video enter 预览SurfaceView控件。
+            m_MainActivityPt.m_VideoOutputDisplaySurfaceViewPt.setVisibility( View.GONE ); //destroyvideo Output 显示SurfaceView控件。
+            m_MainActivityPt.m_VideoOutputDisplaySurfaceViewPt.setVisibility( View.VISIBLE ); //创建video Output 显示SurfaceView控件。
         }
     }
 }
@@ -136,76 +136,76 @@ class MainActivityHandler extends Handler
 //我的媒体处理线程类。
 class MyMediaProcThread extends MediaProcThread
 {
-    String m_IPAddrStrPt; //存放IP地址字符串类对象的内存指针。
-    String m_PortStrPt; //存放端口字符串类对象的内存指针。
+    String m_IPAddrStrPt; //存放IP地址digit符串类对象的内存指针。
+    String m_PortStrPt; //存放portdigit符串类对象的内存指针。
     Handler m_MainActivityHandlerPt; //存放主界面消息处理类对象的内存指针。
 
-    int m_UseWhatXfrPrtcl; //存放使用什么传输协议，为0表示TCP协议，为1表示UDP协议。
-    int m_IsCreateSrvrOrClnt; //存放创建服务端或者客户端标记，为1表示创建服务端，为0表示创建客户端。
-    TcpSrvrSokt m_TcpSrvrSoktPt; //存放本端TCP协议服务端套接字类对象的内存指针。
-    TcpClntSokt m_TcpClntSoktPt; //存放本端TCP协议客户端套接字类对象的内存指针。
-    UdpSokt m_UdpSoktPt; //存放本端UDP协议套接字类对象的内存指针。
-    long m_LastPktSendTime; //存放最后一个数据包的发送时间，用于判断连接是否中断。
-    long m_LastPktRecvTime; //存放最后一个数据包的接收时间，用于判断连接是否中断。
-    public static final byte PKT_TYP_CNCT_HTBT = 0x00; //数据包类型：连接请求包或心跳包。
-    public static final byte PKT_TYP_AFRAME = 0x01; //数据包类型：音频输入输出帧。
-    public static final byte PKT_TYP_VFRAME = 0x02; //数据包类型：视频输入输出帧。
-    public static final byte PKT_TYP_ACK = 0x03; //数据包类型：连接应答包或音视频输入输出帧应答包。
-    public static final byte PKT_TYP_EXIT = 0x04; //数据包类型：退出包。
+    int m_UseWhatXfrPrtcl; //存放 use 什么Transfer Protocol， for 0表示TCPprotocol， for 1表示UDPprotocol。
+    int m_IsCreateSrvrOrClnt; //存放 Create server 或者客户端标记， for 1表示 Create server ， for 0表示创建客户端。
+    TcpSrvrSokt m_TcpSrvrSoktPt; //存放this 端TCPprotocol服务端套接digit类对象的内存指针。
+    TcpClntSokt m_TcpClntSoktPt; //存放this 端TCPprotocol客户端套接digit类对象的内存指针。
+    UdpSokt m_UdpSoktPt; //存放this 端UDPprotocol套接digit类对象的内存指针。
+    long m_LastPktSendTime; //存放最后一个 number 据包的发送 Time 间，用于判断连接是否in断。
+    long m_LastPktRecvTime; //存放最后一个 number 据包的接收 Time 间，用于判断连接是否in断。
+    public static final byte PKT_TYP_CNCT_HTBT = 0x00; // number 据包 Types of ：连接请求包或心跳包。
+    public static final byte PKT_TYP_AFRAME = 0x01; // number 据包 Types of ： Audio  enter  Output  frame 。
+    public static final byte PKT_TYP_VFRAME = 0x02; // number 据包 Types of ：video enter  Output  frame 。
+    public static final byte PKT_TYP_ACK = 0x03; // number 据包 Types of ：连接应答包或soundvideo enter  Output  frame Reply package.
+    public static final byte PKT_TYP_EXIT = 0x04; // number 据包 Types of ：退出包。
 
-    int m_LastSendAudioInputFrameIsAct; //存放最后一个发送的音频输入帧有无语音活动，为1表示有语音活动，为0表示无语音活动。
-    int m_LastSendAudioInputFrameIsRecv; //存放最后一个发送的音频输入帧远端是否接收到，为0表示没有收到，为非0表示已经收到。
-    int m_LastSendAudioInputFrameTimeStamp; //存放最后一个发送音频输入帧的时间戳。
-    int m_LastSendVideoInputFrameTimeStamp; //存放最后一个发送视频输入帧的时间戳。
-    byte m_IsRecvExitPkt; //存放是否接收到退出包，为0表示否，为1表示是。
+    int m_LastSendAudioInputFrameIsAct; //存放最后一个发送的 Audio  enter  frame  Have无  voice sound live动， for 1表示 Have  voice sound live动， for 0表示无  voice sound live动。
+    int m_LastSendAudioInputFrameIsRecv; //存放最后一个发送的 Audio  enter  frame 远端是否接收到， for 0表示没 Have收到， for 非0表示已经收到。
+    int m_LastSendAudioInputFrameTimeStamp; //存放最后一个发送 Audio  enter  frame 的 Time 间戳。
+    int m_LastSendVideoInputFrameTimeStamp; //存放最后一个发送video enter  frame 的 Time 间戳。
+    byte m_IsRecvExitPkt; //存放是否接收到退出包， for 0表示否， for 1表示是。
 
-    int m_UseWhatRecvOutputFrame; //存放使用什么接收输出帧，为0表示链表，为1表示自适应抖动缓冲器。
-    int m_LastGetAudioOutputFrameIsAct; //存放最后一个取出的音频输出帧是否为有语音活动，为0表示否，为非0表示是。
-    int m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp; //存放最后一个取出的音频输出帧对应视频输出帧的时间戳。
+    int m_UseWhatRecvOutputFrame; //存放 use 什么 Receive output  frame ， for 0表示Linked list， for 1表示Adaptive jitter buffer。
+    int m_LastGetAudioOutputFrameIsAct; //存放最后一个取出的 Audio  Output  frame 是否 for  Have  voice sound live动， for 0表示否， for 非0表示是。
+    int m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp; //存放最后一个取出的 Audio  Output  frame 对应video Output  frame 的 Time 间戳。
 
-    LinkedList< byte[] > m_RecvAudioOutputFrameLnkLstPt; //存放接收音频输出帧链表类对象的内存指针。
-    LinkedList< byte[] > m_RecvVideoOutputFrameLnkLstPt; //存放接收视频输出帧链表类对象的内存指针。
+    LinkedList< byte[] > m_RecvAudioOutputFrameLnkLstPt; //存放接收 Audio  Output  frame Linked list类对象的内存指针。
+    LinkedList< byte[] > m_RecvVideoOutputFrameLnkLstPt; //存放接收video Output  frame Linked list类对象的内存指针。
 
-    AAjb m_AAjbPt; //存放音频自适应抖动缓冲器类对象的内存指针。
-    int m_AAjbMinNeedBufFrameCnt; //存放音频自适应抖动缓冲器的最小需缓冲帧数量，单位个。
-    int m_AAjbMaxNeedBufFrameCnt; //存放音频自适应抖动缓冲器的最大需缓冲帧数量，单位个。
-    float m_AAjbAdaptSensitivity; //存放音频自适应抖动缓冲器的自适应灵敏度，灵敏度越大自适应计算当前需缓冲帧的数量越多，取值区间为[0.0,127.0]。
-    VAjb m_VAjbPt; //存放视频自适应抖动缓冲器类对象的内存指针。
-    int m_VAjbMinNeedBufFrameCnt; //存放视频自适应抖动缓冲器的最小需缓冲帧数量，单位个。
-    int m_VAjbMaxNeedBufFrameCnt; //存放视频自适应抖动缓冲器的最大需缓冲帧数量，单位个。
-    float m_VAjbAdaptSensitivity; //存放视频自适应抖动缓冲器的自适应灵敏度，灵敏度越大自适应计算当前需缓冲帧的数量越多，取值区间为[0.0,127.0]。
+    AAjb m_AAjbPt; //存放 Audio Adaptive jitter buffer类对象的内存指针。
+    int m_AAjbMinNeedBufFrameCnt; //存放 Audio Adaptive jitter buffer的最小需缓冲 frame  number 量，unit: PCS。
+    int m_AAjbMaxNeedBufFrameCnt; //存放 Audio Adaptive jitter buffer的最大需缓冲 frame  number 量，unit: PCS。
+    float m_AAjbAdaptSensitivity; //存放 Audio Adaptive jitter buffer Adaptive sensitivity ，The greater the sensitivity, the more adaptive calculations currently need to buffer the number of frames， The value range is [0.0,127.0]。
+    VAjb m_VAjbPt; //存放videoAdaptive jitter buffer类对象的内存指针。
+    int m_VAjbMinNeedBufFrameCnt; //存放videoAdaptive jitter buffer的最小需缓冲 frame  number 量，unit: PCS。
+    int m_VAjbMaxNeedBufFrameCnt; //存放videoAdaptive jitter buffer的最大需缓冲 frame  number 量，unit: PCS。
+    float m_VAjbAdaptSensitivity; //存放videoAdaptive jitter buffer Adaptive sensitivity ，The greater the sensitivity, the more adaptive calculations currently need to buffer the number of frames， The value range is [0.0,127.0]。
 
-    byte m_TmpBytePt[]; //存放临时数据。
-    byte m_TmpByte2Pt[]; //存放临时数据。
-    HTInt m_TmpHTIntPt; //存放临时数据。
-    HTInt m_TmpHTInt2Pt; //存放临时数据。
-    HTLong m_TmpHTLongPt; //存放临时数据。
-    HTLong m_TmpHTLong2Pt; //存放临时数据。
+    byte m_TmpBytePt[]; //存放临 Time  number 据。
+    byte m_TmpByte2Pt[]; //存放临 Time  number 据。
+    HTInt m_TmpHTIntPt; //存放临 Time  number 据。
+    HTInt m_TmpHTInt2Pt; //存放临 Time  number 据。
+    HTLong m_TmpHTLongPt; //存放临 Time  number 据。
+    HTLong m_TmpHTLong2Pt; //存放临 Time  number 据。
 
-    VarStr m_ErrInfoVarStrPt; //存放错误信息动态字符串类对象的内存指针，可以为NULL。
+    VarStr m_ErrInfoVarStrPt; //存放错误信息 dynamic digit符串类对象的内存指针，可以 for NULL。
 
     MyMediaProcThread( Context AppContextPt )
     {
         super( AppContextPt );
     }
 
-    //用户定义的初始化函数，在本线程刚启动时回调一次，返回值表示是否成功，为0表示成功，为非0表示失败。
+    // user 定义的初始化函 number ， в this 线程刚启动 Time 回调一次，返回值表示是否成功， for 0表示成功， for 非0表示失败。
     @Override public int UserInit()
     {
-        int p_Result = -1; //存放本函数执行结果的值，为0表示成功，为非0表示失败。
+        int p_Result = -1; //存放this 函 number 执行 result 的值， for 0表示成功， for 非0表示失败。
 
         out:
         {
             {Message p_MessagePt = new Message();p_MessagePt.what = 1;m_MainActivityHandlerPt.sendMessage( p_MessagePt );} //向主界面发送媒体处理线程启动的消息。
 
-            m_IsRecvExitPkt = 0; //设置没有接收到退出包。
-            if( m_TmpBytePt == null ) m_TmpBytePt = new byte[1024 * 1024]; //初始化临时数据。
-            if( m_TmpByte2Pt == null ) m_TmpByte2Pt = new byte[1024 * 1024]; //初始化临时数据。
-            if( m_TmpHTIntPt == null ) m_TmpHTIntPt = new HTInt(); //初始化临时数据。
-            if( m_TmpHTInt2Pt == null ) m_TmpHTInt2Pt = new HTInt(); //初始化临时数据。
-            if( m_TmpHTLongPt == null ) m_TmpHTLongPt = new HTLong(); //初始化临时数据。
-            if( m_TmpHTLong2Pt == null ) m_TmpHTLong2Pt = new HTLong(); //初始化临时数据。
-            if( m_ErrInfoVarStrPt == null ) //创建并初始化错误信息动态字符串类对象。
+            m_IsRecvExitPkt = 0; //Настраивать没 Have接收到退出包。
+            if( m_TmpBytePt == null ) m_TmpBytePt = new byte[1024 * 1024]; //初始化临 Time  number 据。
+            if( m_TmpByte2Pt == null ) m_TmpByte2Pt = new byte[1024 * 1024]; //初始化临 Time  number 据。
+            if( m_TmpHTIntPt == null ) m_TmpHTIntPt = new HTInt(); //初始化临 Time  number 据。
+            if( m_TmpHTInt2Pt == null ) m_TmpHTInt2Pt = new HTInt(); //初始化临 Time  number 据。
+            if( m_TmpHTLongPt == null ) m_TmpHTLongPt = new HTLong(); //初始化临 Time  number 据。
+            if( m_TmpHTLong2Pt == null ) m_TmpHTLong2Pt = new HTLong(); //初始化临 Time  number 据。
+            if( m_ErrInfoVarStrPt == null ) //创建并初始化错误信息 dynamic digit符串类对象。
             {
                 m_ErrInfoVarStrPt = new VarStr();
                 if( m_ErrInfoVarStrPt.Init() != 0 )
@@ -214,32 +214,32 @@ class MyMediaProcThread extends MediaProcThread
                 }
             }
 
-            if( m_UseWhatXfrPrtcl == 0 ) //如果使用TCP协议。
+            if( m_UseWhatXfrPrtcl == 0 ) //如果 use TCPprotocol。
             {
-                if( m_IsCreateSrvrOrClnt == 1 ) //如果是创建本端TCP协议服务端套接字接受远端TCP协议客户端套接字的连接。
+                if( m_IsCreateSrvrOrClnt == 1 ) //如果是创建this 端TCPprotocol服务端套接digit接受远端TCPprotocol客户端套接digit的连接。
                 {
                     m_TcpSrvrSoktPt = new TcpSrvrSokt();
 
-                    if( m_TcpSrvrSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, 1, 1, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的本端TCP协议服务端套接字成功。
+                    if( m_TcpSrvrSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, 1, 1, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的this 端TCPprotocol服务端套接digitsuccess.
                     {
                         HTString p_LclNodeAddrPt = new HTString();
                         HTString p_LclNodePortPt = new HTString();
 
-                        if( m_TcpSrvrSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的本端TCP协议服务端套接字绑定的本地节点地址和端口失败。
+                        if( m_TcpSrvrSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的this 端TCPprotocol服务端套接digit绑定的this 地节点地址和port失败。
                         {
-                            String p_InfoStrPt = "获取已监听的本端TCP协议服务端套接字绑定的本地节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "获取已监听的this 端TCPprotocol服务端套接digit绑定的this 地节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
                         }
 
-                        String p_InfoStrPt = "创建并初始化已监听的本端TCP协议服务端套接字[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]成功。";
+                        String p_InfoStrPt = "创建并初始化已监听的this 端TCPprotocol服务端套接digit[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]success.";
                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     }
-                    else //如果创建并初始化已监听的本端TCP协议服务端套接字失败。
+                    else //如果创建并初始化已监听的this 端TCPprotocol服务端套接digit失败。
                     {
-                        String p_InfoStrPt = "创建并初始化已监听的本端TCP协议服务端套接字[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "创建并初始化已监听的this 端TCPprotocol服务端套接digit[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -249,21 +249,21 @@ class MyMediaProcThread extends MediaProcThread
                     HTString p_RmtNodeAddrPt = new HTString();
                     HTString p_RmtNodePortPt = new HTString();
 
-                    while( true ) //循环接受远端TCP协议客户端套接字的连接。
+                    while( true ) //循环接受远端TCPprotocol客户端套接digit的连接。
                     {
                         if( m_TcpSrvrSoktPt.Accept( null, p_RmtNodeAddrPt, p_RmtNodePortPt, ( short ) 1, m_TcpClntSoktPt, m_ErrInfoVarStrPt ) == 0 )
                         {
-                            if( m_TcpClntSoktPt.GetTcpClntSoktPt() != 0 ) //如果用已监听的本端TCP协议服务端套接字接受远端TCP协议客户端套接字的连接成功。
+                            if( m_TcpClntSoktPt.GetTcpClntSoktPt() != 0 ) //如果Use monitoredthis 端TCPprotocol服务端套接digit接受远端TCPprotocol客户端套接digit的连接success.
                             {
-                                m_TcpSrvrSoktPt.Destroy( null ); //关闭并销毁已创建的本端TCP协议服务端套接字，防止还有其他远端TCP协议客户端套接字继续连接。
+                                m_TcpSrvrSoktPt.Destroy( null ); //关闭并destroy已创建的this 端TCPprotocol服务端套接digit，防止还 Have其他远端TCPprotocol客户端套接digit继续连接。
                                 m_TcpSrvrSoktPt = null;
 
-                                String p_InfoStrPt = "用已监听的本端TCP协议服务端套接字接受远端TCP协议客户端套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接成功。";
+                                String p_InfoStrPt = "Use monitoredthis 端TCPprotocol服务端套接digit接受远端TCPprotocol客户端套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接success.";
                                 Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break;
                             }
-                            else //如果用已监听的本端TCP协议服务端套接字接受远端TCP协议客户端套接字的连接超时，就重新接受。
+                            else //如果Use monitoredthis 端TCPprotocol服务端套接digit接受远端TCPprotocol客户端套接digit的连接ultra Time ，就重新接受。
                             {
 
                             }
@@ -272,22 +272,22 @@ class MyMediaProcThread extends MediaProcThread
                         {
                             m_TcpClntSoktPt = null;
 
-                            String p_InfoStrPt = "用已监听的本端TCP协议服务端套接字接受远端TCP协议客户端套接字的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "Use monitoredthis 端TCPprotocol服务端套接digit接受远端TCPprotocol客户端套接digit的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
                         }
 
-                        if( m_ExitFlag != 0 ) //如果本线程接收到退出请求。
+                        if( m_ExitFlag != 0 ) //如果this 线程接收到退出请求。
                         {
                             m_TcpClntSoktPt = null;
 
-                            Log.i( m_CurClsNameStrPt, "本线程接收到退出请求，开始准备退出。" );
+                            Log.i( m_CurClsNameStrPt, "this 线程接收到退出请求，开始准备退出。" );
                             break out;
                         }
                     }
                 }
-                else if( m_IsCreateSrvrOrClnt == 0 ) //如果是创建本端TCP协议客户端套接字连接远端TCP协议服务端套接字。
+                else if( m_IsCreateSrvrOrClnt == 0 ) //如果是创建this 端TCPprotocol客户端套接digit连接远端TCPprotocol服务端套接digit。
                 {
                     //Ping一下远程节点地址，这样可以快速获取ARP条目。
                     try
@@ -300,9 +300,9 @@ class MyMediaProcThread extends MediaProcThread
 
                     m_TcpClntSoktPt = new TcpClntSokt();
                     int p_ReInitTimes = 1;
-                    while( true ) //循环连接已监听的远端TCP协议服务端套接字。
+                    while( true ) //循环连接已监听的远端TCPprotocol服务端套接digit。
                     {
-                        if( m_TcpClntSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, null, null, ( short ) 5000, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化本端TCP协议客户端套接字，并连接已监听的远端TCP协议服务端套接字成功。
+                        if( m_TcpClntSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, null, null, ( short ) 5000, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化this 端TCPprotocol客户端套接digit，并连接已监听的远端TCPprotocol服务端套接digitsuccess.
                         {
                             HTString p_LclNodeAddrPt = new HTString();
                             HTString p_LclNodePortPt = new HTString();
@@ -311,27 +311,27 @@ class MyMediaProcThread extends MediaProcThread
 
                             if( m_TcpClntSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 )
                             {
-                                String p_InfoStrPt = "获取已连接的本端TCP协议客户端套接字绑定的本地节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                String p_InfoStrPt = "Get connected this 端TCPprotocol客户端套接digit绑定的this 地节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break out;
                             }
                             if( m_TcpClntSoktPt.GetRmtAddr( null, p_RmtNodeAddrPt, p_RmtNodePortPt, m_ErrInfoVarStrPt ) != 0 )
                             {
-                                String p_InfoStrPt = "获取已连接的本端TCP协议客户端套接字连接的远端TCP协议客户端套接字绑定的远程节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                String p_InfoStrPt = "Get connected this 端TCPprotocol客户端套接digit连接的远端TCPprotocol客户端套接digit绑定的远程节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break out;
                             }
 
-                            String p_InfoStrPt = "创建并初始化本端TCP协议客户端套接字[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]，并连接已监听的远端TCP协议服务端套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]成功。";
+                            String p_InfoStrPt = "创建并初始化this 端TCPprotocol客户端套接digit[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]，并连接已监听的远端TCPprotocol服务端套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]success.";
                             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break; //跳出重连。
                         }
                         else
                         {
-                            {String p_InfoStrPt = "创建并初始化本端TCP协议客户端套接字，并连接已监听的远端TCP协议服务端套接字[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            {String p_InfoStrPt = "创建并初始化this 端TCPprotocol客户端套接digit，并连接已监听的远端TCPprotocol服务端套接digit[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );}
 
@@ -341,7 +341,7 @@ class MyMediaProcThread extends MediaProcThread
                                 Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 p_ReInitTimes++;
-                                SystemClock.sleep( 500 ); //暂停一下，避免CPU使用率过高。
+                                SystemClock.sleep( 500 ); //暂停一下，避免CPU use  rate 过high。
                             }
                             else //如果不需要重连了。
                             {
@@ -352,40 +352,40 @@ class MyMediaProcThread extends MediaProcThread
                     }
                 }
 
-                if( m_TcpClntSoktPt.SetNoDelay( 1, m_ErrInfoVarStrPt ) != 0 ) //如果设置已连接的本端TCP协议客户端套接字的Nagle延迟算法状态为禁用失败。
+                if( m_TcpClntSoktPt.SetNoDelay( 1, m_ErrInfoVarStrPt ) != 0 ) //如果Настраивать已连接的this 端TCPprotocol客户端套接digit的Nagle延迟算法状态 for 禁用失败。
                 {
-                    String p_InfoStrPt = "设置已连接的本端TCP协议客户端套接字的Nagle延迟算法状态为禁用失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                    String p_InfoStrPt = "Настраивать已连接的this 端TCPprotocol客户端套接digit的Nagle延迟算法状态 for 禁用失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                     Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                     Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     break out;
                 }
             }
-            else //如果使用UDP协议。
+            else //如果 use UDPprotocol。
             {
                 m_UdpSoktPt = new UdpSokt();
 
-                if( m_IsCreateSrvrOrClnt == 1 ) //如果是创建本端UDP协议套接字接受远端UDP协议套接字的连接。
+                if( m_IsCreateSrvrOrClnt == 1 ) //如果是创建this 端UDPprotocol套接digit接受远端UDPprotocol套接digit的连接。
                 {
-                    if( m_UdpSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的本端UDP协议套接字成功。
+                    if( m_UdpSoktPt.Init( 4, m_IPAddrStrPt, m_PortStrPt, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的this 端UDPprotocol套接digitsuccess.
                     {
                         HTString p_LclNodeAddrPt = new HTString();
                         HTString p_LclNodePortPt = new HTString();
 
-                        if( m_UdpSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的本端UDP协议套接字绑定的本地节点地址和端口失败。
+                        if( m_UdpSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的this 端UDPprotocol套接digit绑定的this 地节点地址和port失败。
                         {
-                            String p_InfoStrPt = "获取已监听的本端UDP协议套接字绑定的本地节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "获取已监听的this 端UDPprotocol套接digit绑定的this 地节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
                         }
 
-                        String p_InfoStrPt = "创建并初始化已监听的本端UDP协议套接字[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]成功。";
+                        String p_InfoStrPt = "创建并初始化已监听的this 端UDPprotocol套接digit[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]success.";
                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     }
-                    else //如果创建并初始化已监听的本端UDP协议套接字失败。
+                    else //如果创建并初始化已监听的this 端UDPprotocol套接digit失败。
                     {
-                        String p_InfoStrPt = "创建并初始化已监听的本端UDP协议套接字[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "创建并初始化已监听的this 端UDPprotocol套接digit[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -396,49 +396,49 @@ class MyMediaProcThread extends MediaProcThread
                     HTLong p_TmpHTLong = new HTLong(  );
 
                     UdpSrvrReAccept:
-                    while( true ) //循环接受远端UDP协议套接字的连接。
+                    while( true ) //循环接受远端UDPprotocol套接digit的连接。
                     {
                         if( m_UdpSoktPt.RecvPkt( null, p_RmtNodeAddrPt, p_RmtNodePortPt, m_TmpBytePt, m_TmpBytePt.length, p_TmpHTLong, ( short ) 1, m_ErrInfoVarStrPt ) == 0 )
                         {
-                            if( p_TmpHTLong.m_Val != -1 ) //如果用已监听的本端UDP协议套接字开始接收远端UDP协议套接字发送的一个数据包成功。
+                            if( p_TmpHTLong.m_Val != -1 ) //如果Use monitoredthis 端UDPprotocol套接digit开始接收远端UDPprotocol套接digit发送的一个 number 据包success.
                             {
                                 if( ( p_TmpHTLong.m_Val == 1 ) && ( m_TmpBytePt[0] == PKT_TYP_CNCT_HTBT ) ) //如果是连接请求包。
                                 {
-                                    m_UdpSoktPt.Connect( 4, p_RmtNodeAddrPt.m_Val, p_RmtNodePortPt.m_Val, null ); //用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字，已连接的本端UDP协议套接字只能接收连接的远端UDP协议套接字发送的数据包。
+                                    m_UdpSoktPt.Connect( 4, p_RmtNodeAddrPt.m_Val, p_RmtNodePortPt.m_Val, null ); //Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit，已连接的this 端UDPprotocol套接digit只能接收连接的远端UDPprotocol套接digit发送的 number 据包。
 
                                     int p_ReSendTimes = 1;
                                     UdpSrvrReSend:
-                                    while( true ) //循环发送连接请求包，并接收连接应答包。
+                                    while( true ) //循环发送连接请求包，并接收连接Reply package.
                                     {
-                                        m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //设置连接请求包。
+                                        m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //Настраивать连接请求包。
                                         if( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) != 0 )
                                         {
-                                            String p_InfoStrPt = "用已监听的本端UDP协议套接字接受远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                            String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit接受远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                             break out;
                                         }
 
                                         UdpSrvrReRecv:
-                                        while( true ) //循环接收连接应答包。
+                                        while( true ) //循环接收连接Reply package.
                                         {
                                             if( m_UdpSoktPt.RecvPkt( null, null, null, m_TmpBytePt, m_TmpBytePt.length, p_TmpHTLong, ( short ) 1000, m_ErrInfoVarStrPt ) == 0 )
                                             {
-                                                if( p_TmpHTLong.m_Val != -1 ) //如果用已监听的本端UDP协议套接字开始接收远端UDP协议套接字发送的一个数据包成功。
+                                                if( p_TmpHTLong.m_Val != -1 ) //如果Use monitoredthis 端UDPprotocol套接digit开始接收远端UDPprotocol套接digit发送的一个 number 据包success.
                                                 {
                                                     if( ( p_TmpHTLong.m_Val >= 1 ) && ( m_TmpBytePt[0] != PKT_TYP_CNCT_HTBT ) ) //如果不是连接请求包。
                                                     {
-                                                        String p_InfoStrPt = "用已监听的本端UDP协议套接字接受远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接成功。";
+                                                        String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit接受远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]的连接success.";
                                                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                                         break UdpSrvrReAccept; //跳出连接循环。
                                                     }
-                                                    else //如果是连接请求包，就不管，重新接收连接应答包。
+                                                    else //如果是连接请求包，就不管，重新接收连接Reply package.
                                                     {
 
                                                     }
                                                 }
-                                                else //如果用已监听的本端UDP协议套接字开始接收远端UDP协议套接字发送的一个数据包超时。
+                                                else //如果Use monitoredthis 端UDPprotocol套接digit开始接收远端UDPprotocol套接digit发送的一个 number 据包ultra Time 。
                                                 {
                                                     if( p_ReSendTimes <= 5 ) //如果还需要进行重发。
                                                     {
@@ -447,7 +447,7 @@ class MyMediaProcThread extends MediaProcThread
                                                     }
                                                     else //如果不需要重连了。
                                                     {
-                                                        String p_InfoStrPt = "用已监听的本端UDP协议套接字接受远端UDP协议套接字的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                                        String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit接受远端UDPprotocol套接digit的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                                         break UdpSrvrReSend; //重新接受连接。
@@ -456,7 +456,7 @@ class MyMediaProcThread extends MediaProcThread
                                             }
                                             else
                                             {
-                                                String p_InfoStrPt = "用已监听的本端UDP协议套接字接受远端UDP协议套接字的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                                String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit接受远端UDPprotocol套接digit的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                                 break UdpSrvrReSend; //重新接受连接。
@@ -464,9 +464,9 @@ class MyMediaProcThread extends MediaProcThread
                                         }
                                     }
 
-                                    m_UdpSoktPt.Disconnect( null ); //将已连接的本端UDP协议套接字断开连接的远端UDP协议套接字，已连接的本端UDP协议套接字将变成已监听的本端UDP协议套接字。
+                                    m_UdpSoktPt.Disconnect( null ); // will 已连接的this 端UDPprotocol套接digit断开连接的远端UDPprotocol套接digit，已连接的this 端UDPprotocol套接digit will 变成已监听的this 端UDPprotocol套接digit。
 
-                                    String p_InfoStrPt = "本端UDP协议套接字继续保持监听来接受连接。";
+                                    String p_InfoStrPt = "this 端UDPprotocol套接digit继续保持监听来接受连接。";
                                     Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                     Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 }
@@ -475,27 +475,27 @@ class MyMediaProcThread extends MediaProcThread
 
                                 }
                             }
-                            else //如果用已监听的本端UDP协议套接字接受到远端UDP协议套接字的连接请求超时。
+                            else //如果Use monitoredthis 端UDPprotocol套接digit接受到远端UDPprotocol套接digit的连接请求ultra Time 。
                             {
 
                             }
                         }
                         else
                         {
-                            String p_InfoStrPt = "用已监听的本端UDP协议套接字接受远端UDP协议套接字的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit接受远端UDPprotocol套接digit的连接失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
                         }
 
-                        if( m_ExitFlag != 0 ) //如果本线程接收到退出请求。
+                        if( m_ExitFlag != 0 ) //如果this 线程接收到退出请求。
                         {
-                            Log.i( m_CurClsNameStrPt, "本线程接收到退出请求，开始准备退出。" );
+                            Log.i( m_CurClsNameStrPt, "this 线程接收到退出请求，开始准备退出。" );
                             break out;
                         }
                     }
                 }
-                else if( m_IsCreateSrvrOrClnt == 0 ) //如果是创建本端UDP协议套接字连接远端UDP协议套接字。
+                else if( m_IsCreateSrvrOrClnt == 0 ) //如果是创建this 端UDPprotocol套接digit连接远端UDPprotocol套接digit。
                 {
                     //Ping一下远程节点地址，这样可以快速获取ARP条目。
                     try
@@ -506,26 +506,26 @@ class MyMediaProcThread extends MediaProcThread
                     {
                     }
 
-                    if( m_UdpSoktPt.Init( 4, null, null, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的本端UDP协议套接字成功。
+                    if( m_UdpSoktPt.Init( 4, null, null, m_ErrInfoVarStrPt ) == 0 ) //如果创建并初始化已监听的this 端UDPprotocol套接digitsuccess.
                     {
                         HTString p_LclNodeAddrPt = new HTString();
                         HTString p_LclNodePortPt = new HTString();
 
-                        if( m_UdpSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的本端UDP协议套接字绑定的本地节点地址和端口失败。
+                        if( m_UdpSoktPt.GetLclAddr( null, p_LclNodeAddrPt, p_LclNodePortPt, m_ErrInfoVarStrPt ) != 0 ) //如果获取已监听的this 端UDPprotocol套接digit绑定的this 地节点地址和port失败。
                         {
-                            String p_InfoStrPt = "获取已监听的本端UDP协议套接字绑定的本地节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "获取已监听的this 端UDPprotocol套接digit绑定的this 地节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
                         }
 
-                        String p_InfoStrPt = "创建并初始化已监听的本端UDP协议套接字[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]成功。";
+                        String p_InfoStrPt = "创建并初始化已监听的this 端UDPprotocol套接digit[" + p_LclNodeAddrPt.m_Val + ":" + p_LclNodePortPt.m_Val + "]success.";
                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     }
-                    else //如果创建并初始化已监听的本端UDP协议套接字失败。
+                    else //如果创建并初始化已监听的this 端UDPprotocol套接digit失败。
                     {
-                        String p_InfoStrPt = "创建并初始化已监听的本端UDP协议套接字失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "创建并初始化已监听的this 端UDPprotocol套接digit失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -537,7 +537,7 @@ class MyMediaProcThread extends MediaProcThread
 
                     if( m_UdpSoktPt.Connect( 4, m_IPAddrStrPt, m_PortStrPt, m_ErrInfoVarStrPt ) != 0 )
                     {
-                        String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit[" + m_IPAddrStrPt + ":" + m_PortStrPt + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -546,7 +546,7 @@ class MyMediaProcThread extends MediaProcThread
                     if( m_UdpSoktPt.GetRmtAddr( null, p_RmtNodeAddrPt, p_RmtNodePortPt, m_ErrInfoVarStrPt ) != 0 )
                     {
                         m_UdpSoktPt.Disconnect( null );
-                        String p_InfoStrPt = "获取已连接的本端UDP协议套接字连接的远端UDP协议套接字绑定的远程节点地址和端口失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Get connected this 端UDPprotocol套接digit连接的远端UDPprotocol套接digit绑定的远程节点地址和port失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -554,13 +554,13 @@ class MyMediaProcThread extends MediaProcThread
 
                     int p_ReSendTimes = 1;
                     UdpClntReSend:
-                    while( true ) //循环连接已监听的远端UDP协议套接字。
+                    while( true ) //循环连接已监听的远端UDPprotocol套接digit。
                     {
-                        m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //设置连接请求包。
+                        m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //Настраивать连接请求包。
                         if( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) != 0 )
                         {
                             m_UdpSoktPt.Disconnect( m_ErrInfoVarStrPt );
-                            String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
@@ -571,21 +571,21 @@ class MyMediaProcThread extends MediaProcThread
                         {
                             if( m_UdpSoktPt.RecvPkt( null, null, null, m_TmpBytePt, m_TmpBytePt.length, p_TmpHTLong, ( short ) 1000, m_ErrInfoVarStrPt ) == 0 )
                             {
-                                if( p_TmpHTLong.m_Val != -1 ) //如果用已连接的本端UDP协议套接字开始接收远端UDP协议套接字发送的一个数据包成功。
+                                if( p_TmpHTLong.m_Val != -1 ) //如果Use connected this  端UDPprotocol套接digit开始接收远端UDPprotocol套接digit发送的一个 number 据包success.
                                 {
                                     if( ( p_TmpHTLong.m_Val == 1 ) && ( m_TmpBytePt[0] == PKT_TYP_CNCT_HTBT ) ) //如果是连接请求包。
                                     {
-                                        m_TmpBytePt[0] = PKT_TYP_ACK; //设置连接应答包。
+                                        m_TmpBytePt[0] = PKT_TYP_ACK; //Настраивать连接Reply package.
                                         if( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) != 0 )
                                         {
                                             m_UdpSoktPt.Disconnect( m_ErrInfoVarStrPt );
-                                            String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                            String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                             break out;
                                         }
 
-                                        String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]成功。";
+                                        String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]success.";
                                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                         break UdpClntReSend; //跳出连接循环。
@@ -595,7 +595,7 @@ class MyMediaProcThread extends MediaProcThread
 
                                     }
                                 }
-                                else //如果用已连接的本端UDP协议套接字开始接收远端UDP协议套接字发送的一个数据包超时。
+                                else //如果Use connected this  端UDPprotocol套接digit开始接收远端UDPprotocol套接digit发送的一个 number 据包ultra Time 。
                                 {
                                     if( p_ReSendTimes <= 5 ) //如果还需要进行重发。
                                     {
@@ -605,7 +605,7 @@ class MyMediaProcThread extends MediaProcThread
                                     else //如果不需要重连了。
                                     {
                                         m_UdpSoktPt.Disconnect( m_ErrInfoVarStrPt );
-                                        String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                        String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit[" + p_RmtNodeAddrPt.m_Val + ":" + p_RmtNodePortPt.m_Val + "]失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                         break out;
@@ -615,7 +615,7 @@ class MyMediaProcThread extends MediaProcThread
                             else
                             {
                                 m_UdpSoktPt.Disconnect( m_ErrInfoVarStrPt );
-                                String p_InfoStrPt = "用已监听的本端UDP协议套接字连接已监听的远端UDP协议套接字失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                String p_InfoStrPt = "Use monitoredthis 端UDPprotocol套接digit连接已监听的远端UDPprotocol套接digit失败。原因：" + m_ErrInfoVarStrPt.GetStr();
                                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break out;
@@ -623,46 +623,46 @@ class MyMediaProcThread extends MediaProcThread
                         }
                     }
                 }
-            } //协议连接结束。
+            } //protocol连接结束。
 
-            switch( m_UseWhatRecvOutputFrame ) //使用什么接收输出帧。
+            switch( m_UseWhatRecvOutputFrame ) // use 什么 Receive output  frame 。
             {
-                case 0: //如果使用链表。
+                case 0: //如果 use Linked list。
                 {
-                    //初始化接收音频输出帧链表类对象。
-                    m_RecvAudioOutputFrameLnkLstPt = new LinkedList< byte[] >(); //创建接收音频输出帧链表类对象。
-                    Log.i( m_CurClsNameStrPt, "创建并初始化接收音频输出帧链表对象成功。" );
+                    //初始化接收 Audio  Output  frame Linked list类对象。
+                    m_RecvAudioOutputFrameLnkLstPt = new LinkedList< byte[] >(); //创建接收 Audio  Output  frame Linked list类对象。
+                    Log.i( m_CurClsNameStrPt, "创建并初始化接收 Audio  Output  frame Linked list对象success." );
 
-                    //初始化接收视频输出帧链表类对象。
-                    m_RecvVideoOutputFrameLnkLstPt = new LinkedList< byte[] >(); //创建接收视频输出帧链表类对象。
-                    Log.i( m_CurClsNameStrPt, "创建并初始化接收视频输出帧链表对象成功。" );
+                    //初始化接收video Output  frame Linked list类对象。
+                    m_RecvVideoOutputFrameLnkLstPt = new LinkedList< byte[] >(); //创建接收video Output  frame Linked list类对象。
+                    Log.i( m_CurClsNameStrPt, "创建并初始化接收video Output  frame Linked list对象success." );
                     break;
                 }
-                case 1: //如果使用自适应抖动缓冲器。
+                case 1: //如果 use Adaptive jitter buffer。
                 {
-                    //初始化音频自适应抖动缓冲器类对象。
+                    //初始化 Audio Adaptive jitter buffer类对象。
                     m_AAjbPt = new AAjb();
                     if( m_AAjbPt.Init( m_AudioOutputPt.m_SamplingRate, m_AudioOutputPt.m_FrameLen, 1, 1, 0, m_AAjbMinNeedBufFrameCnt, m_AAjbMaxNeedBufFrameCnt, m_AAjbAdaptSensitivity, 1 ) == 0 )
                     {
-                        Log.i( m_CurClsNameStrPt, "创建并初始化音频自适应抖动缓冲器类对象成功。" );
+                        Log.i( m_CurClsNameStrPt, "创建并初始化 Audio Adaptive jitter buffer类对象success." );
                     }
                     else
                     {
-                        String p_InfoStrPt = "创建并初始化音频自适应抖动缓冲器类对象失败。";
+                        String p_InfoStrPt = "创建并初始化 Audio Adaptive jitter buffer类对象失败。";
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
                     }
 
-                    //初始化视频自适应抖动缓冲器类对象。
+                    //初始化videoAdaptive jitter buffer类对象。
                     m_VAjbPt = new VAjb();
                     if( m_VAjbPt.Init( 1, m_VAjbMinNeedBufFrameCnt, m_VAjbMaxNeedBufFrameCnt, m_VAjbAdaptSensitivity, 1 ) == 0 )
                     {
-                        Log.i( m_CurClsNameStrPt, "创建并初始化视频自适应抖动缓冲器类对象成功。" );
+                        Log.i( m_CurClsNameStrPt, "创建并初始化videoAdaptive jitter buffer类对象success." );
                     }
                     else
                     {
-                        String p_InfoStrPt = "创建并初始化视频自适应抖动缓冲器类对象失败。";
+                        String p_InfoStrPt = "创建并初始化videoAdaptive jitter buffer类对象失败。";
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
@@ -671,135 +671,135 @@ class MyMediaProcThread extends MediaProcThread
                 }
             }
 
-            m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间为当前时间。
-            m_LastPktRecvTime = m_LastPktSendTime; //设置最后一个数据包的接收时间为当前时间。
+            m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间 for 当前 Time 间。
+            m_LastPktRecvTime = m_LastPktSendTime; //Настраивать最后一个 number 据包的接收 Time 间 for 当前 Time 间。
 
-            m_LastSendAudioInputFrameIsAct = 0; //设置最后发送的一个音频输入帧为无语音活动。
-            m_LastSendAudioInputFrameIsRecv = 1; //设置最后一个发送的音频输入帧远端已经接收到。
-            m_LastSendAudioInputFrameTimeStamp = 0 - 1; //设置最后一个发送音频输入帧的时间戳为0的前一个，因为第一次发送音频输入帧时会递增一个步进。
-            m_LastSendVideoInputFrameTimeStamp = 0 - 1; //设置最后一个发送视频输入帧的时间戳为0的前一个，因为第一次发送视频输入帧时会递增一个步进。
+            m_LastSendAudioInputFrameIsAct = 0; //Настраивать最后发送的一个 Audio  enter  frame  for 无  voice sound live动。
+            m_LastSendAudioInputFrameIsRecv = 1; //Настраивать最后一个发送的 Audio  enter  frame 远端已经接收到。
+            m_LastSendAudioInputFrameTimeStamp = 0 - 1; //Настраивать最后一个发送 Audio  enter  frame 的 Time 间戳 for 0的前一个，因 for 第一次发送 Audio  enter  frame  Time 会递增一个步进。
+            m_LastSendVideoInputFrameTimeStamp = 0 - 1; //Настраивать最后一个发送video enter  frame 的 Time 间戳 for 0的前一个，因 for 第一次发送video enter  frame  Time 会递增一个步进。
 
-            m_LastGetAudioOutputFrameIsAct = 0; //设置最后一个取出的音频输出帧为无语音活动，因为如果不使用音频输出，只使用视频输出时，可以保证视频正常输出。
-            m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp = 0; //设置最后一个取出的音频输出帧对应视频输出帧的时间戳为0。
+            m_LastGetAudioOutputFrameIsAct = 0; //Настраивать最后一个取出的 Audio  Output  frame  for 无  voice sound live动，因 for 如果 Do not use  Audio  Output ，只 use video Output  Time ，可以保证video正常 Output 。
+            m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp = 0; //Настраивать最后一个取出的 Audio  Output  frame 对应video Output  frame 的 Time 间戳 for 0。
 
             String p_InfoStrPt = "开始进行对讲。";
             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
 
-            p_Result = 0; //设置本函数执行成功。
+            p_Result = 0; //Настраиватьthis 函 number 执行success.
         }
 
         return p_Result;
     }
 
-    //用户定义的处理函数，在本线程运行时每隔1毫秒就回调一次，返回值表示是否成功，为0表示成功，为非0表示失败。
+    // user 定义的处理函 number ， в this 线程运行 Time 每隔1 millisecond就回调一次，返回值表示是否成功， for 0表示成功， for 非0表示失败。
     @Override public int UserProcess()
     {
-        int p_Result = -1; //存放本函数执行结果的值，为0表示成功，为非0表示失败。
+        int p_Result = -1; //存放this 函 number 执行 result 的值， for 0表示成功， for 非0表示失败。
         int p_TmpInt;
 
         out:
         {
-            //接收远端发送过来的一个数据包。
+            //接收远端发送过来的一个 number 据包。
             if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.RecvPkt( m_TmpBytePt, m_TmpBytePt.length, m_TmpHTLongPt, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) ||
                 ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.RecvPkt( null, null, null, m_TmpBytePt, m_TmpBytePt.length, m_TmpHTLongPt, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) )
             {
-                if( m_TmpHTLongPt.m_Val != -1 ) //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包成功。
+                if( m_TmpHTLongPt.m_Val != -1 ) //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包success.
                 {
-                    m_LastPktRecvTime = System.currentTimeMillis(); //记录最后一个数据包的接收时间。
+                    m_LastPktRecvTime = System.currentTimeMillis(); //记录最后一个 number 据包的接收 Time 间。
 
-                    if( m_TmpHTLongPt.m_Val == 0 ) //如果数据包的数据长度为0。
+                    if( m_TmpHTLongPt.m_Val == 0 ) //如果 number 据包的 number According to the length  for 0。
                     {
-                        Log.e( m_CurClsNameStrPt, "接收一个数据包的数据长度为" + m_TmpHTLongPt.m_Val + "，表示没有数据，无法继续接收。" );
+                        Log.e( m_CurClsNameStrPt, "Receive one number 据包的 number According to the length  for " + m_TmpHTLongPt.m_Val + "，表示没 Have number 据，无法继续接收。" );
                         break out;
                     }
                     else if( m_TmpBytePt[0] == PKT_TYP_CNCT_HTBT ) //如果是心跳包。
                     {
-                        if( m_TmpHTLongPt.m_Val > 1 ) //如果心跳包的数据长度大于1。
+                        if( m_TmpHTLongPt.m_Val > 1 ) //如果心跳包的 number According to the length  more than the 1。
                         {
-                            Log.e( m_CurClsNameStrPt, "接收一个心跳包的数据长度为" + m_TmpHTLongPt.m_Val + "大于1，表示还有其他数据，无法继续接收。" );
+                            Log.e( m_CurClsNameStrPt, "Receive one心跳包的 number According to the length  for " + m_TmpHTLongPt.m_Val + " more than the 1，表示还 Have其他 number 据，无法继续接收。" );
                             break out;
                         }
 
-                        Log.i( m_CurClsNameStrPt, "接收一个心跳包。" );
+                        Log.i( m_CurClsNameStrPt, "Receive one心跳包。" );
                     }
-                    else if( m_TmpBytePt[0] == PKT_TYP_AFRAME ) //如果是音频输出帧包。
+                    else if( m_TmpBytePt[0] == PKT_TYP_AFRAME ) //如果是 Audio  Output  frame 包。
                     {
-                        if( m_TmpHTLongPt.m_Val < 1 + 4 ) //如果音频输出帧包的数据长度小于1 + 4，表示没有音频输出帧时间戳。
+                        if( m_TmpHTLongPt.m_Val < 1 + 4 ) //如果 Audio  Output  frame 包的 number According to the length 小于1 + 4，表示没 Have Audio  Output  frame  Time 间戳。
                         {
-                            Log.e( m_CurClsNameStrPt, "接收一个音频输出帧包的数据长度为" + m_TmpHTLongPt.m_Val + "小于1 + 4，表示没有音频输出帧时间戳，无法继续接收。" );
+                            Log.e( m_CurClsNameStrPt, "Receive one Audio  Output  frame 包的 number According to the length  for " + m_TmpHTLongPt.m_Val + "小于1 + 4，表示没 Have Audio  Output  frame  Time 间戳，无法继续接收。" );
                             break out;
                         }
 
-                        //读取音频输出帧时间戳。
+                        //读取 Audio  Output  frame  Time 间戳。
                         p_TmpInt = ( m_TmpBytePt[1] & 0xFF ) + ( ( m_TmpBytePt[2] & 0xFF ) << 8 ) + ( ( m_TmpBytePt[3] & 0xFF ) << 16 ) + ( ( m_TmpBytePt[4] & 0xFF ) << 24 );
 
-                        if( m_AudioOutputPt.m_IsUseAudioOutput != 0 ) //如果要使用音频输出。
+                        if( m_AudioOutputPt.m_IsUseAudioOutput != 0 ) //如果要 use  Audio  Output 。
                         {
-                            //将音频输出帧放入链表或自适应抖动缓冲器。
-                            switch( m_UseWhatRecvOutputFrame ) //使用什么接收输出帧。
+                            // will  Audio  Output  frame 放入Linked list或Adaptive jitter buffer。
+                            switch( m_UseWhatRecvOutputFrame ) // use 什么 Receive output  frame 。
                             {
-                                case 0: //如果使用链表。
+                                case 0: //如果 use Linked list。
                                 {
-                                    if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该音频输出帧为有语音活动。
+                                    if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该 Audio  Output  frame  for  Have  voice sound live动。
                                     {
                                         synchronized( m_RecvAudioOutputFrameLnkLstPt )
                                         {
                                             m_RecvAudioOutputFrameLnkLstPt.addLast( Arrays.copyOfRange( m_TmpBytePt, 1 + 4, ( int ) ( m_TmpHTLongPt.m_Val ) ) );
                                         }
-                                        Log.i( m_CurClsNameStrPt, "接收一个有语音活动的音频输出帧包，并放入接收音频输出帧链表成功。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, "Receive one Have  voice sound live动的 Audio  Output  frame 包，并放入接收 Audio  Output  frame Linked listsuccess. Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                     }
-                                    else //如果该音频输出帧为无语音活动。
+                                    else //如果该 Audio  Output  frame  for 无  voice sound live动。
                                     {
-                                        Log.i( m_CurClsNameStrPt, "接收一个无语音活动的音频输出帧包，无需放入接收音频输出帧链表。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, "Receive one无  voice sound live动的 Audio  Output  frame 包，无需放入接收 Audio  Output  frame Linked list。 Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                     }
                                     break;
                                 }
-                                case 1: //如果使用自适应抖动缓冲器。
+                                case 1: //如果 use Adaptive jitter buffer。
                                 {
                                     synchronized( m_AAjbPt )
                                     {
-                                        if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该音频输出帧为有语音活动。
+                                        if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该 Audio  Output  frame  for  Have  voice sound live动。
                                         {
                                             m_AAjbPt.PutOneByteFrame( p_TmpInt, m_TmpBytePt, 1 + 4, m_TmpHTLongPt.m_Val - 1 - 4 );
-                                            Log.i( m_CurClsNameStrPt, "接收一个有语音活动的音频输出帧包，并放入音频自适应抖动缓冲器成功。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                            Log.i( m_CurClsNameStrPt, "Receive one Have  voice sound live动的 Audio  Output  frame 包，并放入 Audio Adaptive jitter buffersuccess. Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                         }
-                                        else //如果该音频输出帧为无语音活动。
+                                        else //如果该 Audio  Output  frame  for 无  voice sound live动。
                                         {
                                             m_AAjbPt.PutOneByteFrame( p_TmpInt, m_TmpBytePt, 1 + 4, 0 );
-                                            Log.i( m_CurClsNameStrPt, "接收一个无语音活动的音频输出帧包，并放入音频自适应抖动缓冲器成功。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                            Log.i( m_CurClsNameStrPt, "Receive one无  voice sound live动的 Audio  Output  frame 包，并放入 Audio Adaptive jitter buffersuccess. Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                         }
 
-                                        HTInt p_CurHaveBufActFrameCntPt = new HTInt(); //存放当前已缓冲有活动帧的数量。
-                                        HTInt p_CurHaveBufInactFrameCntPt = new HTInt(); //存放当前已缓冲无活动帧的数量。
-                                        HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲帧的数量。
-                                        HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放最小需缓冲帧的数量。
-                                        HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //存放最大需缓冲帧的数量。
-                                        HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲帧的数量。
+                                        HTInt p_CurHaveBufActFrameCntPt = new HTInt(); //存放当前已缓冲 Have live动 frame 的 number 量。
+                                        HTInt p_CurHaveBufInactFrameCntPt = new HTInt(); //存放当前已缓冲无 live动 frame 的 number 量。
+                                        HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲 frame 的 number 量。
+                                        HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放Minimum number of frames to be buffered。
+                                        HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //Maximum buffer required for storage  frame 的 number 量。
+                                        HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲 frame 的 number 量。
                                         m_AAjbPt.GetBufFrameCnt( p_CurHaveBufActFrameCntPt, p_CurHaveBufInactFrameCntPt, p_CurHaveBufFrameCntPt, p_MinNeedBufFrameCntPt, p_MaxNeedBufFrameCntPt, p_CurNeedBufFrameCntPt );
-                                        Log.i( m_CurClsNameStrPt, "音频自适应抖动缓冲器：有活动帧：" + p_CurHaveBufActFrameCntPt.m_Val + "，无活动帧：" + p_CurHaveBufInactFrameCntPt.m_Val + "，帧：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需帧：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需帧：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需帧：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, " Audio Adaptive jitter buffer： Have live动 frame ：" + p_CurHaveBufActFrameCntPt.m_Val + "，无 live动 frame ：" + p_CurHaveBufInactFrameCntPt.m_Val + "， frame ：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需 frame ：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需 frame ：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需 frame ：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
                                     }
                                     break;
                                 }
                             }
                         }
-                        else //如果不使用音频输出。
+                        else //如果 Do not use  Audio  Output 。
                         {
-                            if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该音频输出帧为有语音活动。
+                            if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该 Audio  Output  frame  for  Have  voice sound live动。
                             {
-                                Log.i( m_CurClsNameStrPt, "接收一个有语音活动的音频输出帧包成功，但不使用音频输出。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                Log.i( m_CurClsNameStrPt, "Receive one Have  voice sound live动的 Audio  Output  frame 包成功，但 Do not use  Audio  Output 。 Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                             }
-                            else //如果该音频输出帧为无语音活动。
+                            else //如果该 Audio  Output  frame  for 无  voice sound live动。
                             {
-                                Log.i( m_CurClsNameStrPt, "接收一个无语音活动的音频输出帧包成功，但不使用音频输出。音频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                Log.i( m_CurClsNameStrPt, "Receive one无  voice sound live动的 Audio  Output  frame 包成功，但 Do not use  Audio  Output 。 Audio  Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                             }
                         }
 
-                        if( ( m_UseWhatXfrPrtcl == 1 ) && ( m_TmpHTLongPt.m_Val == 1 + 4 ) ) //如果是使用UDP协议，且本音频输出帧为无语音活动。
+                        if( ( m_UseWhatXfrPrtcl == 1 ) && ( m_TmpHTLongPt.m_Val == 1 + 4 ) ) //如果是 use UDPprotocol，且this  Audio  Output  frame  for 无  voice sound live动。
                         {
-                            //设置音频输出帧应答包。
+                            //Настраивать Audio  Output  frame Reply package.
                             m_TmpBytePt[0] = PKT_TYP_ACK;
-                            //设置音频输出帧时间戳。
+                            //Настраивать Audio  Output  frame  Time 间戳。
                             m_TmpBytePt[1] = ( byte ) ( p_TmpInt & 0xFF );
                             m_TmpBytePt[2] = ( byte ) ( ( p_TmpInt & 0xFF00 ) >> 8 );
                             m_TmpBytePt[3] = ( byte ) ( ( p_TmpInt & 0xFF0000 ) >> 16 );
@@ -807,218 +807,218 @@ class MyMediaProcThread extends MediaProcThread
 
                             if( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1 + 4, ( short ) 0, m_ErrInfoVarStrPt ) == 0 )
                             {
-                                m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间。
-                                Log.i( m_CurClsNameStrPt, "发送一个音频输出帧应答包成功。时间戳：" + p_TmpInt + "，总长度：" + 1 + 4 + "。" );
+                                m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间。
+                                Log.i( m_CurClsNameStrPt, "Send one  Audio  Output  frame 应答包success. Time 间戳：" + p_TmpInt + "，总长度：" + 1 + 4 + "。" );
                             }
                             else
                             {
-                                String p_InfoStrPt = "发送一个音频输出帧应答包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                                String p_InfoStrPt = "Send one  Audio  Output  frame 应答The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break out;
                             }
                         }
                     }
-                    else if( m_TmpBytePt[0] == PKT_TYP_VFRAME ) //如果是视频输出帧包。
+                    else if( m_TmpBytePt[0] == PKT_TYP_VFRAME ) //如果是video Output  frame 包。
                     {
-                        if( m_TmpHTLongPt.m_Val < 1 + 4 ) //如果视频输出帧包的数据长度小于1 + 4，表示没有视频输出帧时间戳。
+                        if( m_TmpHTLongPt.m_Val < 1 + 4 ) //如果video Output  frame 包的 number According to the length 小于1 + 4，表示没 Havevideo Output  frame  Time 间戳。
                         {
-                            Log.e( m_CurClsNameStrPt, "接收一个视频输出帧包的数据长度为" + m_TmpHTLongPt.m_Val + "小于1 + 4，表示没有视频输出帧时间戳，无法继续接收。" );
+                            Log.e( m_CurClsNameStrPt, "Receive onevideo Output  frame 包的 number According to the length  for " + m_TmpHTLongPt.m_Val + "小于1 + 4，表示没 Havevideo Output  frame  Time 间戳，无法继续接收。" );
                             break out;
                         }
 
-                        //读取视频输出帧时间戳。
+                        //读取video Output  frame  Time 间戳。
                         p_TmpInt = ( m_TmpBytePt[1] & 0xFF ) + ( ( m_TmpBytePt[2] & 0xFF ) << 8 ) + ( ( m_TmpBytePt[3] & 0xFF ) << 16 ) + ( ( m_TmpBytePt[4] & 0xFF ) << 24 );
 
-                        if( m_VideoOutputPt != null ) //如果要使用视频输出。
+                        if( m_VideoOutputPt != null ) //如果要 use video Output 。
                         {
-                            //将视频输出帧放入链表或自适应抖动缓冲器。
-                            switch( m_UseWhatRecvOutputFrame ) //使用什么接收输出帧。
+                            // will video Output  frame 放入Linked list或Adaptive jitter buffer。
+                            switch( m_UseWhatRecvOutputFrame ) // use 什么 Receive output  frame 。
                             {
-                                case 0: //如果使用链表。
+                                case 0: //如果 use Linked list。
                                 {
-                                    if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该视频输出帧为有图像活动。
+                                    if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该video Output  frame  for  Have图像 live动。
                                     {
                                         synchronized( m_RecvVideoOutputFrameLnkLstPt )
                                         {
                                             m_RecvVideoOutputFrameLnkLstPt.addLast( Arrays.copyOfRange( m_TmpBytePt, 1 + 4, ( int ) ( m_TmpHTLongPt.m_Val ) ) );
                                         }
-                                        Log.i( m_CurClsNameStrPt, "接收一个有图像活动的视频输出帧包，并放入接收视频输出帧链表成功。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, "Receive one Have图像 live动的video Output  frame 包，并放入接收video Output  frame Linked listsuccess.video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                     }
-                                    else //如果该视频输出帧为无图像活动。
+                                    else //如果该video Output  frame  for 无图像 live动。
                                     {
-                                        Log.i( m_CurClsNameStrPt, "接收一个无图像活动的视频输出帧包，无需放入接收视频输出帧链表。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, "Receive one无图像 live动的video Output  frame 包，无需放入接收video Output  frame Linked list。video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                     }
 
                                     break;
                                 }
-                                case 1: //如果使用自适应抖动缓冲器。
+                                case 1: //如果 use Adaptive jitter buffer。
                                 {
                                     synchronized( m_VAjbPt )
                                     {
-                                        if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该视频输出帧为有图像活动。
+                                        if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该video Output  frame  for  Have图像 live动。
                                         {
                                             m_VAjbPt.PutOneByteFrame( System.currentTimeMillis(), p_TmpInt, m_TmpBytePt, 1 + 4, m_TmpHTLongPt.m_Val - 1 - 4 );
-                                            Log.i( m_CurClsNameStrPt, "接收一个有图像活动的视频输出帧包，并放入视频自适应抖动缓冲器成功。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "，类型：" + ( m_TmpBytePt[13] & 0xff ) + "。" );
+                                            Log.i( m_CurClsNameStrPt, "Receive one Have图像 live动的video Output  frame 包，并放入videoAdaptive jitter buffersuccess.video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "， Types of ：" + ( m_TmpBytePt[13] & 0xff ) + "。" );
                                         }
-                                        else //如果该视频输出帧为无图像活动。
+                                        else //如果该video Output  frame  for 无图像 live动。
                                         {
-                                            Log.i( m_CurClsNameStrPt, "接收一个无图像活动的视频输出帧包，无需放入视频自适应抖动缓冲器。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                            Log.i( m_CurClsNameStrPt, "Receive one无图像 live动的video Output  frame 包，无需放入videoAdaptive jitter buffer。video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                                         }
 
-                                        HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲帧的数量。
-                                        HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放最小需缓冲帧的数量。
-                                        HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //存放最大需缓冲帧的数量。
-                                        HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲帧的数量。
+                                        HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲 frame 的 number 量。
+                                        HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放Minimum number of frames to be buffered。
+                                        HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //Maximum buffer required for storage  frame 的 number 量。
+                                        HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲 frame 的 number 量。
                                         m_VAjbPt.GetBufFrameCnt( p_CurHaveBufFrameCntPt, p_MinNeedBufFrameCntPt, p_MaxNeedBufFrameCntPt, p_CurNeedBufFrameCntPt );
-                                        Log.i( m_CurClsNameStrPt, "视频自适应抖动缓冲器：帧：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需帧：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需帧：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需帧：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
+                                        Log.i( m_CurClsNameStrPt, "videoAdaptive jitter buffer： frame ：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需 frame ：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需 frame ：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需 frame ：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
                                     }
 
                                     break;
                                 }
                             }
                         }
-                        else //如果不使用视频输出。
+                        else //如果 Do not use video Output 。
                         {
-                            if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该视频输出帧为有图像活动。
+                            if( m_TmpHTLongPt.m_Val > 1 + 4 ) //如果该video Output  frame  for  Have图像 live动。
                             {
-                                Log.i( m_CurClsNameStrPt, "接收一个有图像活动的视频输出帧包成功，但不使用视频输出。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                Log.i( m_CurClsNameStrPt, "Receive one Have图像 live动的video Output  frame 包成功，但 Do not use video Output 。video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                             }
-                            else //如果该视频输出帧为无图像活动。
+                            else //如果该video Output  frame  for 无图像 live动。
                             {
-                                Log.i( m_CurClsNameStrPt, "接收一个无图像活动的视频输出帧包成功，但不使用视频输出。视频输出帧时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                                Log.i( m_CurClsNameStrPt, "Receive one无图像 live动的video Output  frame 包成功，但 Do not use video Output 。video Output  frame  Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
                             }
                         }
                     }
-                    else if( m_TmpBytePt[0] == PKT_TYP_ACK ) //如果是连接应答包或音视频输入输出帧应答包。
+                    else if( m_TmpBytePt[0] == PKT_TYP_ACK ) //如果是连接应答包或soundvideo enter  Output  frame Reply package.
                     {
-                        if( m_TmpHTLongPt.m_Val == 1 ) //如果数据包的数据长度等于1，表示是连接应答包，就不管。
+                        if( m_TmpHTLongPt.m_Val == 1 ) //如果 number 据包的 number According to the length 等于1，表示是连接应答包，就不管。
                         {
 
                         }
-                        else //如果数据包的数据长度大于1，表示是音视频输入输出帧应答包。
+                        else //如果 number 据包的 number According to the length  more than the 1，表示是soundvideo enter  Output  frame Reply package.
                         {
                             if( m_TmpHTLongPt.m_Val != 1 + 4 )
                             {
-                                Log.e( m_CurClsNameStrPt, "接收一个音视频输入输出帧应答包的数据长度为" + m_TmpHTLongPt.m_Val + "不等于1 + 4，表示格式不正确，无法继续接收。" );
+                                Log.e( m_CurClsNameStrPt, "Receive onesoundvideo enter  Output  frame 应答包的 number According to the length  for " + m_TmpHTLongPt.m_Val + "不等于1 + 4，表示格式不正确，无法继续接收。" );
                                 break out;
                             }
 
-                            //读取时间戳。
+                            //读取 Time 间戳。
                             p_TmpInt = ( m_TmpBytePt[1] & 0xFF ) + ( ( m_TmpBytePt[2] & 0xFF ) << 8 ) + ( ( m_TmpBytePt[3] & 0xFF ) << 16 ) + ( ( m_TmpBytePt[4] & 0xFF ) << 24 );
 
-                            Log.i( m_CurClsNameStrPt, "接收一个音视频输入输出帧应答包。时间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
+                            Log.i( m_CurClsNameStrPt, "Receive onesoundvideo enter  Output  frame Reply package. Time 间戳：" + p_TmpInt + "，总长度：" + m_TmpHTLongPt.m_Val + "。" );
 
-                            //设置最后一个发送的音频输入帧远端是否接收到。
+                            //Настраивать最后一个发送的 Audio  enter  frame 远端是否接收到。
                             if( m_LastSendAudioInputFrameTimeStamp == p_TmpInt ) m_LastSendAudioInputFrameIsRecv = 1;
                         }
                     }
                     else if( m_TmpBytePt[0] == PKT_TYP_EXIT ) //如果是退出包。
                     {
-                        if( m_TmpHTLongPt.m_Val > 1 ) //如果退出包的数据长度大于1。
+                        if( m_TmpHTLongPt.m_Val > 1 ) //如果退出包的 number According to the length  more than the 1。
                         {
-                            Log.e( m_CurClsNameStrPt, "接收一个退出包的数据长度为" + m_TmpHTLongPt.m_Val + "大于1，表示还有其他数据，无法继续接收。" );
+                            Log.e( m_CurClsNameStrPt, "Receive one退出包的 number According to the length  for " + m_TmpHTLongPt.m_Val + " more than the 1，表示还 Have其他 number 据，无法继续接收。" );
                             break out;
                         }
 
-                        m_IsRecvExitPkt = 1; //设置已经接收到退出包。
+                        m_IsRecvExitPkt = 1; //Настраивать已经接收到退出包。
                         RequireExit( 1, 0 ); //请求退出。
 
-                        String p_InfoStrPt = "接收一个退出包。";
+                        String p_InfoStrPt = "Receive one退出包。";
                         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     }
                 }
-                else //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包超时。
+                else //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包ultra Time 。
                 {
 
                 }
             }
-            else //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包失败。
+            else //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包失败。
             {
-                String p_InfoStrPt = "用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                String p_InfoStrPt = "Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                 break out;
             }
 
             //发送心跳包。
-            if( System.currentTimeMillis() - m_LastPktSendTime >= 100 ) //如果超过100毫秒没有发送任何数据包，就发送一个心跳包。
+            if( System.currentTimeMillis() - m_LastPktSendTime >= 100 ) //如果ultra过100 millisecond没 Have发送任何 number 据包，就Send one 心跳包。
             {
-                m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //设置心跳包。
+                m_TmpBytePt[0] = PKT_TYP_CNCT_HTBT; //Настраивать心跳包。
                 if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.SendPkt( m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) ||
                     ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) )
                 {
-                    m_LastPktSendTime = System.currentTimeMillis(); //记录最后一个数据包的发送时间。
-                    Log.i( m_CurClsNameStrPt, "发送一个心跳包成功。" );
+                    m_LastPktSendTime = System.currentTimeMillis(); //记录最后一个 number 据包的发送 Time 间。
+                    Log.i( m_CurClsNameStrPt, "Send one The heartbeat package is successful." );
                 }
                 else
                 {
-                    String p_InfoStrPt = "发送一个心跳包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                    String p_InfoStrPt = "Send one Heartbeat The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                     Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                     Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     break out;
                 }
             }
 
-            //判断套接字连接是否中断。
-            if( System.currentTimeMillis() - m_LastPktRecvTime > 2000 ) //如果超过2000毫秒没有接收任何数据包，就判定连接已经断开了。
+            //Determine whether the socket connection is broken.
+            if( System.currentTimeMillis() - m_LastPktRecvTime > 2000 ) //如果ultra过2000 millisecond没 Have接收任何 number 据包，就判定连接已经断开了。
             {
-                String p_InfoStrPt = "超过2000毫秒没有接收任何数据包，判定套接字连接已经断开了。";
+                String p_InfoStrPt = "ultra过2000 millisecond没 Have接收任何 number 据包，判定套接digit连接已经断开了。";
                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                 break out;
             }
 
-            //如果不使用音频输入，就取出并写入音频输出帧。
+            //如果 Do not use  Audio  enter ，就取出并写入 Audio  Output  frame 。
             if( m_AudioInputPt.m_IsUseAudioInput == 0 ) GetAndWriteVideoOutputFrame( m_TmpBytePt, m_TmpHTIntPt, m_TmpHTLongPt );
 
-            p_Result = 0; //设置本函数执行成功。
+            p_Result = 0; //Настраиватьthis 函 number 执行success.
         }
 
         return p_Result;
     }
 
-    //用户定义的销毁函数，在本线程退出时回调一次。
+    // user 定义的destroy函 number ， в this 线程退出 Time 回调一次。
     @Override public void UserDestroy()
     {
         SendExitPkt:
-        if( ( m_ExitFlag == 1 ) && ( ( m_TcpClntSoktPt != null ) || ( ( m_UdpSoktPt != null ) && ( m_UdpSoktPt.GetRmtAddr( null, null, null, null ) == 0 ) ) ) ) //如果本线程接收到退出请求，且本端TCP协议客户端套接字类对象不为空或本端UDP协议套接字类对象不为空且已连接远端。
+        if( ( m_ExitFlag == 1 ) && ( ( m_TcpClntSoktPt != null ) || ( ( m_UdpSoktPt != null ) && ( m_UdpSoktPt.GetRmtAddr( null, null, null, null ) == 0 ) ) ) ) //如果this 线程接收到退出请求，且this 端TCPprotocol客户端套接digit类对象不 for 空或this 端UDPprotocol套接digit类对象不 for 空且已连接远端。
         {
             //循环发送退出包。
-            m_TmpBytePt[0] = PKT_TYP_EXIT; //设置退出包。
+            m_TmpBytePt[0] = PKT_TYP_EXIT; //Настраивать退出包。
             for( int p_SendTimes = ( m_UseWhatXfrPrtcl == 0 ) ? 1 : 5; p_SendTimes > 0; p_SendTimes-- )
             {
                 if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.SendPkt( m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) != 0 ) ) ||
                     ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, 1, ( short ) 0, m_ErrInfoVarStrPt ) != 0 ) ) )
                 {
-                    String p_InfoStrPt = "发送一个退出包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                    String p_InfoStrPt = "Send one 退出The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                     Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                     Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                     break SendExitPkt;
                 }
             }
 
-            m_LastPktSendTime = System.currentTimeMillis(); //记录最后一个数据包的发送时间。
+            m_LastPktSendTime = System.currentTimeMillis(); //记录最后一个 number 据包的发送 Time 间。
 
-            {String p_InfoStrPt = "发送一个退出包成功。";
+            {String p_InfoStrPt = "Send one 退出包success.";
             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );}
 
-            if( m_IsRecvExitPkt == 0 ) //如果没有接收到退出包。
+            if( m_IsRecvExitPkt == 0 ) //如果没 Have接收到退出包。
             {
                 while( true ) //循环接收退出包。
                 {
                     if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.RecvPkt( m_TmpBytePt, m_TmpBytePt.length, m_TmpHTLongPt, ( short ) 5000, m_ErrInfoVarStrPt ) == 0 ) ) ||
                         ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.RecvPkt( null, null, null, m_TmpBytePt, m_TmpBytePt.length, m_TmpHTLongPt, ( short ) 5000, m_ErrInfoVarStrPt ) == 0 ) ) )
                     {
-                        if( m_TmpHTLongPt.m_Val != -1 ) //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包成功。
+                        if( m_TmpHTLongPt.m_Val != -1 ) //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包success.
                         {
-                            m_LastPktRecvTime = System.currentTimeMillis(); //记录最后一个数据包的接收时间。
+                            m_LastPktRecvTime = System.currentTimeMillis(); //记录最后一个 number 据包的接收 Time 间。
 
                             if( ( m_TmpHTLongPt.m_Val == 1 ) && ( m_TmpBytePt[0] == PKT_TYP_EXIT ) ) //如果是退出包。
                             {
-                                String p_InfoStrPt = "接收到一个退出包。";
+                                String p_InfoStrPt = "An exit packet was received.";
                                 Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                                 Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                                 break SendExitPkt;
@@ -1028,17 +1028,17 @@ class MyMediaProcThread extends MediaProcThread
 
                             }
                         }
-                        else //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包超时。
+                        else //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包ultra Time 。
                         {
-                            String p_InfoStrPt = "用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break SendExitPkt;
                         }
                     }
-                    else //如果用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包失败。
+                    else //如果Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据包失败。
                     {
-                        String p_InfoStrPt = "用已连接的本端套接字开始接收连接的远端套接字发送的一个数据包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Use connected this  The end socket starts to receive the one sent by the connected remote socket number 据The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break SendExitPkt;
@@ -1047,87 +1047,87 @@ class MyMediaProcThread extends MediaProcThread
             }
         }
 
-        //销毁本端TCP协议服务端套接字。
+        //destroythis 端TCPprotocol服务端套接digit。
         if( m_TcpSrvrSoktPt != null )
         {
-            m_TcpSrvrSoktPt.Destroy( null ); //关闭并销毁已创建的本端TCP协议服务端套接字。
+            m_TcpSrvrSoktPt.Destroy( null ); //关闭并destroy已创建的this 端TCPprotocol服务端套接digit。
             m_TcpSrvrSoktPt = null;
 
-            String p_InfoStrPt = "关闭并销毁已创建的本端TCP协议服务端套接字成功。";
+            String p_InfoStrPt = "关闭并destroy已创建的this 端TCPprotocol服务端套接digitsuccess.";
             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
         }
 
-        //销毁本端TCP协议客户端套接字。
+        //destroythis 端TCPprotocol客户端套接digit。
         if( m_TcpClntSoktPt != null )
         {
-            m_TcpClntSoktPt.Destroy( ( short ) -1, null ); //关闭并销毁已创建的本端TCP协议客户端套接字。
+            m_TcpClntSoktPt.Destroy( ( short ) -1, null ); //关闭并destroy已创建的this 端TCPprotocol客户端套接digit。
             m_TcpClntSoktPt = null;
 
-            String p_InfoStrPt = "关闭并销毁已创建的本端TCP协议客户端套接字成功。";
+            String p_InfoStrPt = "关闭并destroy已创建的this 端TCPprotocol客户端套接digitsuccess.";
             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
         }
 
-        //销毁本端UDP协议套接字。
+        //destroythis 端UDPprotocol套接digit。
         if( m_UdpSoktPt != null )
         {
-            m_UdpSoktPt.Destroy( null ); //关闭并销毁已创建的本端UDP协议套接字。
+            m_UdpSoktPt.Destroy( null ); //关闭并destroy已创建的this 端UDPprotocol套接digit。
             m_UdpSoktPt = null;
 
-            String p_InfoStrPt = "关闭并销毁已创建的本端UDP协议套接字成功。";
+            String p_InfoStrPt = "关闭并destroy已创建的this 端UDPprotocol套接digitsuccess.";
             Log.i( m_CurClsNameStrPt, p_InfoStrPt );
             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
         }
 
-        //销毁接收音频输出帧的链表类对象。
+        //destroy接收 Audio  Output  frame 的Linked list类对象。
         if( m_RecvAudioOutputFrameLnkLstPt != null )
         {
             m_RecvAudioOutputFrameLnkLstPt.clear();
             m_RecvAudioOutputFrameLnkLstPt = null;
 
-            Log.i( m_CurClsNameStrPt, "销毁接收输出帧链表类对象成功。" );
+            Log.i( m_CurClsNameStrPt, "destroy Receive output  frame Linked list类对象success." );
         }
 
-        //销毁视频自适应抖动缓冲器类对象。
+        //destroyvideoAdaptive jitter buffer类对象。
         if( m_VAjbPt != null )
         {
             m_VAjbPt.Destroy();
             m_VAjbPt = null;
 
-            Log.i( m_CurClsNameStrPt, "销毁视频自适应抖动缓冲器类对象成功。" );
+            Log.i( m_CurClsNameStrPt, "destroyvideoAdaptive jitter buffer类对象success." );
         }
 
-        //销毁音频自适应抖动缓冲器类对象。
+        //destroy Audio Adaptive jitter buffer类对象。
         if( m_AAjbPt != null )
         {
             m_AAjbPt.Destroy();
             m_AAjbPt = null;
 
-            Log.i( m_CurClsNameStrPt, "销毁音频自适应抖动缓冲器类对象成功。" );
+            Log.i( m_CurClsNameStrPt, "destroy Audio Adaptive jitter buffer类对象success." );
         }
 
-        if( m_IsCreateSrvrOrClnt == 1 ) //如果是创建服务端。
+        if( m_IsCreateSrvrOrClnt == 1 ) //如果是 Create server 。
         {
-            if( ( m_ExitFlag == 1 ) && ( m_IsRecvExitPkt == 1 ) ) //如果本线程接收到退出请求，且接收到了退出包。
+            if( ( m_ExitFlag == 1 ) && ( m_IsRecvExitPkt == 1 ) ) //如果this 线程接收到退出请求，且接收到了退出包。
             {
-                String p_InfoStrPt = "由于是创建服务端，且本线程接收到退出请求，且接收到了退出包，表示是远端TCP协议客户端套接字主动退出，本线程重新初始化来继续保持监听。";
+                String p_InfoStrPt = "Because it is Create server ，且this 线程接收到退出请求，且接收到了退出包，表示是远端TCPprotocol客户端套接digit主动退出，this 线程重新初始化来继续保持监听。";
                 Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                 {Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );}
 
                 RequireExit( 2, 0 ); //请求重启。
                 {Message clMessage = new Message();clMessage.what = 4;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送重建SurfaceView控件消息。
             }
-            else if( ( m_ExitFlag == 0 ) && ( m_ExitCode == -2 ) ) //如果本线程没收到退出请求，且退出代码为处理失败。
+            else if( ( m_ExitFlag == 0 ) && ( m_ExitCode == -2 ) ) //如果this The thread did not receive the exit request，且退出代码 for 处理失败。
             {
-                String p_InfoStrPt = "由于是创建服务端，且本线程没收到退出请求，且退出码为处理失败，表示是处理失败或连接异常断开，本线程重新初始化来继续保持监听。";
+                String p_InfoStrPt = "Because it is Create server ，且this The thread did not receive the exit request，且退出码 for 处理失败，表示是处理失败或连接异常断开，this 线程重新初始化来继续保持监听。";
                 Log.i( m_CurClsNameStrPt, p_InfoStrPt );
                 {Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );}
 
                 RequireExit( 2, 0 ); //请求重启。
                 {Message clMessage = new Message();clMessage.what = 4;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送重建SurfaceView控件消息。
             }
-            else //其他情况，本线程直接退出。
+            else //其他情况，this 线程直接退出。
             {
                 {Message clMessage = new Message();clMessage.what = 2;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送媒体处理线程退出的消息。
                 {Message clMessage = new Message();clMessage.what = 4;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送重建SurfaceView控件消息。
@@ -1135,15 +1135,15 @@ class MyMediaProcThread extends MediaProcThread
         }
         else if( m_IsCreateSrvrOrClnt == 0 ) //如果是创建客户端。
         {
-            if( ( m_ExitFlag == 0 ) && ( m_ExitCode == -2 ) ) //如果本线程没收到退出请求，且退出代码为处理失败。
+            if( ( m_ExitFlag == 0 ) && ( m_ExitCode == -2 ) ) //如果this The thread did not receive the exit request，且退出代码 for 处理失败。
             {
-                String p_InfoStrPt = "由于是创建客户端，且本线程没收到退出请求，且退出码为处理失败，表示是处理失败或连接异常断开，本线程重新初始化来重连服务端。";
+                String p_InfoStrPt = "Since it is creating a client，且this The thread did not receive the exit request，且退出码 for 处理失败，表示是处理失败或连接异常断开，this 线程重新初始化来重连服务端。";
                 Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                 {Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );}
 
                 RequireExit( 2, 0 ); //请求重启。
             }
-            else //其他情况，本线程直接退出。
+            else //其他情况，this 线程直接退出。
             {
                 {Message clMessage = new Message();clMessage.what = 2;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送媒体处理线程退出的消息。
                 {Message clMessage = new Message();clMessage.what = 4;m_MainActivityHandlerPt.sendMessage( clMessage );} //向主界面发送重建SurfaceView控件消息。
@@ -1151,60 +1151,60 @@ class MyMediaProcThread extends MediaProcThread
         }
     }
 
-    //用户定义的读取音视频输入帧函数，在读取到一个音频输入帧或视频输入帧并处理完后回调一次，为0表示成功，为非0表示失败。
+    // user 定义的读取soundvideo enter  frame 函 number ， в 读取到一个 Audio  enter  frame 或video enter  frame 并处理完后回调一次， for 0表示成功， for 非0表示失败。
     @Override public int UserReadAudioVideoInputFrame( short PcmAudioInputFramePt[], short PcmAudioResultFramePt[], HTInt VoiceActStsPt, byte EncoderAudioInputFramePt[], HTLong EncoderAudioInputFrameLenPt, HTInt EncoderAudioInputFrameIsNeedTransPt, byte YU12VideoInputFramePt[], HTInt YU12VideoInputFrameWidthPt, HTInt YU12VideoInputFrameHeigthPt, byte EncoderVideoInputFramePt[], HTLong EncoderVideoInputFrameLenPt )
     {
-        int p_Result = -1; //存放本函数执行结果的值，为0表示成功，为非0表示失败。
-        int p_FramePktLen = 0; //存放输入输出帧数据包的数据长度，单位字节。
+        int p_Result = -1; //存放this 函 number 执行 result 的值， for 0表示成功， for 非0表示失败。
+        int p_FramePktLen = 0; //存放 enter  Output  frame  number 据包的 number According to the length ， unit digit节。
         int p_TmpInt32 = 0;
 
         out:
         {
-            //发送音频输入帧。
-            if( PcmAudioInputFramePt != null ) //如果要使用音频输入。
+            //发送 Audio  enter  frame 。
+            if( PcmAudioInputFramePt != null ) //如果要 use  Audio  enter 。
             {
-                if( EncoderAudioInputFramePt != null ) //如果要使用已编码格式音频输入帧。
+                if( EncoderAudioInputFramePt != null ) //如果要 use 已编码格式 Audio  enter  frame 。
                 {
-                    if( VoiceActStsPt.m_Val != 0 && EncoderAudioInputFrameIsNeedTransPt.m_Val != 0 ) //如果本次音频输入帧为有语音活动，且需要传输。
+                    if( VoiceActStsPt.m_Val != 0 && EncoderAudioInputFrameIsNeedTransPt.m_Val != 0 ) //如果this 次 Audio  enter  frame  for  Have  voice sound live动，且需要传输。
                     {
-                        System.arraycopy( EncoderAudioInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, ( int ) EncoderAudioInputFrameLenPt.m_Val ); //设置音频输入输出帧。
-                        p_FramePktLen = 1 + 4 + 4 + ( int )EncoderAudioInputFrameLenPt.m_Val; //数据包长度 = 数据包类型 + 音频输入帧时间戳 + 视频输入帧时间戳 + 已编码格式音频输入帧。
+                        System.arraycopy( EncoderAudioInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, ( int ) EncoderAudioInputFrameLenPt.m_Val ); //Настраивать Audio  enter  Output  frame 。
+                        p_FramePktLen = 1 + 4 + 4 + ( int )EncoderAudioInputFrameLenPt.m_Val; // number 据包长度 =  number 据包 Types of  +  Audio  enter  frame  Time 间戳 + video enter  frame  Time 间戳 + 已编码格式 Audio  enter  frame 。
                     }
-                    else //如果本次音频输入帧为无语音活动，或不需要传输。
+                    else //如果this 次 Audio  enter  frame  for 无  voice sound live动，或不需要传输。
                     {
-                        p_FramePktLen = 1 + 4; //数据包长度 = 数据包类型 + 音频输入帧时间戳。
+                        p_FramePktLen = 1 + 4; // number 据包长度 =  number 据包 Types of  +  Audio  enter  frame  Time 间戳。
                     }
                 }
-                else //如果要使用PCM格式音频输入帧。
+                else //如果要 use PCM格式 Audio  enter  frame 。
                 {
-                    if( VoiceActStsPt.m_Val != 0 ) //如果本次音频输入帧为有语音活动。
+                    if( VoiceActStsPt.m_Val != 0 ) //如果this 次 Audio  enter  frame  for  Have  voice sound live动。
                     {
-                        for( p_TmpInt32 = 0; p_TmpInt32 < PcmAudioResultFramePt.length; p_TmpInt32++ ) //设置音频输入输出帧。
+                        for( p_TmpInt32 = 0; p_TmpInt32 < PcmAudioResultFramePt.length; p_TmpInt32++ ) //Настраивать Audio  enter  Output  frame 。
                         {
                             m_TmpBytePt[1 + 4 + 4 + p_TmpInt32 * 2] = ( byte ) ( PcmAudioResultFramePt[p_TmpInt32] & 0xFF );
                             m_TmpBytePt[1 + 4 + 4 + p_TmpInt32 * 2 + 1] = ( byte ) ( ( PcmAudioResultFramePt[p_TmpInt32] & 0xFF00 ) >> 8 );
                         }
-                        p_FramePktLen = 1 + 4 + 4 + PcmAudioResultFramePt.length * 2; //数据包长度 = 数据包类型 + 音频输入帧时间戳 + 视频输入帧时间戳 + PCM格式音频输入帧。
+                        p_FramePktLen = 1 + 4 + 4 + PcmAudioResultFramePt.length * 2; // number 据包长度 =  number 据包 Types of  +  Audio  enter  frame  Time 间戳 + video enter  frame  Time 间戳 + PCM格式 Audio  enter  frame 。
                     }
-                    else //如果本次音频输入帧为无语音活动，或不需要传输。
+                    else //如果this 次 Audio  enter  frame  for 无  voice sound live动，或不需要传输。
                     {
-                        p_FramePktLen = 1 + 4; //数据包长度 = 数据包类型 + 音频输入帧时间戳。
+                        p_FramePktLen = 1 + 4; // number 据包长度 =  number 据包 Types of  +  Audio  enter  frame  Time 间戳。
                     }
                 }
 
-                //发送音频输入帧数据包。
-                if( p_FramePktLen != 1 + 4 ) //如果本音频输入帧为有语音活动，就发送。
+                //发送 Audio  enter  frame  number 据包。
+                if( p_FramePktLen != 1 + 4 ) //如果this  Audio  enter  frame  for  Have  voice sound live动，就发送。
                 {
-                    m_LastSendAudioInputFrameTimeStamp += 1; //音频输入帧的时间戳递增一个步进。
+                    m_LastSendAudioInputFrameTimeStamp += 1; // Audio  enter  frame 的 Time 间戳递增一个步进。
 
-                    //设置数据包类型为音频输入帧包。
+                    //Настраивать number 据包 Types of  for  Audio  enter  frame 包。
                     m_TmpBytePt[0] = PKT_TYP_AFRAME;
-                    //设置音频输入帧时间戳。
+                    //Настраивать Audio  enter  frame  Time 间戳。
                     m_TmpBytePt[1] = ( byte ) ( m_LastSendAudioInputFrameTimeStamp & 0xFF );
                     m_TmpBytePt[2] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF00 ) >> 8 );
                     m_TmpBytePt[3] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF0000 ) >> 16 );
                     m_TmpBytePt[4] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF000000 ) >> 24 );
-                    //设置视频输入帧时间戳。
+                    //Настраиватьvideo enter  frame  Time 间戳。
                     m_TmpBytePt[5] = ( byte ) ( m_LastSendVideoInputFrameTimeStamp & 0xFF );
                     m_TmpBytePt[6] = ( byte ) ( ( m_LastSendVideoInputFrameTimeStamp & 0xFF00 ) >> 8 );
                     m_TmpBytePt[7] = ( byte ) ( ( m_LastSendVideoInputFrameTimeStamp & 0xFF0000 ) >> 16 );
@@ -1213,27 +1213,27 @@ class MyMediaProcThread extends MediaProcThread
                     if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.SendPkt( m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) ||
                         ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) )
                     {
-                        m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间。
-                        Log.i( m_CurClsNameStrPt, "发送一个有语音活动的音频输入帧包成功。音频输入帧时间戳：" + m_LastSendAudioInputFrameTimeStamp + "，视频输入帧时间戳：" + m_LastSendVideoInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
+                        m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间。
+                        Log.i( m_CurClsNameStrPt, "Send one  Have  voice sound live动的 Audio  enter  frame 包success. Audio  enter  frame  Time 间戳：" + m_LastSendAudioInputFrameTimeStamp + "，video enter  frame  Time 间戳：" + m_LastSendVideoInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
                     }
                     else
                     {
-                        String p_InfoStrPt = "发送一个有语音活动的音频输入帧包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Send one  Have  voice sound live动的 Audio  enter  frame The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
                     }
 
-                    m_LastSendAudioInputFrameIsAct = 1; //设置最后一个发送的音频输入帧有语音活动。
-                    m_LastSendAudioInputFrameIsRecv = 1; //设置最后一个发送的音频输入帧远端已经接收到。
+                    m_LastSendAudioInputFrameIsAct = 1; //Настраивать最后一个发送的 Audio  enter  frame  Have  voice sound live动。
+                    m_LastSendAudioInputFrameIsRecv = 1; //Настраивать最后一个发送的 Audio  enter  frame 远端已经接收到。
                 }
-                else if( ( p_FramePktLen == 1 + 4 ) && ( m_LastSendAudioInputFrameIsAct != 0 ) ) //如果本音频输入帧为无语音活动，但最后一个发送的音频输入帧为有语音活动，就发送。
+                else if( ( p_FramePktLen == 1 + 4 ) && ( m_LastSendAudioInputFrameIsAct != 0 ) ) //如果this  Audio  enter  frame  for 无  voice sound live动，但最后一个发送的 Audio  enter  frame  for  Have  voice sound live动，就发送。
                 {
-                    m_LastSendAudioInputFrameTimeStamp += 1; //音频输入帧的时间戳递增一个步进。
+                    m_LastSendAudioInputFrameTimeStamp += 1; // Audio  enter  frame 的 Time 间戳递增一个步进。
 
-                    //设置数据包类型为音频输入帧包。
+                    //Настраивать number 据包 Types of  for  Audio  enter  frame 包。
                     m_TmpBytePt[0] = PKT_TYP_AFRAME;
-                    //设置音频输入帧时间戳。
+                    //Настраивать Audio  enter  frame  Time 间戳。
                     m_TmpBytePt[1] = ( byte ) ( m_LastSendAudioInputFrameTimeStamp & 0xFF );
                     m_TmpBytePt[2] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF00 ) >> 8 );
                     m_TmpBytePt[3] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF0000 ) >> 16 );
@@ -1242,29 +1242,29 @@ class MyMediaProcThread extends MediaProcThread
                     if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.SendPkt( m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) ||
                         ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) )
                     {
-                        m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间。
-                        Log.i( m_CurClsNameStrPt, "发送一个无语音活动的音频输入帧包成功。音频输入帧时间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
+                        m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间。
+                        Log.i( m_CurClsNameStrPt, "Send one 无  voice sound live动的 Audio  enter  frame 包success. Audio  enter  frame  Time 间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
                     }
                     else
                     {
-                        String p_InfoStrPt = "发送一个无语音活动的音频输入帧包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Send one 无  voice sound live动的 Audio  enter  frame The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
                     }
 
-                    m_LastSendAudioInputFrameIsAct = 0; //设置最后一个发送的音频输入帧无语音活动。
-                    m_LastSendAudioInputFrameIsRecv = 0; //设置最后一个发送的音频输入帧远端没有接收到。
+                    m_LastSendAudioInputFrameIsAct = 0; //Настраивать最后一个发送的 Audio  enter  frame 无  voice sound live动。
+                    m_LastSendAudioInputFrameIsRecv = 0; //Настраивать最后一个发送的 Audio  enter  frame 远端没 Have接收到。
                 }
-                else //如果本音频输入帧为无语音活动，且最后一个发送的音频输入帧为无语音活动，无需发送。
+                else //如果this  Audio  enter  frame  for 无  voice sound live动，且最后一个发送的 Audio  enter  frame  for 无  voice sound live动，无需发送。
                 {
-                    Log.i( m_CurClsNameStrPt, "本音频输入帧为无语音活动，且最后一个发送的音频输入帧为无语音活动，无需发送。" );
+                    Log.i( m_CurClsNameStrPt, "this  Audio  enter  frame  for 无  voice sound live动，且最后一个发送的 Audio  enter  frame  for 无  voice sound live动，无需发送。" );
 
-                    if( ( m_UseWhatXfrPrtcl == 1 ) && ( m_LastSendAudioInputFrameIsRecv == 0 ) ) //如果是使用UDP协议，且本音频输入帧为无语音活动，且最后一个发送的音频输入帧为无语音活动，且最后一个发送的音频输入帧远端没有接收到。
+                    if( ( m_UseWhatXfrPrtcl == 1 ) && ( m_LastSendAudioInputFrameIsRecv == 0 ) ) //如果是 use UDPprotocol，且this  Audio  enter  frame  for 无  voice sound live动，且最后一个发送的 Audio  enter  frame  for 无  voice sound live动，且最后一个发送的 Audio  enter  frame 远端没 Have接收到。
                     {
-                        //设置音频输入帧包。
+                        //Настраивать Audio  enter  frame 包。
                         m_TmpBytePt[0] = PKT_TYP_AFRAME;
-                        //设置音频输入帧时间戳。
+                        //Настраивать Audio  enter  frame  Time 间戳。
                         m_TmpBytePt[1] = ( byte ) ( m_LastSendAudioInputFrameTimeStamp & 0xFF );
                         m_TmpBytePt[2] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF00 ) >> 8 );
                         m_TmpBytePt[3] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF0000 ) >> 16 );
@@ -1272,12 +1272,12 @@ class MyMediaProcThread extends MediaProcThread
 
                         if( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 )
                         {
-                            m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间。
-                            Log.i( m_CurClsNameStrPt, "重新发送最后一个无语音活动的音频输入帧包成功。音频输入帧时间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
+                            m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间。
+                            Log.i( m_CurClsNameStrPt, "Resend last一个无  voice sound live动的 Audio  enter  frame 包success. Audio  enter  frame  Time 间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "。" );
                         }
                         else
                         {
-                            String p_InfoStrPt = "重新发送最后一个无语音活动的音频输入帧包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                            String p_InfoStrPt = "Resend last一个无  voice sound live动的 Audio  enter  frame The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                             Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                             Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                             break out;
@@ -1286,40 +1286,40 @@ class MyMediaProcThread extends MediaProcThread
                 }
             }
 
-            //发送视频输入帧。
-            if( YU12VideoInputFramePt != null ) //如果要使用视频输入。
+            //发送video enter  frame 。
+            if( YU12VideoInputFramePt != null ) //如果要 use video enter 。
             {
-                if( EncoderVideoInputFramePt != null ) //如果要使用已编码格式视频输入帧。
+                if( EncoderVideoInputFramePt != null ) //如果要 use 已编码格式video enter  frame 。
                 {
-                    if( EncoderVideoInputFrameLenPt.m_Val != 0 ) //如果本次视频输入帧为有图像活动。
+                    if( EncoderVideoInputFrameLenPt.m_Val != 0 ) //如果this 次video enter  frame  for  Have图像 live动。
                     {
-                        System.arraycopy( EncoderVideoInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, ( int ) EncoderVideoInputFrameLenPt.m_Val ); //设置视频输入输出帧。
-                        p_FramePktLen = 1 + 4 + 4 + ( int ) EncoderVideoInputFrameLenPt.m_Val; //数据包长度 = 数据包类型 + 视频输入帧时间戳 + 音频输入帧时间戳 + 已编码格式视频输入帧。
+                        System.arraycopy( EncoderVideoInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, ( int ) EncoderVideoInputFrameLenPt.m_Val ); //Настраиватьvideo enter  Output  frame 。
+                        p_FramePktLen = 1 + 4 + 4 + ( int ) EncoderVideoInputFrameLenPt.m_Val; // number 据包长度 =  number 据包 Types of  + video enter  frame  Time 间戳 +  Audio  enter  frame  Time 间戳 + 已编码格式video enter  frame 。
                     }
                     else
                     {
-                        p_FramePktLen = 1 + 4; //数据包长度 = 数据包类型 + 视频输入帧时间戳。
+                        p_FramePktLen = 1 + 4; // number 据包长度 =  number 据包 Types of  + video enter  frame  Time 间戳。
                     }
                 }
-                else //如果要使用YU12格式视频输入帧。
+                else //如果要 use YU12格式video enter  frame 。
                 {
-                    System.arraycopy( YU12VideoInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, YU12VideoInputFramePt.length ); //设置视频输入输出帧。
-                    p_FramePktLen = 1 + 4 + 4 + YU12VideoInputFramePt.length; //数据包长度 = 数据包类型 + 视频输入帧时间戳 + 音频输入帧时间戳 + YU12格式视频输入帧。
+                    System.arraycopy( YU12VideoInputFramePt, 0, m_TmpBytePt, 1 + 4 + 4, YU12VideoInputFramePt.length ); //Настраиватьvideo enter  Output  frame 。
+                    p_FramePktLen = 1 + 4 + 4 + YU12VideoInputFramePt.length; // number 据包长度 =  number 据包 Types of  + video enter  frame  Time 间戳 +  Audio  enter  frame  Time 间戳 + YU12格式video enter  frame 。
                 }
 
-                //发送视频输入帧数据包。
-                if( p_FramePktLen != 1 + 4 ) //如果本视频输入帧为有图像活动，就发送。
+                //发送video enter  frame  number 据包。
+                if( p_FramePktLen != 1 + 4 ) //如果this video enter  frame  for  Have图像 live动，就发送。
                 {
-                    m_LastSendVideoInputFrameTimeStamp += 1; //视频输入帧的时间戳递增一个步进。
+                    m_LastSendVideoInputFrameTimeStamp += 1; //video enter  frame 的 Time 间戳递增一个步进。
 
-                    //设置数据包类型为视频输入帧包。
+                    //Настраивать number 据包 Types of  for video enter  frame 包。
                     m_TmpBytePt[0] = PKT_TYP_VFRAME;
-                    //设置视频输入帧时间戳。
+                    //Настраиватьvideo enter  frame  Time 间戳。
                     m_TmpBytePt[1] = ( byte ) ( m_LastSendVideoInputFrameTimeStamp & 0xFF );
                     m_TmpBytePt[2] = ( byte ) ( ( m_LastSendVideoInputFrameTimeStamp & 0xFF00 ) >> 8 );
                     m_TmpBytePt[3] = ( byte ) ( ( m_LastSendVideoInputFrameTimeStamp & 0xFF0000 ) >> 16 );
                     m_TmpBytePt[4] = ( byte ) ( ( m_LastSendVideoInputFrameTimeStamp & 0xFF000000 ) >> 24 );
-                    //设置音频输入帧时间戳。
+                    //Настраивать Audio  enter  frame  Time 间戳。
                     m_TmpBytePt[5] = ( byte ) ( m_LastSendAudioInputFrameTimeStamp & 0xFF );
                     m_TmpBytePt[6] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF00 ) >> 8 );
                     m_TmpBytePt[7] = ( byte ) ( ( m_LastSendAudioInputFrameTimeStamp & 0xFF0000 ) >> 16 );
@@ -1328,30 +1328,30 @@ class MyMediaProcThread extends MediaProcThread
                     if( ( ( m_UseWhatXfrPrtcl == 0 ) && ( m_TcpClntSoktPt.SendPkt( m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) ||
                         ( ( m_UseWhatXfrPrtcl == 1 ) && ( m_UdpSoktPt.SendPkt( 4, null, null, m_TmpBytePt, p_FramePktLen, ( short ) 0, m_ErrInfoVarStrPt ) == 0 ) ) )
                     {
-                        m_LastPktSendTime = System.currentTimeMillis(); //设置最后一个数据包的发送时间。
-                        Log.i( m_CurClsNameStrPt, "发送一个有图像活动的视频输入帧包成功。视频输入帧时间戳：" + m_LastSendVideoInputFrameTimeStamp + "，音频输入帧时间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "，类型：" + ( m_TmpBytePt[13] & 0xff ) + "。" );
+                        m_LastPktSendTime = System.currentTimeMillis(); //Настраивать最后一个 number 据包的发送 Time 间。
+                        Log.i( m_CurClsNameStrPt, "Send one  Have图像 live动的video enter  frame 包success.video enter  frame  Time 间戳：" + m_LastSendVideoInputFrameTimeStamp + "， Audio  enter  frame  Time 间戳：" + m_LastSendAudioInputFrameTimeStamp + "，总长度：" + p_FramePktLen + "， Types of ：" + ( m_TmpBytePt[13] & 0xff ) + "。" );
                     }
                     else
                     {
-                        String p_InfoStrPt = "发送一个有图像活动的视频输入帧包失败。原因：" + m_ErrInfoVarStrPt.GetStr();
+                        String p_InfoStrPt = "Send one  Have图像 live动的video enter  frame The package failed. the reason：" + m_ErrInfoVarStrPt.GetStr();
                         Log.e( m_CurClsNameStrPt, p_InfoStrPt );
                         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
                         break out;
                     }
                 }
-                else //如果本视频输入帧为无图像活动，无需发送。
+                else //如果this video enter  frame  for 无图像 live动，无需发送。
                 {
-                    Log.i( m_CurClsNameStrPt, "本视频输入帧为无图像活动，无需发送。" );
+                    Log.i( m_CurClsNameStrPt, "this video enter  frame  for 无图像 live动，无需发送。" );
                 }
             }
 
-            p_Result = 0; //设置本函数执行成功。
+            p_Result = 0; //Настраиватьthis 函 number 执行success.
         }
 
         return p_Result;
     }
 
-    //用户定义的写入音频输出帧函数，在需要写入一个音频输出帧时回调一次。注意：本函数不是在媒体处理线程中执行的，而是在音频输出线程中执行的，所以本函数应尽量在一瞬间完成执行，否则会导致音频输入输出帧不同步，从而导致声学回音消除失败。
+    // user 定义的写入 Audio  Output  frame 函 number ， в 需要写入一个 Audio  Output  frame  Time 回调一次。注意：this 函 number 不是 в 媒体处理线程in执行的，而是 в  Audio  Output 线程in执行的，所以this 函 number 应尽量 в 一瞬间完成执行，否则会导致 Audio  enter  Output  frame 不同步，从而导致 Acoustic echo sound消除失败。
     @Override public void UserWriteAudioOutputFrame( short PcmAudioOutputFramePt[], byte EncoderAudioOutputFramePt[], HTLong EncoderAudioOutputFrameLen )
     {
         int p_AudioOutputFrameTimeStamp = 0;
@@ -1361,143 +1361,143 @@ class MyMediaProcThread extends MediaProcThread
 
         out:
         {
-            //取出并写入音频输出帧。
+            //取出并写入 Audio  Output  frame 。
             {
-                //从链表或自适应抖动缓冲器取出一个音频输出帧。
-                switch( m_UseWhatRecvOutputFrame ) //使用什么接收输出帧。
+                //从Linked list或Adaptive jitter buffer取出一个 Audio  Output  frame 。
+                switch( m_UseWhatRecvOutputFrame ) // use 什么 Receive output  frame 。
                 {
-                    case 0: //如果使用链表。
+                    case 0: //如果 use Linked list。
                     {
-                        if( m_RecvAudioOutputFrameLnkLstPt.size() != 0 ) //如果接收音频输出帧链表不为空。
+                        if( m_RecvAudioOutputFrameLnkLstPt.size() != 0 ) //如果接收 Audio  Output  frame Linked list不 for 空。
                         {
                             synchronized( m_RecvAudioOutputFrameLnkLstPt )
                             {
-                                p_AudioOutputFramePt = m_RecvAudioOutputFrameLnkLstPt.getFirst(); //获取接收音频输出帧链表的第一个音频输出帧。
-                                m_RecvAudioOutputFrameLnkLstPt.removeFirst(); //删除接收音频输出帧链表的第一个音频输出帧。
+                                p_AudioOutputFramePt = m_RecvAudioOutputFrameLnkLstPt.getFirst(); //获取接收 Audio  Output  frame Linked list的第一个 Audio  Output  frame 。
+                                m_RecvAudioOutputFrameLnkLstPt.removeFirst(); // delete 接收 Audio  Output  frame Linked list的第一个 Audio  Output  frame 。
                             }
                             p_AudioOutputFrameLen = p_AudioOutputFramePt.length;
                         }
 
-                        if( p_AudioOutputFrameLen != 0 ) //如果音频输出帧为有语音活动。
+                        if( p_AudioOutputFrameLen != 0 ) //如果 Audio  Output  frame  for  Have  voice sound live动。
                         {
-                            Log.i( m_CurClsNameStrPt, "从接收音频输出帧链表取出一个有语音活动的音频输出帧。数据长度：" + p_AudioOutputFrameLen + "。" );
+                            Log.i( m_CurClsNameStrPt, "Receive from  Audio  Output  frame Linked list取出一个 Have  voice sound live动的 Audio  Output  frame 。 number According to the length ：" + p_AudioOutputFrameLen + "。" );
                         }
-                        else //如果音频输出帧为无语音活动。
+                        else //如果 Audio  Output  frame  for 无  voice sound live动。
                         {
-                            Log.i( m_CurClsNameStrPt, "从接收音频输出帧链表取出一个无语音活动的音频输出帧。数据长度：" + p_AudioOutputFrameLen + "。" );
+                            Log.i( m_CurClsNameStrPt, "Receive from  Audio  Output  frame Linked list取出一个无  voice sound live动的 Audio  Output  frame 。 number According to the length ：" + p_AudioOutputFrameLen + "。" );
                         }
 
                         break;
                     }
-                    case 1: //如果使用自适应抖动缓冲器。
+                    case 1: //如果 use Adaptive jitter buffer。
                     {
                         synchronized( m_AAjbPt )
                         {
-                            //从音频自适应抖动缓冲器取出一个音频输出帧。
+                            //从 Audio Adaptive jitter buffer取出一个 Audio  Output  frame 。
                             m_AAjbPt.GetOneByteFrame( m_TmpHTInt2Pt, m_TmpByte2Pt, 0, m_TmpByte2Pt.length, m_TmpHTLong2Pt );
                             p_AudioOutputFrameTimeStamp = m_TmpHTInt2Pt.m_Val;
                             p_AudioOutputFramePt = m_TmpByte2Pt;
                             p_AudioOutputFrameLen = m_TmpHTLong2Pt.m_Val;
 
-                            if( p_AudioOutputFrameLen > 0 ) //如果音频输出帧为有语音活动。
+                            if( p_AudioOutputFrameLen > 0 ) //如果 Audio  Output  frame  for  Have  voice sound live动。
                             {
-                                m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp = ( p_AudioOutputFramePt[0] & 0xFF ) + ( ( p_AudioOutputFramePt[1] & 0xFF ) << 8 ) + ( ( p_AudioOutputFramePt[2] & 0xFF ) << 16 ) + ( ( p_AudioOutputFramePt[3] & 0xFF ) << 24 ); //设置最后一个取出的音频输出帧对应视频输出帧的时间戳。
-                                m_LastGetAudioOutputFrameIsAct = 1; //设置最后一个取出的音频输出帧为有语音活动。
-                                Log.i( m_CurClsNameStrPt, "从音频自适应抖动缓冲器取出一个有语音活动的音频输出帧。音频输出帧时间戳：" + p_AudioOutputFrameTimeStamp + "，视频输出帧时间戳：" + m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp + "，数据长度：" + p_AudioOutputFrameLen + "。" );
+                                m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp = ( p_AudioOutputFramePt[0] & 0xFF ) + ( ( p_AudioOutputFramePt[1] & 0xFF ) << 8 ) + ( ( p_AudioOutputFramePt[2] & 0xFF ) << 16 ) + ( ( p_AudioOutputFramePt[3] & 0xFF ) << 24 ); //Настраивать最后一个取出的 Audio  Output  frame 对应video Output  frame 的 Time 间戳。
+                                m_LastGetAudioOutputFrameIsAct = 1; //Настраивать最后一个取出的 Audio  Output  frame  for  Have  voice sound live动。
+                                Log.i( m_CurClsNameStrPt, "从 Audio Adaptive jitter buffer取出一个 Have  voice sound live动的 Audio  Output  frame 。 Audio  Output  frame  Time 间戳：" + p_AudioOutputFrameTimeStamp + "，video Output  frame  Time 间戳：" + m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp + "， number According to the length ：" + p_AudioOutputFrameLen + "。" );
                             }
-                            else if( p_AudioOutputFrameLen == 0 ) //如果音频输出帧为无语音活动。
+                            else if( p_AudioOutputFrameLen == 0 ) //如果 Audio  Output  frame  for 无  voice sound live动。
                             {
-                                m_LastGetAudioOutputFrameIsAct = 0; //设置最后一个取出的音频输出帧为无语音活动。
-                                Log.i( m_CurClsNameStrPt, "从音频自适应抖动缓冲器取出一个无语音活动的音频输出帧。音频输出帧时间戳：" + p_AudioOutputFrameTimeStamp + "，数据长度：" + p_AudioOutputFrameLen + "。" );
+                                m_LastGetAudioOutputFrameIsAct = 0; //Настраивать最后一个取出的 Audio  Output  frame  for 无  voice sound live动。
+                                Log.i( m_CurClsNameStrPt, "从 Audio Adaptive jitter buffer取出一个无  voice sound live动的 Audio  Output  frame 。 Audio  Output  frame  Time 间戳：" + p_AudioOutputFrameTimeStamp + "， number According to the length ：" + p_AudioOutputFrameLen + "。" );
                             }
-                            else //如果音频输出帧为丢失。
+                            else //如果 Audio  Output  frame  for 丢失。
                             {
-                                m_LastGetAudioOutputFrameIsAct = 1; //设置最后一个取出的音频输出帧为有语音活动。
-                                Log.i( m_CurClsNameStrPt, "从音频自适应抖动缓冲器取出一个丢失的音频输出帧。音频输出帧时间戳：" + p_AudioOutputFrameTimeStamp + "，视频输出帧时间戳：" + m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp + "，数据长度：" + p_AudioOutputFrameLen + "。" );
+                                m_LastGetAudioOutputFrameIsAct = 1; //Настраивать最后一个取出的 Audio  Output  frame  for  Have  voice sound live动。
+                                Log.i( m_CurClsNameStrPt, "从 Audio Adaptive jitter buffer取出一个丢失的 Audio  Output  frame 。 Audio  Output  frame  Time 间戳：" + p_AudioOutputFrameTimeStamp + "，video Output  frame  Time 间戳：" + m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp + "， number According to the length ：" + p_AudioOutputFrameLen + "。" );
                             }
 
-                            HTInt p_CurHaveBufActFrameCntPt = new HTInt(); //存放当前已缓冲有活动帧的数量。
-                            HTInt p_CurHaveBufInactFrameCntPt = new HTInt(); //存放当前已缓冲无活动帧的数量。
-                            HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲帧的数量。
-                            HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放最小需缓冲帧的数量。
-                            HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //存放最大需缓冲帧的数量。
-                            HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲帧的数量。
+                            HTInt p_CurHaveBufActFrameCntPt = new HTInt(); //存放当前已缓冲 Have live动 frame 的 number 量。
+                            HTInt p_CurHaveBufInactFrameCntPt = new HTInt(); //存放当前已缓冲无 live动 frame 的 number 量。
+                            HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲 frame 的 number 量。
+                            HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放Minimum number of frames to be buffered。
+                            HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //Maximum buffer required for storage  frame 的 number 量。
+                            HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲 frame 的 number 量。
                             m_AAjbPt.GetBufFrameCnt( p_CurHaveBufActFrameCntPt, p_CurHaveBufInactFrameCntPt, p_CurHaveBufFrameCntPt, p_MinNeedBufFrameCntPt, p_MaxNeedBufFrameCntPt, p_CurNeedBufFrameCntPt );
-                            Log.i( m_CurClsNameStrPt, "音频自适应抖动缓冲器：有活动帧：" + p_CurHaveBufActFrameCntPt.m_Val + "，无活动帧：" + p_CurHaveBufInactFrameCntPt.m_Val + "，帧：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需帧：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需帧：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需帧：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
+                            Log.i( m_CurClsNameStrPt, " Audio Adaptive jitter buffer： Have live动 frame ：" + p_CurHaveBufActFrameCntPt.m_Val + "，无 live动 frame ：" + p_CurHaveBufInactFrameCntPt.m_Val + "， frame ：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需 frame ：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需 frame ：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需 frame ：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
                         }
 
                         break;
                     }
                 }
 
-                //写入音频输出帧。
-                if( p_AudioOutputFrameLen > 0 ) //如果音频输出帧为有语音活动。
+                //写入 Audio  Output  frame 。
+                if( p_AudioOutputFrameLen > 0 ) //如果 Audio  Output  frame  for  Have  voice sound live动。
                 {
-                    if( PcmAudioOutputFramePt != null ) //如果要使用PCM格式音频输出帧。
+                    if( PcmAudioOutputFramePt != null ) //如果要 use PCM格式 Audio  Output  frame 。
                     {
                         if( p_AudioOutputFrameLen - 4 != PcmAudioOutputFramePt.length * 2 )
                         {
                             Arrays.fill( PcmAudioOutputFramePt, ( short ) 0 );
-                            Log.e( m_CurClsNameStrPt, "音频输出帧的数据长度不等于PCM格式的数据长度。音频输出帧：" + ( p_AudioOutputFrameLen - 4 ) + "，PCM格式：" + ( PcmAudioOutputFramePt.length * 2 ) + "。" );
+                            Log.e( m_CurClsNameStrPt, " Audio  Output  frame 的 number According to the length 不等于PCM格式的 number According to the length 。 Audio  Output  frame ：" + ( p_AudioOutputFrameLen - 4 ) + "，PCM格式：" + ( PcmAudioOutputFramePt.length * 2 ) + "。" );
                             break out;
                         }
 
-                        //写入PCM格式音频输出帧。
+                        //写入PCM格式 Audio  Output  frame 。
                         for( p_TmpInt32 = 0; p_TmpInt32 < PcmAudioOutputFramePt.length; p_TmpInt32++ )
                         {
                             PcmAudioOutputFramePt[p_TmpInt32] = ( short ) ( ( p_AudioOutputFramePt[4 + p_TmpInt32 * 2] & 0xFF ) | ( p_AudioOutputFramePt[4 + p_TmpInt32 * 2 + 1] << 8 ) );
                         }
                     }
-                    else //如果要使用已编码格式音频输出帧。
+                    else //如果要 use 已编码格式 Audio  Output  frame 。
                     {
                         if( p_AudioOutputFrameLen - 4 > EncoderAudioOutputFramePt.length )
                         {
                             EncoderAudioOutputFrameLen.m_Val = 0;
-                            Log.e( m_CurClsNameStrPt, "音频输出帧的数据长度已超过已编码格式的数据长度。音频输出帧：" + ( p_AudioOutputFrameLen - 4 ) + "，已编码格式：" + EncoderAudioOutputFramePt.length + "。" );
+                            Log.e( m_CurClsNameStrPt, " Audio  Output  frame 的 number According to the length 已ultra过已编码格式的 number According to the length 。 Audio  Output  frame ：" + ( p_AudioOutputFrameLen - 4 ) + "，已编码格式：" + EncoderAudioOutputFramePt.length + "。" );
                             break out;
                         }
 
-                        //写入已编码格式音频输出帧。
+                        //写入已编码格式 Audio  Output  frame 。
                         System.arraycopy( p_AudioOutputFramePt, 4, EncoderAudioOutputFramePt, 0, ( int ) ( p_AudioOutputFrameLen - 4 ) );
                         EncoderAudioOutputFrameLen.m_Val = p_AudioOutputFrameLen - 4;
                     }
                 }
-                else if( p_AudioOutputFrameLen == 0 ) //如果音频输出帧为无语音活动。
+                else if( p_AudioOutputFrameLen == 0 ) //如果 Audio  Output  frame  for 无  voice sound live动。
                 {
-                    if( PcmAudioOutputFramePt != null ) //如果要使用PCM格式音频输出帧。
+                    if( PcmAudioOutputFramePt != null ) //如果要 use PCM格式 Audio  Output  frame 。
                     {
                         Arrays.fill( PcmAudioOutputFramePt, ( short ) 0 );
                     }
-                    else //如果要使用已编码格式音频输出帧。
+                    else //如果要 use 已编码格式 Audio  Output  frame 。
                     {
                         EncoderAudioOutputFrameLen.m_Val = 0;
                     }
                 }
-                else //如果音频输出帧为丢失。
+                else //如果 Audio  Output  frame  for 丢失。
                 {
-                    if( PcmAudioOutputFramePt != null ) //如果要使用PCM格式音频输出帧。
+                    if( PcmAudioOutputFramePt != null ) //如果要 use PCM格式 Audio  Output  frame 。
                     {
                         Arrays.fill( PcmAudioOutputFramePt, ( short ) 0 );
                     }
-                    else //如果要使用已编码格式音频输出帧。
+                    else //如果要 use 已编码格式 Audio  Output  frame 。
                     {
                         EncoderAudioOutputFrameLen.m_Val = p_AudioOutputFrameLen;
                     }
                 }
             }
 
-            //取出并写入音频输出帧。
+            //取出并写入 Audio  Output  frame 。
             GetAndWriteVideoOutputFrame( m_TmpByte2Pt, m_TmpHTInt2Pt, m_TmpHTLong2Pt );
         }
     }
 
-    //用户定义的获取PCM格式音频输出帧函数，在解码完一个已编码音频输出帧时回调一次。注意：本函数不是在媒体处理线程中执行的，而是在音频输出线程中执行的，所以本函数应尽量在一瞬间完成执行，否则会导致音频输入输出帧不同步，从而导致声学回音消除失败。
+    // user 定义的获取PCM格式 Audio  Output  frame 函 number ， в 解码完一个已编码 Audio  Output  frame  Time 回调一次。注意：this 函 number 不是 в 媒体处理线程in执行的，而是 в  Audio  Output 线程in执行的，所以this 函 number 应尽量 в 一瞬间完成执行，否则会导致 Audio  enter  Output  frame 不同步，从而导致 Acoustic echo sound消除失败。
     @Override public void UserGetPcmAudioOutputFrame( short PcmOutputFramePt[] )
     {
 
     }
 
-    //取出并写入视频输出帧。
+    //取出并写入video Output  frame 。
     void GetAndWriteVideoOutputFrame( byte TmpBytePt[], HTInt TmpHTIntPt, HTLong TmpHTLongPt )
     {
         int p_VideoOutputFrameTimeStamp = 0;
@@ -1505,42 +1505,42 @@ class MyMediaProcThread extends MediaProcThread
         byte p_VideoOutputFramePt[] = null;
         long p_VideoOutputFrameLen = 0;
 
-        //从链表或自适应抖动缓冲器取出一个视频输出帧。
-        switch( m_UseWhatRecvOutputFrame ) //使用什么接收输出帧。
+        //从Linked list或Adaptive jitter buffer取出一个video Output  frame 。
+        switch( m_UseWhatRecvOutputFrame ) // use 什么 Receive output  frame 。
         {
-            case 0: //如果使用链表。
+            case 0: //如果 use Linked list。
             {
-                if( m_RecvVideoOutputFrameLnkLstPt.size() != 0 ) //如果接收视频输出帧链表不为空。
+                if( m_RecvVideoOutputFrameLnkLstPt.size() != 0 ) //如果接收video Output  frame Linked list不 for 空。
                 {
                     synchronized( m_RecvVideoOutputFrameLnkLstPt )
                     {
-                        p_VideoOutputFramePt = m_RecvVideoOutputFrameLnkLstPt.getFirst(); //获取接收视频输出帧链表的第一个视频输出帧。
-                        m_RecvVideoOutputFrameLnkLstPt.removeFirst(); //删除接收视频输出帧链表的第一个视频输出帧。
+                        p_VideoOutputFramePt = m_RecvVideoOutputFrameLnkLstPt.getFirst(); //获取接收video Output  frame Linked list的第一个video Output  frame 。
+                        m_RecvVideoOutputFrameLnkLstPt.removeFirst(); // delete 接收video Output  frame Linked list的第一个video Output  frame 。
                     }
                     p_VideoOutputFrameLen = p_VideoOutputFramePt.length;
                 }
 
-                if( p_VideoOutputFrameLen != 0 ) //如果视频输出帧为有图像活动。
+                if( p_VideoOutputFrameLen != 0 ) //如果video Output  frame  for  Have图像 live动。
                 {
-                    Log.i( m_CurClsNameStrPt, "从接收视频输出帧链表取出一个有图像活动的视频输出帧。数据长度：" + p_VideoOutputFrameLen + "。" );
+                    Log.i( m_CurClsNameStrPt, "Receive from video Output  frame Linked list取出一个 Have图像 live动的video Output  frame 。 number According to the length ：" + p_VideoOutputFrameLen + "。" );
                 }
-                else //如果视频输出帧为无图像活动。
+                else //如果video Output  frame  for 无图像 live动。
                 {
-                    Log.i( m_CurClsNameStrPt, "从接收视频输出帧链表取出一个无图像活动的视频输出帧。数据长度：" + p_VideoOutputFrameLen + "。" );
+                    Log.i( m_CurClsNameStrPt, "Receive from video Output  frame Linked list取出一个无图像 live动的video Output  frame 。 number According to the length ：" + p_VideoOutputFrameLen + "。" );
                 }
 
                 break;
             }
-            case 1: //如果使用自适应抖动缓冲器。
+            case 1: //如果 use Adaptive jitter buffer。
             {
                 synchronized( m_VAjbPt )
                 {
-                    //从视频自适应抖动缓冲器取出一个视频输出帧。
-                    if( m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_LastGetAudioOutputFrameIsAct != 0 ) //如果要使用音频输出，且最后一个取出的音频输出帧为有语音活动，就根据最后一个取出的音频输出帧对应视频输出帧的时间戳来取出。
+                    //从videoAdaptive jitter buffer取出一个video Output  frame 。
+                    if( m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_LastGetAudioOutputFrameIsAct != 0 ) //如果要 use  Audio  Output ，且最后一个取出的 Audio  Output  frame  for  Have  voice sound live动，就根据最后一个取出的 Audio  Output  frame 对应video Output  frame 的 Time 间戳来取出。
                     {
                         m_VAjbPt.GetOneByteFrameWantTimeStamp( System.currentTimeMillis(), m_LastGetAudioOutputFrameVideoOutputFrameTimeStamp, TmpHTIntPt, TmpBytePt, 0, TmpBytePt.length, TmpHTLongPt );
                     }
-                    else //如果最后一个取出的音频输出帧为无语音活动，就根据直接取出。
+                    else //如果最后一个取出的 Audio  Output  frame  for 无  voice sound live动，就根据直接取出。
                     {
                         m_VAjbPt.GetOneByteFrame( System.currentTimeMillis(), TmpHTIntPt, TmpBytePt, 0, TmpBytePt.length, TmpHTLongPt );
                     }
@@ -1548,36 +1548,36 @@ class MyMediaProcThread extends MediaProcThread
                     p_VideoOutputFramePt = TmpBytePt;
                     p_VideoOutputFrameLen = TmpHTLongPt.m_Val;
 
-                    if( p_VideoOutputFrameLen > 0 ) //如果视频输出帧为有图像活动。
+                    if( p_VideoOutputFrameLen > 0 ) //如果video Output  frame  for  Have图像 live动。
                     {
-                        Log.i( m_CurClsNameStrPt, "从视频自适应抖动缓冲器取出一个有图像活动的视频输出帧。时间戳：" + p_VideoOutputFrameTimeStamp + "，数据长度：" + p_VideoOutputFrameLen + "。" );
+                        Log.i( m_CurClsNameStrPt, "从videoAdaptive jitter buffer取出一个 Have图像 live动的video Output  frame 。 Time 间戳：" + p_VideoOutputFrameTimeStamp + "， number According to the length ：" + p_VideoOutputFrameLen + "。" );
                     }
-                    else //如果视频输出帧为无图像活动。
+                    else //如果video Output  frame  for 无图像 live动。
                     {
-                        Log.i( m_CurClsNameStrPt, "从视频自适应抖动缓冲器取出一个无图像活动的视频输出帧。时间戳：" + p_VideoOutputFrameTimeStamp + "，数据长度：" + p_VideoOutputFrameLen + "。" );
+                        Log.i( m_CurClsNameStrPt, "从videoAdaptive jitter buffer取出一个无图像 live动的video Output  frame 。 Time 间戳：" + p_VideoOutputFrameTimeStamp + "， number According to the length ：" + p_VideoOutputFrameLen + "。" );
                     }
 
-                    HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲帧的数量。
-                    HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放最小需缓冲帧的数量。
-                    HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //存放最大需缓冲帧的数量。
-                    HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲帧的数量。
+                    HTInt p_CurHaveBufFrameCntPt = new HTInt(); //存放当前已缓冲 frame 的 number 量。
+                    HTInt p_MinNeedBufFrameCntPt = new HTInt(); //存放Minimum number of frames to be buffered。
+                    HTInt p_MaxNeedBufFrameCntPt = new HTInt(); //Maximum buffer required for storage  frame 的 number 量。
+                    HTInt p_CurNeedBufFrameCntPt = new HTInt(); //存放当前需缓冲 frame 的 number 量。
                     m_VAjbPt.GetBufFrameCnt( p_CurHaveBufFrameCntPt, p_MinNeedBufFrameCntPt, p_MaxNeedBufFrameCntPt, p_CurNeedBufFrameCntPt );
-                    Log.i( m_CurClsNameStrPt, "视频自适应抖动缓冲器：帧：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需帧：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需帧：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需帧：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
+                    Log.i( m_CurClsNameStrPt, "videoAdaptive jitter buffer： frame ：" + p_CurHaveBufFrameCntPt.m_Val + "，最小需 frame ：" + p_MinNeedBufFrameCntPt.m_Val + "，最大需 frame ：" + p_MaxNeedBufFrameCntPt.m_Val + "，当前需 frame ：" + p_CurNeedBufFrameCntPt.m_Val + "。" );
                 }
 
                 break;
             }
         }
 
-        //写入视频输出帧。
-        if( p_VideoOutputFrameLen > 0 ) //如果视频输出帧为有图像活动。
+        //写入video Output  frame 。
+        if( p_VideoOutputFrameLen > 0 ) //如果video Output  frame  for  Have图像 live动。
         {
-            //读取视频输出帧对应音频输出帧的时间戳。
+            //读取video Output  frame 对应 Audio  Output  frame 的 Time 间戳。
             p_VideoOutputFrameAudioOutputFrameTimeStamp = ( p_VideoOutputFramePt[0] & 0xFF ) + ( ( p_VideoOutputFramePt[1] & 0xFF ) << 8 ) + ( ( p_VideoOutputFramePt[2] & 0xFF ) << 16 ) + ( ( p_VideoOutputFramePt[3] & 0xFF ) << 24 );
 
             UserWriteVideoOutputFrame( p_VideoOutputFramePt, 4, p_VideoOutputFrameLen - 4 );
         }
-        else if( p_VideoOutputFrameLen == 0 ) //如果视频输出帧为无图像活动。
+        else if( p_VideoOutputFrameLen == 0 ) //如果video Output  frame  for 无图像 live动。
         {
 
         }
@@ -1586,31 +1586,31 @@ class MyMediaProcThread extends MediaProcThread
 
 public class MainActivity extends AppCompatActivity
 {
-    String m_CurClsNameStrPt = this.getClass().getSimpleName(); //存放当前类名称字符串。
+    String m_CurClsNameStrPt = this.getClass().getSimpleName(); //存放当前类名称digit符串。
 
     View m_LyotActivityMainViewPt; //存放主界面布局控件的内存指针。
-    View m_LyotActivitySettingViewPt; //存放设置界面布局控件的内存指针。
-    View m_LyotActivitySpeexAecViewPt; //存放Speex声学回音消除器设置布局控件的内存指针。
-    View m_LyotActivityWebRtcAecmViewPt; //存放WebRtc定点版声学回音消除器设置布局控件的内存指针。
-    View m_LyotActivityWebRtcAecViewPt; //存放WebRtc浮点版声学回音消除器设置布局控件的内存指针。
-    View m_LyotActivitySpeexWebRtcAecViewPt; //存放SpeexWebRtc三重声学回音消除器设置布局控件的内存指针。
-    View m_LyotActivitySpeexPprocNsViewPt; //存放Speex预处理器的噪音抑制设置布局控件的内存指针。
-    View m_LyotActivityWebRtcNsxViewPt; //存放WebRtc定点噪音抑制器设置布局控件的内存指针。
-    View m_LyotActivityWebRtcNsViewPt; //存放WebRtc浮点噪音抑制器设置布局控件的内存指针。
-    View m_LyotActivitySpeexPprocOtherViewPt; //存放Speex预处理器的其他功能设置布局控件的内存指针。
-    View m_LyotActivitySpeexCodecViewPt; //存放Speex编解码器设置布局控件的内存指针。
-    View m_LyotActivityOpenH264CodecViewPt; //存放OpenH264编解码器设置布局控件的内存指针。
-    View m_LyotActivityAjbViewPt; //存放音频自适应抖动缓冲器设置布局控件的内存指针。
+    View m_LyotActivitySettingViewPt; //存放Настраивать界面布局控件的内存指针。
+    View m_LyotActivitySpeexAecViewPt; //存放Speex Acoustic echo sound Eliminator Настраивать布局控件的内存指针。
+    View m_LyotActivityWebRtcAecmViewPt; //存放WebRtc Fixed-point version  Acoustic echo sound Eliminator Настраивать布局控件的内存指针。
+    View m_LyotActivityWebRtcAecViewPt; //存放WebRtc Floating point version  Acoustic echo sound Eliminator Настраивать布局控件的内存指针。
+    View m_LyotActivitySpeexWebRtcAecViewPt; //存放SpeexWebRtc triple  Acoustic echo sound Eliminator Настраивать布局控件的内存指针。
+    View m_LyotActivitySpeexPprocNsViewPt; //存放Speex Preprocessor  noise sound торможение Настраивать布局控件的内存指针。
+    View m_LyotActivityWebRtcNsxViewPt; //存放WebRtc定点 noise sound Suppressor Настраивать布局控件的内存指针。
+    View m_LyotActivityWebRtcNsViewPt; //存放WebRtc浮点 noise sound Suppressor Настраивать布局控件的内存指针。
+    View m_LyotActivitySpeexPprocOtherViewPt; //存放Speex Preprocessor  Other functions Настраивать布局控件的内存指针。
+    View m_LyotActivitySpeexCodecViewPt; //存放Speex Codec Настраивать布局控件的内存指针。
+    View m_LyotActivityOpenH264CodecViewPt; //存放OpenH264 Codec Настраивать布局控件的内存指针。
+    View m_LyotActivityAjbViewPt; //存放 Audio Adaptive jitter bufferНастраивать布局控件的内存指针。
     View m_LyotActivityCurViewPt; //存放当前界面布局控件的内存指针。
 
     MainActivity m_MainActivityPt; //存放主界面类对象的内存指针。
     MyMediaProcThread m_MyMediaProcThreadPt; //存放媒体处理线程类对象的内存指针。
     MainActivityHandler m_MainActivityHandlerPt; //存放主界面消息处理类对象的内存指针。
 
-    HTSurfaceView m_VideoInputPreviewSurfaceViewPt; //存放视频输入预览SurfaceView控件的内存指针。
-    HTSurfaceView m_VideoOutputDisplaySurfaceViewPt; //存放视频输出显示SurfaceView控件的内存指针。
+    HTSurfaceView m_VideoInputPreviewSurfaceViewPt; //存放video enter 预览SurfaceView控件的内存指针。
+    HTSurfaceView m_VideoOutputDisplaySurfaceViewPt; //存放video Output 显示SurfaceView控件的内存指针。
 
-    String m_ExternalDirFullAbsPathStrPt; //存放扩展目录完整绝对路径字符串的内存指针。
+    String m_ExternalDirFullAbsPathStrPt; //存放 The full absolute path of the extension directory digit符串的内存指针。
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -1632,17 +1632,17 @@ public class MainActivity extends AppCompatActivity
         m_LyotActivityOpenH264CodecViewPt = layoutInflater.inflate( R.layout.activity_openh264codec, null );
         m_LyotActivityAjbViewPt = layoutInflater.inflate( R.layout.activity_ajb, null );
 
-        setContentView( m_LyotActivityMainViewPt ); //设置界面的内容为主界面。
+        setContentView( m_LyotActivityMainViewPt ); //Настраивать界面的内容 for 主界面。
         m_LyotActivityCurViewPt = m_LyotActivityMainViewPt;
 
-        ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectSuperRadioBtn ) ).performClick(); //默认效果等级：超。
-        ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateSuperRadioBtn ) ).performClick(); //默认比特率等级：超。
+        ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectSuperRadioBtn ) ).performClick(); //默认 Effect level ：ultra。
+        ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateSuperRadioBtn ) ).performClick(); //默认ratiospecial Rate grade ：ultra。
 
-        //检测并请求录音权限。
+        //检测并请求录sound权限。
         if( ContextCompat.checkSelfPermission( this, Manifest.permission.RECORD_AUDIO ) != PackageManager.PERMISSION_GRANTED )
             ActivityCompat.requestPermissions( this, new String[] {Manifest.permission.RECORD_AUDIO}, 1 );
 
-        //检测并请求修改音频设置权限。
+        //检测并请求修改 Audio Настраивать权限。
         if( ContextCompat.checkSelfPermission( this, Manifest.permission.MODIFY_AUDIO_SETTINGS ) != PackageManager.PERMISSION_GRANTED )
             ActivityCompat.requestPermissions( this, new String[] {Manifest.permission.MODIFY_AUDIO_SETTINGS}, 1 );
 
@@ -1658,29 +1658,29 @@ public class MainActivity extends AppCompatActivity
         if( ContextCompat.checkSelfPermission( this, Manifest.permission.WAKE_LOCK ) != PackageManager.PERMISSION_GRANTED )
             ActivityCompat.requestPermissions( this, new String[] {Manifest.permission.WAKE_LOCK}, 1 );
 
-        //检测并请求前台服务权限。
+        //检测并请求 Reception 权限。
         if( ContextCompat.checkSelfPermission( this, Manifest.permission.FOREGROUND_SERVICE ) != PackageManager.PERMISSION_GRANTED )
             ActivityCompat.requestPermissions( this, new String[] {Manifest.permission.FOREGROUND_SERVICE}, 1 );
 
-        //设置主界面类对象。
+        //Настраивать主界面类对象。
         m_MainActivityPt = this;
 
         //初始化消息处理类对象。
         m_MainActivityHandlerPt = new MainActivityHandler();
         m_MainActivityHandlerPt.m_MainActivityPt = m_MainActivityPt;
 
-        //获取本机IP地址。
+        //获取this 机IP地址。
         String p_pclString = null;
         try
         {
-            //遍历所有的网络接口设备。
+            //遍历所 Have的网络接口设备。
             out:
             for( Enumeration< NetworkInterface > clEnumerationNetworkInterface = NetworkInterface.getNetworkInterfaces(); clEnumerationNetworkInterface.hasMoreElements(); )
             {
                 NetworkInterface clNetworkInterface = clEnumerationNetworkInterface.nextElement();
                 if( clNetworkInterface.getName().compareTo( "usbnet0" ) != 0 ) //如果该网络接口设备不是USB接口对应的网络接口设备。
                 {
-                    //遍历该网络接口设备所有的IP地址。
+                    //遍历该网络接口设备所 Have的IP地址。
                     for( Enumeration< InetAddress > enumIpAddr = clNetworkInterface.getInetAddresses(); enumIpAddr.hasMoreElements(); )
                     {
                         InetAddress clInetAddress = enumIpAddr.nextElement();
@@ -1701,13 +1701,13 @@ public class MainActivity extends AppCompatActivity
             p_pclString = "127.0.0.1";
         }
 
-        //设置IP地址控件的内容。
+        //НастраиватьIP地址控件的内容。
         ( ( EditText ) m_LyotActivityMainViewPt.findViewById( R.id.IPAddrEdit ) ).setText( p_pclString );
 
-        //设置端口控件的内容。
+        //Настраиватьport控件的内容。
         ( ( EditText ) m_LyotActivityMainViewPt.findViewById( R.id.PortEdit ) ).setText( "12345" );
 
-        //添加视频输入预览SurfaceView的回调函数。
+        //添加video enter 预览SurfaceView的回调函 number 。
         m_VideoInputPreviewSurfaceViewPt = ( ( HTSurfaceView )findViewById( R.id.VideoInputPreviewSurfaceView ) );
         m_VideoInputPreviewSurfaceViewPt.getHolder().setType( SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS );
         m_VideoInputPreviewSurfaceViewPt.getHolder().addCallback( new SurfaceHolder.Callback()
@@ -1716,9 +1716,9 @@ public class MainActivity extends AppCompatActivity
             public void surfaceCreated( SurfaceHolder holder )
             {
                 Log.i( m_CurClsNameStrPt, "VideoInputPreviewSurfaceView Created" );
-                if( m_MyMediaProcThreadPt != null && m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag == MediaProcThread.RUN_FLAG_PROC ) //如果SurfaceView已经重新创建，且媒体处理线程已经启动，且要使用视频输入，并处于初始化完毕正在循环处理帧。
+                if( m_MyMediaProcThreadPt != null && m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag == MediaProcThread.RUN_FLAG_PROC ) //如果SurfaceView已经重新创建，且媒体处理线程已经启动，且要 use video enter ，并处于初始化完毕正 в 循环处理 frame 。
                 {
-                    m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启媒体处理线程，来保证正常的视频输入，否则视频输入会中断。
+                    m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启媒体处理线程，来保证正常的video enter ，否则video enter 会in断。
                 }
             }
 
@@ -1737,7 +1737,7 @@ public class MainActivity extends AppCompatActivity
         m_VideoOutputDisplaySurfaceViewPt = ( ( HTSurfaceView )findViewById( R.id.VideoOutputDisplaySurfaceView ) );
         m_VideoOutputDisplaySurfaceViewPt.getHolder().setType( SurfaceHolder.SURFACE_TYPE_NORMAL );
 
-        //获取扩展目录完整绝对路径字符串。
+        //获取 The full absolute path of the extension directory digit符串。
         if( getExternalFilesDir( null ) != null )
         {
             m_ExternalDirFullAbsPathStrPt = getExternalFilesDir( null ).getPath();
@@ -1747,7 +1747,7 @@ public class MainActivity extends AppCompatActivity
             m_ExternalDirFullAbsPathStrPt = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" + getApplicationContext().getPackageName();
         }
 
-        String p_InfoStrPt = "扩展目录完整绝对路径：" + m_ExternalDirFullAbsPathStrPt;
+        String p_InfoStrPt = " The full absolute path of the extension directory ：" + m_ExternalDirFullAbsPathStrPt;
         Log.i( m_CurClsNameStrPt, p_InfoStrPt );
         Message p_MessagePt = new Message();p_MessagePt.what = 3;p_MessagePt.obj = p_InfoStrPt;m_MainActivityHandlerPt.sendMessage( p_MessagePt );
     }
@@ -1758,12 +1758,12 @@ public class MainActivity extends AppCompatActivity
     {
         if( m_LyotActivityCurViewPt == m_LyotActivityMainViewPt )
         {
-            Log.i( m_CurClsNameStrPt, "用户在主界面按下返回键，本软件退出。" );
+            Log.i( m_CurClsNameStrPt, " user  в Press the return button on the main interface，this The software exits." );
             if( m_MyMediaProcThreadPt != null )
             {
-                Log.i( m_CurClsNameStrPt, "开始请求并等待媒体处理线程退出。" );
+                Log.i( m_CurClsNameStrPt, "Start the request and wait for the media processing thread to exit." );
                 m_MyMediaProcThreadPt.RequireExit( 1, 1 );
-                Log.i( m_CurClsNameStrPt, "结束请求并等待媒体处理线程退出。" );
+                Log.i( m_CurClsNameStrPt, "End the request and wait for the media processing thread to exit." );
             }
             System.exit(0);
         }
@@ -1787,7 +1787,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //使用音频按钮。
+    // use  Audio 按钮。
     public void OnUseAudio( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1797,14 +1797,14 @@ public class MainActivity extends AppCompatActivity
             m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput = 0;
             m_MyMediaProcThreadPt.m_VideoOutputPt.m_IsUseVideoOutput = 0;
 
-            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用视频按钮。
+    // use video按钮。
     public void OnUseVideo( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1814,14 +1814,14 @@ public class MainActivity extends AppCompatActivity
             m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput = 1;
             m_MyMediaProcThreadPt.m_VideoOutputPt.m_IsUseVideoOutput = 1;
 
-            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用音视频按钮。
+    // use soundvideo按钮。
     public void OnUseAudioVideo( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1831,70 +1831,70 @@ public class MainActivity extends AppCompatActivity
             m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput = 1;
             m_MyMediaProcThreadPt.m_VideoOutputPt.m_IsUseVideoOutput = 1;
 
-            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用扬声器按钮。
+    // use speaker按钮。
     public void OnUseSpeaker( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
         {
             m_MyMediaProcThreadPt.SetAudioOutputUseDevice( 0, 0 );
 
-            if( m_MyMediaProcThreadPt.m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用听筒按钮。
+    // use earpiece按钮。
     public void OnUseHeadset( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
         {
             m_MyMediaProcThreadPt.SetAudioOutputUseDevice( 1, 0 );
 
-            if( m_MyMediaProcThreadPt.m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_AudioOutputPt.m_IsUseAudioOutput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用前置摄像头按钮。
+    // use Front camera按钮。
     public void OnUseFrontCamere( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
         {
             m_MyMediaProcThreadPt.SetVideoInputUseDevice( 0 );
 
-            if( m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //使用后置摄像头按钮。
+    // use rear camera按钮。
     public void OnUseBackCamere( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
         {
             m_MyMediaProcThreadPt.SetVideoInputUseDevice( 1 );
 
-            if( m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要使用音频输出，且媒体处理线程已经初始化完毕。
+            if( m_MyMediaProcThreadPt.m_VideoInputPt.m_IsUseVideoInput != 0 && m_MyMediaProcThreadPt.m_RunFlag > MediaProcThread.RUN_FLAG_INIT ) //如果要 use  Audio  Output ，且媒体处理线程已经初始化完毕。
             {
                 m_MyMediaProcThreadPt.RequireExit( 3, 1 ); //请求重启并阻塞等待。
             }
         }
     }
 
-    //音频输入设备静音按钮。
+    // Audio input device Quiet sound按钮。
     public void OnAudioInputDeviceIsMute( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1903,7 +1903,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //音频输出设备静音按钮。
+    // Audio  Output device  Quiet sound按钮。
     public void OnAudioOutputDeviceIsMute( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1912,7 +1912,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //视频输入设备黑屏按钮。
+    //videoinput device Black screen按钮。
     public void OnVideoInputDeviceIsBlack( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1921,7 +1921,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //时频输出设备黑屏按钮。
+    // Time 频 Output device  Black screen按钮。
     public void OnVideoOutputDeviceIsBlack( View BtnPt )
     {
         if( m_MyMediaProcThreadPt != null )
@@ -1933,13 +1933,13 @@ public class MainActivity extends AppCompatActivity
     //创建服务器或连接服务器按钮。
     public void OnClickCreateSrvrAndConnectSrvr( View BtnPt )
     {
-        int p_Result = -1; //存放本函数执行结果的值，为0表示成功，为非0表示失败。
+        int p_Result = -1; //存放this 函 number 执行 result 的值， for 0表示成功， for 非0表示失败。
 
         out:
         {
-            if( m_MyMediaProcThreadPt == null ) //如果媒体处理线程还没有启动。
+            if( m_MyMediaProcThreadPt == null ) //如果媒体处理线程还没 Have启动。
             {
-                Log.i( m_CurClsNameStrPt, "开始启动媒体处理线程。" );
+                Log.i( m_CurClsNameStrPt, "Start the media processing thread." );
 
                 //创建并初始化媒体处理线程类对象。
                 {
@@ -1947,20 +1947,20 @@ public class MainActivity extends AppCompatActivity
 
                     if( BtnPt.getId() == R.id.CreateSrvrBtn )
                     {
-                        m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt = 1; //标记创建服务端接受客户端。
+                        m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt = 1; //标记 Create server 接受客户端。
                     }
                     else if( BtnPt.getId() == R.id.ConnectSrvrBtn )
                     {
-                        m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt = 0; //标记创建客户端连接服务端。
+                        m_MyMediaProcThreadPt.m_IsCreateSrvrOrClnt = 0; //标记创建客户端 Connect to the server 。
                     }
 
-                    m_MyMediaProcThreadPt.m_MainActivityHandlerPt = m_MainActivityHandlerPt; //设置主界面消息处理类对象的内存指针。
+                    m_MyMediaProcThreadPt.m_MainActivityHandlerPt = m_MainActivityHandlerPt; //Настраивать主界面消息处理类对象的内存指针。
 
-                    //设置IP地址字符串、端口。
+                    //НастраиватьIP地址digit符串、port。
                     m_MyMediaProcThreadPt.m_IPAddrStrPt = ( ( EditText ) m_LyotActivityMainViewPt.findViewById( R.id.IPAddrEdit ) ).getText().toString();
                     m_MyMediaProcThreadPt.m_PortStrPt = ( ( EditText ) m_LyotActivityMainViewPt.findViewById( R.id.PortEdit ) ).getText().toString();
 
-                    //判断是否使用什么传输协议。
+                    //判断是否 use 什么Transfer Protocol。
                     if( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseTcpPrtclRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.m_UseWhatXfrPrtcl = 0;
@@ -1970,13 +1970,13 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.m_UseWhatXfrPrtcl = 1;
                     }
 
-                    //判断是否使用链表。
+                    //判断是否 use Linked list。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseLnkLstRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.m_UseWhatRecvOutputFrame = 0;
                     }
 
-                    //判断是否使用自己设计的音频自适应抖动缓冲器。
+                    //判断是否 use  Self-designed  Audio Adaptive jitter buffer。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseAjbRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.m_UseWhatRecvOutputFrame = 1;
@@ -1993,12 +1993,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断是否保存设置到文件。
+                    //判断是否 Save Настраивать到file。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsSaveSettingToFileCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetIsSaveSettingToFile( 1, m_ExternalDirFullAbsPathStrPt + "/Setting.txt" );
@@ -2008,7 +2008,7 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetIsSaveSettingToFile( 0, null );
                     }
 
-                    //判断是否打印Logcat日志。
+                    //判断是否 print LogcatLog。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsPrintLogcatCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetIsPrintLogcat( 1 );
@@ -2018,7 +2018,7 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetIsPrintLogcat( 0 );
                     }
 
-                    //判断是否使用唤醒锁。
+                    //判断是否 Use wake lock 。
                     if( ( ( CheckBox ) m_MainActivityPt.m_LyotActivitySettingViewPt.findViewById( R.id.IsUseWakeLockCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetIsUseWakeLock( 1 );
@@ -2028,7 +2028,7 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetIsUseWakeLock( 0 );
                     }
 
-                    //判断是否使用音频输入。
+                    //判断是否 use  Audio  enter 。
                     m_MyMediaProcThreadPt.SetIsUseAudioInput(
                             ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioTalkbackRadioBtn ) ).isChecked() ) ? 1 :
                                     ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 : 0,
@@ -2039,7 +2039,7 @@ public class MainActivity extends AppCompatActivity
                                     ( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseAudioFrameLen20msRadioBtn ) ).isChecked() ) ? 20 :
                                             ( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseAudioFrameLen30msRadioBtn ) ).isChecked() ) ? 30 : 0 );
 
-                    //判断音频输入是否使用系统自带的声学回音消除器、噪音抑制器和自动增益控制器。
+                    //判断 Audio  enter 是否 Use the acoustic feedback that comes with the system sound Canceller, noise sound Suppressor and automatic gain controller 。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsUseSystemAecNsAgcCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputIsUseSystemAecNsAgc( 1 );
@@ -2049,13 +2049,13 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetAudioInputIsUseSystemAecNsAgc( 0 );
                     }
 
-                    //判断音频输入是否不使用声学回音消除器。
+                    //判断 Audio  enter 是否 Do not use  Acoustic echo sound Eliminator 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseNoAecRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputUseNoAec();
                     }
 
-                    //判断音频输入是否使用Speex声学回音消除器。
+                    //判断 Audio  enter 是否 use Speex Acoustic echo sound Eliminator 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseSpeexAecRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2073,12 +2073,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用WebRtc定点版声学回音消除器。
+                    //判断 Audio  enter 是否 use WebRtc Fixed-point version  Acoustic echo sound Eliminator 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseWebRtcAecmRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2091,12 +2091,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用WebRtc浮点版声学回音消除器。
+                    //判断 Audio  enter 是否 use WebRtc Floating point version  Acoustic echo sound Eliminator 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseWebRtcAecRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2114,12 +2114,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用SpeexWebRtc三重声学回音消除器。
+                    //判断 Audio  enter 是否 use SpeexWebRtc triple  Acoustic echo sound Eliminator 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseSpeexWebRtcAecRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2149,18 +2149,18 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否不使用噪音抑制器。
+                    //判断 Audio  enter 是否 Do not use  noise sound Suppressor 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseNoNsRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputUseNoNs();
                     }
 
-                    //判断音频输入是否使用Speex预处理器的噪音抑制。
+                    //判断 Audio  enter 是否 use Speex Preprocessor  noise sound торможение 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseSpeexPprocNsRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2173,12 +2173,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用WebRtc定点版噪音抑制器。
+                    //判断 Audio  enter 是否 use WebRtc Fixed-point version  noise sound Suppressor 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseWebRtcNsxRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2189,12 +2189,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用WebRtc浮点版噪音抑制器。
+                    //判断 Audio  enter 是否 use WebRtc Floating point version  noise sound Suppressor 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseWebRtcNsRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2205,12 +2205,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用RNNoise噪音抑制器。
+                    //判断 Audio  enter 是否 use RNNoise noise sound Suppressor 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseRNNoiseRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2219,12 +2219,12 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用Speex预处理器的其他功能。
+                    //判断 Audio  enter 是否 use Speex Preprocessor  Other functions 。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsUseSpeexPprocOtherCheckBox ) ).isChecked() )
                     {
                         try
@@ -2243,7 +2243,7 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
@@ -2252,13 +2252,13 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetAudioInputIsUseSpeexPprocOther( 0, 0, 0, 0, 0, 0, 0, 0, 0 );
                     }
 
-                    //判断音频输入是否使用PCM原始数据。
+                    //判断 Audio  enter 是否 use PCM Raw data 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UsePcmRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputUsePcm();
                     }
 
-                    //判断音频输入是否使用Speex编码器。
+                    //判断 Audio  enter 是否 use Speex Encoder 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseSpeexCodecRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2272,18 +2272,18 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输入是否使用Opus编码器。
+                    //判断 Audio  enter 是否 use Opus Encoder 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseOpusCodecRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputUseOpusEncoder();
                     }
 
-                    //判断音频输入是否保存音频到文件。
+                    //判断 Audio  enter 是否 Save  Audio 到file。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsSaveAudioToFileCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioInputIsSaveAudioToFile(
@@ -2297,10 +2297,10 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetAudioInputIsSaveAudioToFile( 0, null, null );
                     }
 
-                    //判断音频输入设备是否静音。
+                    //判断 Audio input device是否 Quiet sound。
                     m_MyMediaProcThreadPt.SetAudioInputDeviceIsMute( ( ( ( CheckBox ) m_LyotActivityMainViewPt.findViewById( R.id.AudioInputDeviceIsMuteCheckBox ) ).isChecked() ) ? 1 : 0 );
 
-                    //判断是否使用音频输出。
+                    //判断是否 use  Audio  Output 。
                     m_MyMediaProcThreadPt.SetIsUseAudioOutput(
                             ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioTalkbackRadioBtn ) ).isChecked() ) ? 1 :
                                     ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 : 0,
@@ -2311,13 +2311,13 @@ public class MainActivity extends AppCompatActivity
                                     ( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseAudioFrameLen20msRadioBtn ) ).isChecked() ) ? 20 :
                                             ( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseAudioFrameLen30msRadioBtn ) ).isChecked() ) ? 30 : 0 );
 
-                    //判断音频输出是否使用PCM原始数据。
+                    //判断 Audio  Output 是否 use PCM Raw data 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UsePcmRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioOutputUsePcm();
                     }
 
-                    //判断音频输出是否使用Speex解码器。
+                    //判断 Audio  Output 是否 use Speex解码器。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseSpeexCodecRadioBtn ) ).isChecked() )
                     {
                         try
@@ -2328,18 +2328,18 @@ public class MainActivity extends AppCompatActivity
                         }
                         catch( NumberFormatException e )
                         {
-                            Toast.makeText( this, "请输入数字", Toast.LENGTH_LONG ).show();
+                            Toast.makeText( this, " please enter  number digit", Toast.LENGTH_LONG ).show();
                             break out;
                         }
                     }
 
-                    //判断音频输出是否使用Opus解码器。
+                    //判断 Audio  Output 是否 use Opus解码器。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseOpusCodecRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioOutputUseOpusDecoder();
                     }
 
-                    //判断使用的音频输出设备。
+                    //判断 use 的 Audio  Output device 。
                     if( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseSpeakerRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioOutputUseDevice( 0, 0 );
@@ -2349,10 +2349,10 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetAudioOutputUseDevice( 1, 0 );
                     }
 
-                    //判断音频输出设备是否静音。
+                    //判断 Audio  Output device 是否 Quiet sound。
                     m_MyMediaProcThreadPt.SetAudioOutputDeviceIsMute( ( ( ( CheckBox ) m_LyotActivityMainViewPt.findViewById( R.id.AudioOutputDeviceIsMuteCheckBox ) ).isChecked() ) ? 1 : 0 );
 
-                    //判断音频输出是否保存音频到文件。
+                    //判断 Audio  Output 是否 Save  Audio 到file。
                     if( ( ( CheckBox ) m_LyotActivitySettingViewPt.findViewById( R.id.IsSaveAudioToFileCheckBox ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetAudioOutputIsSaveAudioToFile(
@@ -2365,7 +2365,7 @@ public class MainActivity extends AppCompatActivity
                         m_MyMediaProcThreadPt.SetAudioOutputIsSaveAudioToFile( 0, null );
                     }
 
-                    //判断是否使用视频输入。
+                    //判断是否 use video enter 。
                     m_MyMediaProcThreadPt.SetIsUseVideoInput(
                             ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 :
                                     ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 : 0,
@@ -2384,13 +2384,13 @@ public class MainActivity extends AppCompatActivity
                             m_VideoInputPreviewSurfaceViewPt
                     );
 
-                    //判断视频输入是否使用YU12原始数据。
+                    //判断video enter 是否 use YU12 Raw data 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseYU12RadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetVideoInputUseYU12();
                     }
 
-                    //判断视频输入是否使用OpenH264编码器。
+                    //判断video enter 是否 use OpenH264 Encoder 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseOpenH264CodecRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetVideoInputUseOpenH264Encoder(
@@ -2402,13 +2402,13 @@ public class MainActivity extends AppCompatActivity
                         );
                     }
 
-                    //判断使用的视频输入设备。
+                    //判断 use 的videoinput device。
                     m_MyMediaProcThreadPt.SetVideoInputUseDevice( ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseFrontCamereRadioBtn ) ).isChecked() ) ? 0 : 1 );
 
-                    //判断视频输入设备是否黑屏。
+                    //判断videoinput device是否 Black screen。
                     m_MyMediaProcThreadPt.SetVideoInputDeviceIsBlack( ( ( ( CheckBox ) m_LyotActivityMainViewPt.findViewById( R.id.VideoInputDeviceIsBlackCheckBox ) ).isChecked() ) ? 1 : 0 );
 
-                    //判断是否使用视频输出。
+                    //判断是否 use video Output 。
                     m_MyMediaProcThreadPt.SetIsUseVideoOutput(
                             ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 :
                                     ( ( ( RadioButton ) m_LyotActivityMainViewPt.findViewById( R.id.UseAudioVideoTalkbackRadioBtn ) ).isChecked() ) ? 1 : 0,
@@ -2427,31 +2427,31 @@ public class MainActivity extends AppCompatActivity
                                                     ( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseDisplayScale3_0RadioBtn ) ).isChecked() ) ? 3.0f : 1.0f
                     );
 
-                    //判断视频输出是否使用YU12原始数据。
+                    //判断video Output 是否 use YU12 Raw data 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseYU12RadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetVideoOutputUseYU12();
                     }
 
-                    //判断视频输出是否使用OpenH264编码器。
+                    //判断video Output 是否 use OpenH264 Encoder 。
                     if( ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseOpenH264CodecRadioBtn ) ).isChecked() )
                     {
                         m_MyMediaProcThreadPt.SetVideoOutputUseOpenH264Decoder( 0 );
                     }
 
-                    //判断视频输出设备是否黑屏。
+                    //判断video Output device 是否 Black screen。
                     m_MyMediaProcThreadPt.SetVideoOutputDeviceIsBlack( ( ( ( CheckBox ) m_LyotActivityMainViewPt.findViewById( R.id.VideoOutputDeviceIsBlackCheckBox ) ).isChecked() ) ? 1 : 0 );
                 }
 
                 m_MyMediaProcThreadPt.start(); //启动媒体处理线程。
 
-                Log.i( m_CurClsNameStrPt, "启动媒体处理线程完毕。" );
+                Log.i( m_CurClsNameStrPt, "Finished starting the media processing thread." );
             }
             else
             {
-                Log.i( m_CurClsNameStrPt, "开始请求并等待媒体处理线程退出。" );
+                Log.i( m_CurClsNameStrPt, "Start the request and wait for the media processing thread to exit." );
                 m_MyMediaProcThreadPt.RequireExit( 1, 1 );
-                Log.i( m_CurClsNameStrPt, "结束请求并等待媒体处理线程退出。" );
+                Log.i( m_CurClsNameStrPt, "End the request and wait for the media processing thread to exit." );
             }
 
             p_Result = 0;
@@ -2465,7 +2465,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //主界面视频输入预览SurfaceView按钮。
+    //主界面video enter 预览SurfaceView按钮。
     public void onClickVideoSurfaceView( View BtnPt )
     {
         if( ( ( LinearLayout )BtnPt.getParent() ).getOrientation() == LinearLayout.HORIZONTAL )
@@ -2478,40 +2478,40 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //主界面设置按钮。
+    //主界面Настраивать按钮。
     public void OnClickSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //主界面清空日志按钮。
+    //主界面EmptyLog按钮。
     public void OnClickClearLog( View BtnPt )
     {
         ( ( LinearLayout ) m_LyotActivityMainViewPt.findViewById( R.id.LogLinearLyot ) ).removeAllViews();
     }
 
-    //主界面必读说明按钮。
+    //主界面RTFM按钮。
     public void OnClickReadMe( View BtnPt )
     {
         startActivity( new Intent( Intent.ACTION_VIEW, Uri.parse( "https://github.com/cyz7758520/Android_audio_talkback_demo_program" ) ) );
     }
 
-    //设置界面的确定按钮。
+    //Настраивать界面的 determine 按钮。
     public void OnClickSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivityMainViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityMainViewPt;
     }
 
-    //Speex声学回音消除器设置按钮。
+    //Speex Acoustic echo sound Eliminator Настраивать按钮。
     public void OnClickSpeexAecSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexAecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexAecViewPt;
     }
 
-    //Speex声学回音消除器设置界面的删除内存块文件按钮。
+    //Speex Acoustic echo sound Eliminator Настраивать界面的 Delete memory block file 按钮。
     public void OnClickSpeexAecDelMemFile( View BtnPt )
     {
         String p_pclSpeexAecMemoryFullPath = m_ExternalDirFullAbsPathStrPt + "/SpeexAecMemory";
@@ -2520,48 +2520,48 @@ public class MainActivity extends AppCompatActivity
         {
             if( file.delete() )
             {
-                Toast.makeText( this, "删除Speex声学回音消除器的内存块文件 " + p_pclSpeexAecMemoryFullPath + " 成功。", Toast.LENGTH_LONG ).show();
+                Toast.makeText( this, " delete Speex Acoustic echo sound Eliminator Memory block file " + p_pclSpeexAecMemoryFullPath + " success.", Toast.LENGTH_LONG ).show();
             }
             else
             {
-                Toast.makeText( this, "删除Speex声学回音消除器的内存块文件 " + p_pclSpeexAecMemoryFullPath + " 失败。", Toast.LENGTH_LONG ).show();
+                Toast.makeText( this, " delete Speex Acoustic echo sound Eliminator Memory block file " + p_pclSpeexAecMemoryFullPath + " 失败。", Toast.LENGTH_LONG ).show();
             }
         }
         else
         {
-            Toast.makeText( this, "Speex声学回音消除器的内存块文件 " + p_pclSpeexAecMemoryFullPath + " 不存在。", Toast.LENGTH_LONG ).show();
+            Toast.makeText( this, "Speex Acoustic echo sound Eliminator Memory block file " + p_pclSpeexAecMemoryFullPath + " 不存 в 。", Toast.LENGTH_LONG ).show();
         }
     }
 
-    //Speex声学回音消除器设置界面的确定按钮。
+    //Speex Acoustic echo sound Eliminator Настраивать界面的 determine 按钮。
     public void OnClickSpeexAecSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //WebRtc定点版声学回音消除器设置按钮。
+    //WebRtc Fixed-point version  Acoustic echo sound Eliminator Настраивать按钮。
     public void OnClickWebRtcAecmSetting( View BtnPt )
     {
         setContentView( m_LyotActivityWebRtcAecmViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityWebRtcAecmViewPt;
     }
 
-    //WebRtc定点版声学回音消除器设置界面的确定按钮。
+    //WebRtc Fixed-point version  Acoustic echo sound Eliminator Настраивать界面的 determine 按钮。
     public void OnClickWebRtcAecmSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //WebRtc浮点版声学回音消除器设置按钮。
+    //WebRtc Floating point version  Acoustic echo sound Eliminator Настраивать按钮。
     public void OnClickWebRtcAecSetting( View BtnPt )
     {
         setContentView( m_LyotActivityWebRtcAecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityWebRtcAecViewPt;
     }
 
-    //WebRtc浮点版声学回音消除器设置界面的删除内存块文件按钮。
+    //WebRtc Floating point version  Acoustic echo sound Eliminator Настраивать界面的 Delete memory block file 按钮。
     public void OnClickWebRtcAecDelMemFile( View BtnPt )
     {
         String p_pclWebRtcAecMemoryFullPath = m_ExternalDirFullAbsPathStrPt + "/WebRtcAecMemory";
@@ -2570,153 +2570,153 @@ public class MainActivity extends AppCompatActivity
         {
             if( file.delete() )
             {
-                Toast.makeText( this, "删除WebRtc浮点版声学回音消除器的内存块文件 " + p_pclWebRtcAecMemoryFullPath + " 成功。", Toast.LENGTH_LONG ).show();
+                Toast.makeText( this, " delete WebRtc Floating point version  Acoustic echo sound Eliminator Memory block file " + p_pclWebRtcAecMemoryFullPath + " success.", Toast.LENGTH_LONG ).show();
             }
             else
             {
-                Toast.makeText( this, "删除WebRtc浮点版声学回音消除器的内存块文件 " + p_pclWebRtcAecMemoryFullPath + " 失败。", Toast.LENGTH_LONG ).show();
+                Toast.makeText( this, " delete WebRtc Floating point version  Acoustic echo sound Eliminator Memory block file " + p_pclWebRtcAecMemoryFullPath + " 失败。", Toast.LENGTH_LONG ).show();
             }
         }
         else
         {
-            Toast.makeText( this, "WebRtc浮点版声学回音消除器的内存块文件 " + p_pclWebRtcAecMemoryFullPath + " 不存在。", Toast.LENGTH_LONG ).show();
+            Toast.makeText( this, "WebRtc Floating point version  Acoustic echo sound Eliminator Memory block file " + p_pclWebRtcAecMemoryFullPath + " 不存 в 。", Toast.LENGTH_LONG ).show();
         }
     }
 
-    //WebRtc浮点版声学回音消除器设置界面的确定按钮。
+    //WebRtc Floating point version  Acoustic echo sound Eliminator Настраивать界面的 determine 按钮。
     public void OnClickWebRtcAecSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //SpeexWebRtc三重声学回音消除器设置按钮。
+    //SpeexWebRtc triple  Acoustic echo sound Eliminator Настраивать按钮。
     public void OnClickSpeexWebRtcAecSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexWebRtcAecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexWebRtcAecViewPt;
     }
 
-    //SpeexWebRtc三重声学回音消除器设置界面的确定按钮。
+    //SpeexWebRtc triple  Acoustic echo sound Eliminator Настраивать界面的 determine 按钮。
     public void OnClickSpeexWebRtcAecSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //Speex预处理器的噪音抑制设置按钮。
+    //Speex Preprocessor  noise sound торможение Настраивать按钮。
     public void OnClickSpeexPprocNsSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexPprocNsViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexPprocNsViewPt;
     }
 
-    //Speex预处理器的噪音抑制设置界面的确定按钮。
+    //Speex Preprocessor  noise sound торможение Настраивать界面的 determine 按钮。
     public void OnClickSpeexPprocNsSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //WebRtc定点版噪音抑制器设置按钮。
+    //WebRtc Fixed-point version  noise sound Suppressor Настраивать按钮。
     public void OnClickWebRtcNsxSetting( View BtnPt )
     {
         setContentView( m_LyotActivityWebRtcNsxViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityWebRtcNsxViewPt;
     }
 
-    //WebRtc定点版噪音抑制器设置界面的确定按钮。
+    //WebRtc Fixed-point version  noise sound Suppressor Настраивать界面的 determine 按钮。
     public void OnClickWebRtcNsxSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //WebRtc浮点版噪音抑制器设置按钮。
+    //WebRtc Floating point version  noise sound Suppressor Настраивать按钮。
     public void OnClickWebRtcNsSetting( View BtnPt )
     {
         setContentView( m_LyotActivityWebRtcNsViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityWebRtcNsViewPt;
     }
 
-    //WebRtc浮点版噪音抑制器设置界面的确定按钮。
+    //WebRtc Floating point version  noise sound Suppressor Настраивать界面的 determine 按钮。
     public void OnClickWebRtcNsSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //Speex预处理器的其他功能设置按钮。
+    //Speex Preprocessor  Other functions Настраивать按钮。
     public void OnClickSpeexPprocOtherSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexPprocOtherViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexPprocOtherViewPt;
     }
 
-    //Speex预处理器的其他功能设置界面的确定按钮。
+    //Speex Preprocessor  Other functions Настраивать界面的 determine 按钮。
     public void OnClickSpeexPprocOtherSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //Speex编解码器设置按钮。
+    //Speex Codec Настраивать按钮。
     public void OnClickSpeexCodecSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexCodecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexCodecViewPt;
     }
 
-    //Speex编解码器设置界面的确定按钮。
+    //Speex Codec Настраивать界面的 determine 按钮。
     public void OnClickSpeexCodecSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //Opus编解码器设置按钮。
+    //Opus Codec Настраивать按钮。
     public void OnClickOpusCodecSetting( View BtnPt )
     {
         setContentView( m_LyotActivitySpeexCodecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySpeexCodecViewPt;
     }
 
-    //Opus编解码器设置界面的确定按钮。
+    //Opus Codec Настраивать界面的 determine 按钮。
     public void OnOpusCodecSettingOkClick( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //OpenH264编解码器设置按钮。
+    //OpenH264 Codec Настраивать按钮。
     public void OnClickOpenH264CodecSetting( View BtnPt )
     {
         setContentView( m_LyotActivityOpenH264CodecViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityOpenH264CodecViewPt;
     }
 
-    //Opus编解码器设置界面的确定按钮。
+    //Opus Codec Настраивать界面的 determine 按钮。
     public void OnOpenH264CodecSettingOkClick( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //音频自适应抖动缓冲器设置按钮。
+    // Audio Adaptive jitter bufferНастраивать按钮。
     public void OnClickAjbSetting( View BtnPt )
     {
         setContentView( m_LyotActivityAjbViewPt );
         m_LyotActivityCurViewPt = m_LyotActivityAjbViewPt;
     }
 
-    //音频自适应抖动缓冲器设置界面的确定按钮。
+    // Audio Adaptive jitter bufferНастраивать界面的 determine 按钮。
     public void OnClickAjbSettingOk( View BtnPt )
     {
         setContentView( m_LyotActivitySettingViewPt );
         m_LyotActivityCurViewPt = m_LyotActivitySettingViewPt;
     }
 
-    //效果等级：低。
+    // Effect level ： low 。
     public void OnClickUseEffectLowRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectLowRadioBtn ) ).setChecked( true );
@@ -2805,7 +2805,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderComplexityEdit ) ).setText( "0" );
     }
 
-    //效果等级：中。
+    // Effect level ：in。
     public void OnClickUseEffectMidRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectMidRadioBtn ) ).setChecked( true );
@@ -2894,7 +2894,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderComplexityEdit ) ).setText( "0" );
     }
 
-    //效果等级：高。
+    // Effect level ：high。
     public void OnClickUseEffectHighRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectHighRadioBtn ) ).setChecked( true );
@@ -2983,7 +2983,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderComplexityEdit ) ).setText( "0" );
     }
 
-    //效果等级：超。
+    // Effect level ：ultra。
     public void OnClickUseEffectSuperRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectSuperRadioBtn ) ).setChecked( true );
@@ -3072,7 +3072,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderComplexityEdit ) ).setText( "1" );
     }
 
-    //效果等级：特。
+    // Effect level ：special。
     public void OnClickUseEffectPremiumRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseEffectPremiumRadioBtn ) ).setChecked( true );
@@ -3161,7 +3161,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderComplexityEdit ) ).setText( "2" );
     }
 
-    //比特率等级：低。
+    //ratiospecial Rate grade ： low 。
     public void OnClickUseBitrateLowRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateLowRadioBtn ) ).setChecked( true );
@@ -3172,7 +3172,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderEncodedBitrateEdit ) ).setText( "1" );
     }
 
-    //比特率等级：中。
+    //ratiospecial Rate grade ：in。
     public void OnClickUseBitrateMidRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateMidRadioBtn ) ).setChecked( true );
@@ -3183,7 +3183,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderEncodedBitrateEdit ) ).setText( "20" );
     }
 
-    //比特率等级：高。
+    //ratiospecial Rate grade ：high。
     public void OnClickUseBitrateHighRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateHighRadioBtn ) ).setChecked( true );
@@ -3194,7 +3194,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderEncodedBitrateEdit ) ).setText( "40" );
     }
 
-    //比特率等级：超。
+    //ratiospecial Rate grade ：ultra。
     public void OnClickUseBitrateSuperRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitrateSuperRadioBtn ) ).setChecked( true );
@@ -3205,7 +3205,7 @@ public class MainActivity extends AppCompatActivity
         ( ( TextView ) m_LyotActivityOpenH264CodecViewPt.findViewById( R.id.OpenH264EncoderEncodedBitrateEdit ) ).setText( "60" );
     }
 
-    //比特率等级：特。
+    //ratiospecial Rate grade ：special。
     public void OnClickUseBitratePremiumRadioBtn( View BtnPt )
     {
         ( ( RadioButton ) m_LyotActivitySettingViewPt.findViewById( R.id.UseBitratePremiumRadioBtn ) ).setChecked( true );

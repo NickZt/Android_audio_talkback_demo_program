@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="Speex声学回音消除器\n设置\n"
+            android:text="Speex Acoustic echo sound Eliminator \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="滤波器的数据长度，单位毫秒：" />
+                android:text=" Filter data length， unit  millisecond：" />
 
             <EditText
                 android:id="@+id/SpeexAecFilterLenEdit"
@@ -46,7 +46,7 @@
         </LinearLayout>
 
         <CheckBox
-            android:text="使用残余回音消除"
+            android:text=" use  Устранение остаточного звука "
             android:id="@+id/SpeexAecIsUseRecCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -57,7 +57,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在残余回音消除时，残余回音的倍数，倍数越大消除越强，取值区间为[0.0,100.0]："
+                android:text=" в  Устранение остаточного звука  Time ， Remnants back to the sound  Times number ， Times number  The bigger the elimination, the stronger ， The value range is [0.0,100.0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -78,7 +78,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在残余回音消除时，残余回音的持续系数，系数越大消除越强，取值区间为[0.0,0.9]："
+                android:text=" в  Устранение остаточного звука  Time ， Remnants back to the sound 持续系 number ，系 number  The bigger the elimination, the stronger ， The value range is [0.0,0.9]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -99,7 +99,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在残余回音消除时，残余回音最大衰减的分贝值，分贝值越小衰减越大，取值区间为[-2147483648,0]："
+                android:text=" в  Устранение остаточного звука  Time ， The decibel value of the maximum attenuation of the residual return sound ，The smaller the decibel value, the greater the attenuation ， The value range is [-2147483648,0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -120,7 +120,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在残余回音消除时，有近端语音活动时残余回音最大衰减的分贝值，分贝值越小衰减越大，取值区间为[-2147483648,0]："
+                android:text=" в  Устранение остаточного звука  Time ， Have近端  voice sound live动 Time  The decibel value of the maximum attenuation of the residual return sound ，The smaller the decibel value, the greater the attenuation ， The value range is [-2147483648,0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -146,13 +146,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="将Speex声学回音消除器的内存块保存到扩展目录下的SpeexAecMem文件中，以便缩短下一次初始化时的收敛时间"/>
+                android:text=" will Speex Acoustic echo sound Eliminator Memory block  Save  To the extension directory SpeexAecMem File ， In order to shorten the next initialization  Time  Convergence Time "/>
 
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="删除内存块文件"
+                android:text=" Delete memory block file "
                 android:onClick="OnClickSpeexAecDelMemFile" />
 
         </LinearLayout>
@@ -160,7 +160,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickSpeexAecSettingOk" />
 
     </LinearLayout>

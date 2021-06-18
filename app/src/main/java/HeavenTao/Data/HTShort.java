@@ -5,7 +5,7 @@ public class HTShort
 {
     public short m_Val;
 
-    //构造函数。
+    //构造函 number 。
     public HTShort()
     {
         m_Val = 0;

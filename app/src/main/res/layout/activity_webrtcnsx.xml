@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="WebRtc定点版噪音抑制器\n设置\n"
+            android:text="WebRtc Fixed-point version  noise sound Suppressor \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -30,7 +30,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="策略模式，策略模式越高抑制越强，取值区间为[0,3]："
+                android:text=" Strategy mode， Strategy modeMorehigh торможение More强， The value range is [0,3]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -48,7 +48,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickWebRtcNsxSettingOk" />
 
     </LinearLayout>

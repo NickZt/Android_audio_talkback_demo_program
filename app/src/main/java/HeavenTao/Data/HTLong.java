@@ -5,7 +5,7 @@ public class HTLong
 {
     public long m_Val;
 
-    //构造函数。
+    //构造函 number 。
     public HTLong()
     {
         m_Val = 0;

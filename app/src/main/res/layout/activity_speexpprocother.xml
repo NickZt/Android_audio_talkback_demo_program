@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="Speex预处理器的其他功能\n设置\n"
+            android:text="Speex Preprocessor  Other functions \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="使用语音活动检测"/>
+            android:text=" use   voice   sound activity detection "/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在语音活动检测时，从无语音活动到有语音活动的判断百分比概率，概率越大越难判断为有语音活，取值区间为[0,100]："
+                android:text=" в   voice   sound activity detection  Time ，  Never   voice sound  Active  voice sound  Activity judgement percentage ratio rate ，概 rate More  Big is More difficult to judge for  Have  voice sound live， The value range is [0,100]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -58,7 +58,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="在语音活动检测时，从有语音活动到无语音活动的判断百分比概率，概率越大越容易判断为无语音活动，取值区间为[0,100]："
+                android:text=" в   voice   sound activity detection  Time ，从 Have  voice sound  live to nothing  voice sound  Activity judgement percentage ratio rate ，概 rate More大More容易判断 for 无  voice sound live动， The value range is [0,100]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -77,7 +77,7 @@
             android:id="@+id/SpeexPprocIsUseAgcCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="使用自动增益控制" />
+            android:text=" use 自动增益控制" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="自动增益控制时，增益的目标等级，目标等级越大增益越大，取值区间为[1,2147483647]：" />
+                android:text="自动增益控制 Time ，增益的目标等级，目标等级More大增益More大， The value range is [1,2147483647]：" />
 
             <EditText
                 android:id="@+id/SpeexPprocAgcLevelEdit"
@@ -110,7 +110,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="在自动增益控制时，每秒最大增益的分贝值，分贝值越大增益越大，取值区间为[0,2147483647]：" />
+                android:text=" в 自动增益控制 Time ，每秒最大增益的分贝值，分贝值More大增益More大， The value range is [0,2147483647]：" />
 
             <EditText
                 android:id="@+id/SpeexPprocAgcIncrementEdit"
@@ -131,7 +131,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="在自动增益控制时，每秒最大减益的分贝值，分贝值越小减益越大，取值区间为[-2147483648,0]：" />
+                android:text=" в 自动增益控制 Time ，每秒最大减益的分贝值，分贝值More小减益More大， The value range is [-2147483648,0]：" />
 
             <EditText
                 android:id="@+id/SpeexPprocAgcDecrementEdit"
@@ -152,7 +152,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="在自动增益控制时，最大增益的分贝值，分贝值越大增益越大，取值区间为[0,2147483647]：" />
+                android:text=" в 自动增益控制 Time ，最大增益的分贝值，分贝值More大增益More大， The value range is [0,2147483647]：" />
 
             <EditText
                 android:id="@+id/SpeexPprocAgcMaxGainEdit"
@@ -164,7 +164,7 @@
         </LinearLayout>
 
         <Button
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickSpeexPprocOtherSettingOk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

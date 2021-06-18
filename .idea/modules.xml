@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Android_audio_talkback_demo_program.iml" filepath="$PROJECT_DIR$/Android_audio_talkback_demo_program.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android_audio_talkback_demo_program.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android_audio_talkback_demo_program.app.iml" />
-    </modules>
-  </component>
-</project>

@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="SpeexWebRtc三重声学回音消除器\n设置\n"
+            android:text="SpeexWebRtc triple  Acoustic echo sound Eliminator \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -43,21 +43,21 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:text="Speex声学回音消除器+WebRtc定点版声学回音消除器"
+                android:text="Speex Acoustic echo sound Eliminator +WebRtc Fixed-point version  Acoustic echo sound Eliminator "
                 android:id="@+id/SpeexWebRtcAecWorkModeSpeexAecWebRtcAecmRadioBtn"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <RadioButton
-                android:text="WebRtc定点版声学回音消除器+WebRtc浮点版声学回音消除器"
+                android:text="WebRtc Fixed-point version  Acoustic echo sound Eliminator +WebRtc Floating point version  Acoustic echo sound Eliminator "
                 android:id="@+id/SpeexWebRtcAecWorkModeWebRtcAecmWebRtcAecRadioBtn"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <RadioButton
-                android:text="Speex声学回音消除器+WebRtc定点版声学回音消除器+WebRtc浮点版声学回音消除器"
+                android:text="Speex Acoustic echo sound Eliminator +WebRtc Fixed-point version  Acoustic echo sound Eliminator +WebRtc Floating point version  Acoustic echo sound Eliminator "
                 android:id="@+id/SpeexWebRtcAecWorkModeSpeexAecWebRtcAecmWebRtcAecRadioBtn"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="Speex声学回音消除器的滤波器数据长度，单位毫秒：" />
+                android:text="Speex Acoustic echo sound Eliminator 的滤波器 number According to the length ， unit  millisecond：" />
 
             <EditText
                 android:id="@+id/SpeexWebRtcAecSpeexAecFilterLenEdit"
@@ -92,7 +92,7 @@
             android:id="@+id/SpeexWebRtcAecSpeexAecIsUseRecCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Speex声学回音消除器使用残余回音消除" />
+            android:text="Speex Acoustic echo sound Eliminator  use  Устранение остаточного звука " />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +100,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="Speex声学回音消除器在残余回音消除时，残余回音的倍数，倍数越大消除越强，取值区间为[0.0,100.0]："
+                android:text="Speex Acoustic echo sound Eliminator  в  Устранение остаточного звука  Time ， Remnants back to the sound  Times number ， Times number  The bigger the elimination, the stronger ， The value range is [0.0,100.0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -121,7 +121,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="Speex声学回音消除器在残余回音消除时，残余回音的持续系数，系数越大消除越强，取值区间为[0.0,0.9]："
+                android:text="Speex Acoustic echo sound Eliminator  в  Устранение остаточного звука  Time ， Remnants back to the sound 持续系 number ，系 number  The bigger the elimination, the stronger ， The value range is [0.0,0.9]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -142,7 +142,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="Speex声学回音消除器在残余回音消除时，残余回音最大衰减的分贝值，分贝值越小衰减越大，取值区间为[-2147483648,0]："
+                android:text="Speex Acoustic echo sound Eliminator  в  Устранение остаточного звука  Time ， The decibel value of the maximum attenuation of the residual return sound ，The smaller the decibel value, the greater the attenuation ， The value range is [-2147483648,0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -163,7 +163,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="Speex声学回音消除器在残余回音消除时，有近端语音活动时残余回音最大衰减的分贝值，分贝值越小衰减越大，取值区间为[-2147483648,0]："
+                android:text="Speex Acoustic echo sound Eliminator  в  Устранение остаточного звука  Time ， Have近端  voice sound live动 Time  The decibel value of the maximum attenuation of the residual return sound ，The smaller the decibel value, the greater the attenuation ， The value range is [-2147483648,0]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -183,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="WebRtc定点版声学回音消除器使用舒适噪音生成模式"/>
+            android:text="WebRtc Fixed-point version  Acoustic echo sound Eliminator  use  Comfortable noise  sound generation mode"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,7 +191,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="WebRtc定点版声学回音消除器的消除模式，消除模式越高消除越强，取值区间为[0,4]："
+                android:text="WebRtc Fixed-point version  Acoustic echo sound Eliminator 的Elimination mode，Elimination modeMorehigh Eliminate More Strong ， The value range is [0,4]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -212,7 +212,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="WebRtc定点版声学回音消除器的回音延迟，单位毫秒，取值区间为[-2147483648,2147483647]，为0表示自适应设置："
+                android:text="WebRtc Fixed-point version  Acoustic echo sound Eliminator 的回sound延迟， unit  millisecond， The value range is [-2147483648,2147483647]， for 0 Represents adaptive Настраивать："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -233,7 +233,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="WebRtc浮点版声学回音消除器的消除模式，消除模式越高消除越强，取值区间为[0,2]："
+                android:text="WebRtc Floating point version  Acoustic echo sound Eliminator 的Elimination mode，Elimination modeMorehigh Eliminate More Strong ， The value range is [0,2]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -258,7 +258,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="WebRtc浮点版声学回音消除器的回音延迟，单位毫秒，取值区间为[-2147483648,2147483647]，为0表示自适应设置：" />
+                android:text="WebRtc Floating point version  Acoustic echo sound Eliminator 的回sound延迟， unit  millisecond， The value range is [-2147483648,2147483647]， for 0 Represents adaptive Настраивать：" />
 
             <EditText
                 android:id="@+id/SpeexWebRtcAecWebRtcAecDelayEdit"
@@ -274,35 +274,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="WebRtc浮点版声学回音消除器使用回音延迟不可知模式" />
+            android:text="WebRtc Floating point version  Acoustic echo sound Eliminator  use 回sound延迟不可知模式" />
 
         <CheckBox
             android:id="@+id/SpeexWebRtcAecWebRtcAecIsUseExtdFilterModeCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="WebRtc浮点版声学回音消除器使用扩展滤波器模式" />
+            android:text="WebRtc Floating point version  Acoustic echo sound Eliminator  use 扩展滤波器模式" />
 
         <CheckBox
             android:id="@+id/SpeexWebRtcAecWebRtcAecIsUseRefinedFilterAdaptAecModeCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="WebRtc浮点版声学回音消除器使用精制滤波器自适应Aec模式" />
+            android:text="WebRtc Floating point version  Acoustic echo sound Eliminator  use  Refined filter adaptive Aec模式" />
 
         <CheckBox
             android:id="@+id/SpeexWebRtcAecWebRtcAecIsUseAdaptAdjDelayCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="WebRtc浮点版声学回音消除器使用自适应调节回音的延迟" />
+            android:text="WebRtc Floating point version  Acoustic echo sound Eliminator  use  Adaptive adjustment  Return to sound delay " />
 
         <CheckBox
             android:id="@+id/SpeexWebRtcAecWebRtcAecIsUseSameRoomAecCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="使用同一房间声学回音消除" />
+            android:text=" use 同一房间 Acoustic echo sound消除" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -314,7 +314,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
-                android:text="同一房间回音最小延迟，单位毫秒，取值区间为[1,2147483647]：" />
+                android:text="同一房间回sound最小延迟， unit  millisecond， The value range is [1,2147483647]：" />
 
             <EditText
                 android:id="@+id/SpeexWebRtcAecSameRoomEchoMinDelayEdit"
@@ -328,7 +328,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickSpeexWebRtcAecSettingOk" />
 
     </LinearLayout>

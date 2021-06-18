@@ -13,13 +13,13 @@ public class SpeexDecoder
         System.loadLibrary( "Speex" ); //加载libSpeex.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public SpeexDecoder()
     {
         m_SpeexDecoderPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
@@ -34,9 +34,9 @@ public class SpeexDecoder
     //创建并初始化Speex解码器。
     public native int Init( int SamplingRate, int IsUsePerceptualEnhancement );
 
-    //用Speex解码器对单声道16位有符号整型20毫秒Speex格式帧进行PCM格式解码。
+    //用Speex解码器对单声道16位 Have符号整型20 millisecondSpeex格式 frame 进行PCM格式解码。
     public native int Proc( byte SpeexFramePt[], long SpeexFrameLen, short PcmFramePt[] );
 
-    //销毁Speex解码器。
+    //destroySpeex解码器。
     public native int Destroy();
 }

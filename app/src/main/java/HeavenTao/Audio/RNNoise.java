@@ -2,10 +2,10 @@ package HeavenTao.Audio;
 
 import HeavenTao.Data.*;
 
-//RNNoise噪音抑制器类。
+//RNNoise noise sound Suppressor 类。
 public class RNNoise
 {
-    private long m_RNNoisePt; //RNNoise噪音抑制器的内存指针。
+    private long m_RNNoisePt; //RNNoise noise sound Suppressor 的内存指针。
 
     static
     {
@@ -15,30 +15,30 @@ public class RNNoise
         System.loadLibrary( "RNNoise" ); //加载libRNNoise.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public RNNoise()
     {
         m_RNNoisePt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取RNNoise噪音抑制器的内存指针。
+    //获取RNNoise noise sound Suppressor 的内存指针。
     public long GetRNNoisePt()
     {
         return m_RNNoisePt;
     }
 
-    //创建并初始化RNNoise噪音抑制器。
+    //创建并初始化RNNoise noise sound Suppressor 。
     public native int Init( int SamplingRate, int FrameLen );
 
-    //用RNNoise噪音抑制器对单声道16位有符号整型PCM格式帧进行RNNoise噪音抑制。
+    //用RNNoise noise sound Suppressor 对单声道16位 Have符号整型PCM格式 frame 进行RNNoise noise sound торможение 。
     public native int Proc( short FrameObj[], short ResultFrameObj[] );
 
-    //销毁RNNoise噪音抑制器。
+    //destroyRNNoise noise sound Suppressor 。
     public native int Destroy();
 }

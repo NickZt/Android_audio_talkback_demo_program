@@ -4,10 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
-//自定义SurfaceView类，为了保持宽高比。
+//自定义SurfaceView类， for 了保持宽highratio。
 public class HTSurfaceView extends SurfaceView
 {
-    public float m_WidthToHeightRatio = 1.0f; //存放宽高比。
+    public float m_WidthToHeightRatio = 1.0f; //存放宽highratio。
 
     public HTSurfaceView( Context context )
     {
@@ -40,9 +40,9 @@ public class HTSurfaceView extends SurfaceView
 
     public void setWidthToHeightRatio( float WidthToHeightRatio )
     {
-        if( WidthToHeightRatio != m_WidthToHeightRatio ) //如果指定的宽高比与当前的宽高比不一致。
+        if( WidthToHeightRatio != m_WidthToHeightRatio ) //如果指定的宽highratio与当前的宽highratio不一致。
         {
-            m_WidthToHeightRatio = WidthToHeightRatio; //设置视频预览SurfaceView类对象的宽高比。
+            m_WidthToHeightRatio = WidthToHeightRatio; //Настраиватьvideo预览SurfaceView类对象的宽highratio。
 
             post( new Runnable() //刷新SurfaceView类对象的尺寸显示。
             {

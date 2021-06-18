@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="OpenH264编解码器\n设置\n"
+            android:text="OpenH264 Codec \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -30,7 +30,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="视频类型，为0表示实时摄像头视频，为1表示实时屏幕内容视频，为2表示非实时摄像头视频，为3表示非实时屏幕内容视频，为4表示其他视频："
+                android:text="video Types of ， for 0 Represents a real-time camera video， for 1 Represents real-time screen content video， for 2 Indicates a non-real-time camera video， for 3 Represents non-real-time screen content video， for 4 Means other video："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -51,7 +51,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="编码后比特率，单位为KBps："
+                android:text=" Bit rate after encoding ， unit  for KBps："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -72,7 +72,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="比特率控制模式，为0表示质量优先模式，为1表示比特率优先模式，为2表示缓冲区优先模式，为3表示时间戳优先模式："
+                android:text=" Bit rate control mode ， for 0 Represents quality priority mode ， for 1 Indicates bit rate priority mode ， for 2 Indicates buffer priority mode ， for 3 Indicates the time stamp priority mode ："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -93,7 +93,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="IDR帧间隔帧数，单位为个，为0表示仅第一帧为IDR帧，为大于0表示每隔这么帧就至少有一个IDR帧："
+                android:text="IDR Frame interval ， unit  for 个， for 0 Means only the first frame  for IDR frame ， for  more than the 0 Means every so  frame  At least one IDR frame ："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -114,7 +114,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="复杂度，复杂度越高压缩率不变、CPU使用率越高、画质越好，取值区间为[0,2]："
+                android:text=" the complexity ， the complexity  The higher the compression rate is unchanged 、CPU TThe higher the usage rate, the better the picture quality ， The value range is [0,2]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -132,7 +132,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnOpenH264CodecSettingOkClick" />
 
     </LinearLayout>

@@ -2,10 +2,10 @@ package HeavenTao.Audio;
 
 import HeavenTao.Data.*;
 
-//Speex声学回音消除器类。
+//Speex Acoustic echo sound Eliminator 类。
 public class SpeexAec
 {
-    private long m_SpeexAecPt; //存放Speex声学回音消除器的内存指针。
+    private long m_SpeexAecPt; //存放Speex Acoustic echo sound Eliminator 的内存指针。
 
     static
     {
@@ -13,45 +13,45 @@ public class SpeexAec
         System.loadLibrary( "SpeexDsp" ); //加载libSpeexDsp.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public SpeexAec()
     {
         m_SpeexAecPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取Speex声学回音消除器的内存指针。
+    //获取Speex Acoustic echo sound Eliminator 的内存指针。
     public long GetSpeexAecPt()
     {
         return m_SpeexAecPt;
     }
 
-    //创建并初始化Speex声学回音消除器。
+    //创建并初始化Speex Acoustic echo sound Eliminator 。
     public native int Init( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct );
 
-    //根据Speex声学回音消除器内存块来创建并初始化Speex声学回音消除器。
+    //根据Speex Acoustic echo sound Eliminator 内存块来创建并初始化Speex Acoustic echo sound Eliminator 。
     public native int InitByMem( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct, byte SpeexAecMemPt[], long SpeexAecMemLen );
 
-    //根据Speex声学回音消除器内存块文件来创建并初始化Speex声学回音消除器。
+    //根据Speex Acoustic echo sound Eliminator 内存块file来创建并初始化Speex Acoustic echo sound Eliminator 。
     public native int InitByMemFile( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct, String SpeexAecMemFileFullPathStrPt, VarStr ErrInfoVarStrPt );
 
-    //获取Speex声学回音消除器内存块的数据长度。
+    //获取Speex Acoustic echo sound Eliminator 内存块的 number According to the length 。
     public native int GetMemLen( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct, HTLong SpeexAecMemLenPt );
 
-    //获取Speex声学回音消除器的内存块。
+    //获取Speex Acoustic echo sound Eliminator Memory block 。
     public native int GetMem( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct, byte SpeexAecMemPt[], long SpeexAecMemSz );
 
-    //将Speex声学回音消除器内存块保存到指定的文件。
+    // will Speex Acoustic echo sound Eliminator 内存块 Save 到指定的file。
     public native int SaveMemFile( int SamplingRate, int FrameLen, int FilterLen, int IsUseRec, float EchoMultiple, float EchoCont, int EchoSupes, int EchoSupesAct, String SpeexAecMemFileFullPathStrPt, VarStr ErrInfoVarStrPt );
 
-    //用Speex声学回音消除器对单声道16位有符号整型PCM格式输入帧进行Speex声学回音消除。
+    //用Speex Acoustic echo sound Eliminator 对单声道16位 Have符号整型PCM格式 enter  frame 进行Speex Acoustic echo sound消除。
     public native int Proc( short InputFramePt[], short OutputFramePt[], short ResultFramePt[] );
 
-    //销毁Speex声学回音消除器。
+    //destroySpeex Acoustic echo sound Eliminator 。
     public native int Destroy();
 }

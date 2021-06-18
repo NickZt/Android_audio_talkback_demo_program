@@ -2,10 +2,10 @@ package HeavenTao.Video;
 
 import HeavenTao.Data.*;
 
-//视频自适应抖动缓冲器类。
+//videoAdaptive jitter buffer类。
 public class VAjb
 {
-    private long m_VAjbPt; //存放视频自适应抖动缓冲器的内存指针。
+    private long m_VAjbPt; //存放videoAdaptive jitter buffer的内存指针。
 
     static
     {
@@ -14,51 +14,51 @@ public class VAjb
         System.loadLibrary( "Ajb" ); //加载libAjb.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public VAjb()
     {
         m_VAjbPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取视频自适应抖动缓冲器的内存指针。
+    //获取videoAdaptive jitter buffer的内存指针。
     public long GetVAjbPt()
     {
         return m_VAjbPt;
     }
 
-    //创建并初始化视频自适应抖动缓冲器。
+    //创建并初始化videoAdaptive jitter buffer。
     public native int Init( int IsHaveTimeStamp, int MinNeedBufFrameCnt, int MaxNeedBufFrameCnt, float AdaptSensitivity, int IsUseMutexLock );
 
-    //放入一个字节型帧到视频自适应抖动缓冲器。
+    //放入一个digit节型 frame 到videoAdaptive jitter buffer。
     public native int PutOneByteFrame( long CurTime, int TimeStamp, byte ByteFramePt[], long FrameStart, long FrameLen );
 
-    //放入一个短整型帧到视频自适应抖动缓冲器。
+    //放入一个短整型 frame 到videoAdaptive jitter buffer。
     public native int PutOneShortFrame( long CurTime, int TimeStamp, short ShortFramePt[], long FrameStart, long FrameLen );
 
-    //从视频自适应抖动缓冲器取出一个字节型帧。
+    //从videoAdaptive jitter buffer取出一个digit节型 frame 。
     public native int GetOneByteFrame( long CurTime, HTInt TimeStampPt, byte ByteFramePt[], long FrameStart, long FrameStartSz, HTLong FrameLenPt );
 
-    //从视频自适应抖动缓冲器取出一个短整型帧。
+    //从videoAdaptive jitter buffer取出一个短整型 frame 。
     public native int GetOneShortFrame( long CurTime, HTInt TimeStampPt, short ShortFramePt[], long FrameStart, long FrameStartSz, HTLong FrameLenPt );
 
-    //从视频自适应抖动缓冲器取出一个字节型帧。
+    //从videoAdaptive jitter buffer取出一个digit节型 frame 。
     public native int GetOneByteFrameWantTimeStamp( long CurTime, int WantTimeStamp, HTInt TimeStampPt, byte ByteFramePt[], long FrameStart, long FrameStartSz, HTLong FrameLenPt );
 
-    //从视频自适应抖动缓冲器取出一个短整型帧。
+    //从videoAdaptive jitter buffer取出一个短整型 frame 。
     public native int GetOneShortFrameWantTimeStamp( long CurTime, int WantTimeStamp, HTInt TimeStampPt, short ShortFramePt[], long FrameStart, long FrameStartSz, HTLong FrameLenPt );
 
-    //获取缓冲帧的数量。
+    //获取缓冲 frame 的 number 量。
     public native int GetBufFrameCnt( HTInt CurHaveBufFrameCntPt, HTInt MinNeedBufFrameCntPt, HTInt MaxNeedBufFrameCntPt, HTInt CurNeedBufFrameCntPt );
 
-    //清空视频自适应抖动缓冲器。
+    //EmptyvideoAdaptive jitter buffer。
     public native int Clear();
 
-    //销毁视频自适应抖动缓冲器。
+    //destroyvideoAdaptive jitter buffer。
     public native int Destroy();
 }

@@ -2,10 +2,10 @@ package HeavenTao.Audio;
 
 import HeavenTao.Data.*;
 
-//WebRtc浮点版声学回音消除器类。
+//WebRtc Floating point version  Acoustic echo sound Eliminator 类。
 public class WebRtcAec
 {
-    private long m_WebRtcAecPt; //存放WebRtc浮点版声学回音消除器的内存指针。
+    private long m_WebRtcAecPt; //存放WebRtc Floating point version  Acoustic echo sound Eliminator 的内存指针。
 
     static
     {
@@ -14,51 +14,51 @@ public class WebRtcAec
         System.loadLibrary( "WebRtc" ); //加载libWebRtc.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public WebRtcAec()
     {
         m_WebRtcAecPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取WebRtc浮点版声学回音消除器的内存指针。
+    //获取WebRtc Floating point version  Acoustic echo sound Eliminator 的内存指针。
     public long GetWebRtcAecPt()
     {
         return m_WebRtcAecPt;
     }
 
-    //创建并初始化WebRtc浮点版声学回音消除器。
+    //创建并初始化WebRtc Floating point version  Acoustic echo sound Eliminator 。
     public native int Init( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay );
 
-    //根据WebRtc浮点版声学回音消除器内存块来创建并初始化WebRtc浮点版声学回音消除器。
+    //根据WebRtc Floating point version  Acoustic echo sound Eliminator 内存块来创建并初始化WebRtc Floating point version  Acoustic echo sound Eliminator 。
     public native int InitByMem( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay, byte WebRtcAecMemPt[], long WebRtcAecMemLen );
 
-    //根据WebRtc浮点版声学回音消除器内存块文件来创建并初始化WebRtc浮点版声学回音消除器。
+    //根据WebRtc Floating point version  Acoustic echo sound Eliminator 内存块file来创建并初始化WebRtc Floating point version  Acoustic echo sound Eliminator 。
     public native int InitByMemFile( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay, String WebRtcAecMemFileFullPathStrPt, VarStr ErrInfoVarStrPt );
 
-    //获取WebRtc浮点版声学回音消除器内存块的数据长度。
+    //获取WebRtc Floating point version  Acoustic echo sound Eliminator 内存块的 number According to the length 。
     public native int GetMemLen( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay, HTLong WebrtcAecMemLenPt );
 
-    //获取WebRtc浮点版声学回音消除器的内存块。
+    //获取WebRtc Floating point version  Acoustic echo sound Eliminator Memory block 。
     public native int GetMem( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay, byte WebRtcAecMemPt[], long WebRtcAecMemSz );
 
-    //将WebRtc浮点版声学回音消除器内存块保存到指定的文件。
+    // will WebRtc Floating point version  Acoustic echo sound Eliminator 内存块 Save 到指定的file。
     public native int SaveMemFile( int SamplingRate, int FrameLen, int EchoMode, int Delay, int IsUseDelayAgnosticMode, int IsUseExtdFilterMode, int IsUseRefinedFilterAdaptAecMode, int IsUseAdaptAdjDelay, String WebRtcAecMemFileFullPathStrPt, VarStr ErrInfoVarStrPt );
 
-    //设置WebRtc浮点版声学回音消除器的回音延迟。
+    //НастраиватьWebRtc Floating point version  Acoustic echo sound Eliminator 的回sound延迟。
     public native int SetDelay( int Delay );
 
-    //获取WebRtc浮点版声学回音消除器的回音延迟。
+    //获取WebRtc Floating point version  Acoustic echo sound Eliminator 的回sound延迟。
     public native int GetDelay( HTInt DelayPt );
 
-    //用WebRtc浮点版声学回音消除器对单声道16位有符号整型PCM格式输入帧进行WebRtc浮点版声学回音消除。
+    //用WebRtc Floating point version  Acoustic echo sound Eliminator 对单声道16位 Have符号整型PCM格式 enter  frame 进行WebRtc Floating point version  Acoustic echo sound消除。
     public native int Proc( short InputFramePt[], short OutputFramePt[], short ResultFramePt[] );
 
-    //销毁WebRtc浮点版声学回音消除器。
+    //destroyWebRtc Floating point version  Acoustic echo sound Eliminator 。
     public native int Destroy();
 }

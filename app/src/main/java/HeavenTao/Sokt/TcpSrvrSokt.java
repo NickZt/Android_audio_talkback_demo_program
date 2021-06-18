@@ -2,10 +2,10 @@ package HeavenTao.Sokt;
 
 import HeavenTao.Data.*;
 
-//本端TCP协议服务端套接字类。
+//this 端TCPprotocol服务端套接digit类。
 public class TcpSrvrSokt
 {
-    private long m_TcpSrvrSoktPt; //存放本端TCP协议服务端套接字的内存指针。
+    private long m_TcpSrvrSoktPt; //存放this 端TCPprotocol服务端套接digit的内存指针。
 
     static
     {
@@ -13,33 +13,33 @@ public class TcpSrvrSokt
         System.loadLibrary( "Sokt" ); //加载libSokt.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public TcpSrvrSokt()
     {
         m_TcpSrvrSoktPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy( null );
     }
 
-    //获取本端TCP协议服务端套接字的内存指针。
+    //获取this 端TCPprotocol服务端套接digit的内存指针。
     public long GetTcpSrvrSoktPt()
     {
         return m_TcpSrvrSoktPt;
     }
 
-    //创建并初始化已监听的本端TCP协议服务端套接字。
+    //创建并初始化已监听的this 端TCPprotocol服务端套接digit。
     public native int Init( int LclNodeAddrFmly, String LclNodeNamePt, String LclNodeSrvcPt, int MaxWait, int IsReuseAddr, VarStr ErrInfoVarStrPt );
 
-    //获取已监听的本端TCP协议服务端套接字绑定的本地节点地址和端口。
+    //获取已监听的this 端TCPprotocol服务端套接digit绑定的this 地节点地址和port。
     public native int GetLclAddr( HTInt LclNodeAddrFmlyPt, HTString LclNodeAddrPt, HTString LclNodePortPt, VarStr ErrInfoVarStrPt );
 
-    //用已监听的本端TCP协议服务端套接字开始接受远端TCP协议客户端套接字的连接。
+    //Use monitoredthis 端TCPprotocol服务端套接digit开始接受远端TCPprotocol客户端套接digit的连接。
     public native int Accept( HTInt RmtNodeAddrFmlyPt, HTString RmtNodeAddrPt, HTString RmtNodePortPt, short TimeOutMsec, TcpClntSokt TcpClntSoktPt, VarStr ErrInfoVarStrPt );
 
-    //关闭并销毁已创建的本端TCP协议服务端套接字。
+    //关闭并destroy已创建的this 端TCPprotocol服务端套接digit。
     public native int Destroy( VarStr ErrInfoVarStrPt );
 }

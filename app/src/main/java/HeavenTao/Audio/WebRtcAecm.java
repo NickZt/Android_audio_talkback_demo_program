@@ -2,10 +2,10 @@ package HeavenTao.Audio;
 
 import HeavenTao.Data.*;
 
-//WebRtc定点版声学回音消除器类。
+//WebRtc Fixed-point version  Acoustic echo sound Eliminator 类。
 public class WebRtcAecm
 {
-    private long m_WebRtcAecmPt; //存放WebRtc定点版声学回音消除器的内存指针。
+    private long m_WebRtcAecmPt; //存放WebRtc Fixed-point version  Acoustic echo sound Eliminator 的内存指针。
 
     static
     {
@@ -14,36 +14,36 @@ public class WebRtcAecm
         System.loadLibrary( "WebRtc" ); //加载libWebRtc.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public WebRtcAecm()
     {
         m_WebRtcAecmPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取WebRtc定点版声学回音消除器的内存指针。
+    //获取WebRtc Fixed-point version  Acoustic echo sound Eliminator 的内存指针。
     public long GetWebRtcAecmPt()
     {
         return m_WebRtcAecmPt;
     }
 
-    //创建并初始化WebRtc定点版声学回音消除器。
+    //创建并初始化WebRtc Fixed-point version  Acoustic echo sound Eliminator 。
     public native int Init( int SamplingRate, int FrameLen, int IsUseCNGMode, int EchoMode, int Delay );
 
-    //设置WebRtc定点版声学回音消除器的回音延迟。
+    //НастраиватьWebRtc Fixed-point version  Acoustic echo sound Eliminator 的回sound延迟。
     public native int SetDelay( int Delay );
 
-    //获取WebRtc定点版声学回音消除器的回音延迟。
+    //获取WebRtc Fixed-point version  Acoustic echo sound Eliminator 的回sound延迟。
     public native int GetDelay( HTInt DelayPt );
 
-    //用WebRtc定点版声学回音消除器对单声道16位有符号整型PCM格式输入帧进行WebRtc定点版声学回音消除。
+    //用WebRtc Fixed-point version  Acoustic echo sound Eliminator 对单声道16位 Have符号整型PCM格式 enter  frame 进行WebRtc Fixed-point version  Acoustic echo sound消除。
     public native int Proc( short InputFramePt[], short OutputFramePt[], short ResultFramePt[] );
 
-    //销毁WebRtc定点版声学回音消除器。
+    //destroyWebRtc Fixed-point version  Acoustic echo sound Eliminator 。
     public native int Destroy();
 }

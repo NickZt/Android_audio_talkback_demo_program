@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="WebRtc声学回音消除器\n设置\n"
+            android:text="WebRtc Acoustic echo sound Eliminator \nНастраивать\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -30,7 +30,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="消除模式，消除模式越高消除越强，取值区间为[0,2]："
+                android:text="Elimination mode，Elimination modeMorehigh Eliminate More Strong ， The value range is [0,2]："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -51,7 +51,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="回音的延迟，单位毫秒，取值区间为[-2147483648,2147483647]，为0表示自适应设置："
+                android:text=" Return to sound delay ， unit  millisecond， The value range is [-2147483648,2147483647]， for 0 Represents adaptive Настраивать："
                 android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -71,28 +71,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="使用回音延迟不可知模式" />
+            android:text=" use 回sound延迟不可知模式" />
 
         <CheckBox
             android:id="@+id/WebRtcAecIsUseExtdFilterModeCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="使用扩展滤波器模式" />
+            android:text=" use 扩展滤波器模式" />
 
         <CheckBox
             android:id="@+id/WebRtcAecIsUseRefinedFilterAdaptAecModeCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="使用精制滤波器自适应Aec模式" />
+            android:text=" use  Refined filter adaptive Aec模式" />
 
         <CheckBox
             android:id="@+id/WebRtcAecIsUseAdaptAdjDelayCheckBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="使用自适应调节回音的延迟" />
+            android:text=" use  Adaptive adjustment  Return to sound delay " />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -104,13 +104,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:text="将WebRtc浮点版声学回音消除器的内存块保存到扩展目录下的WebRtcAecMem文件中，以便缩短下一次初始化时的收敛时间"/>
+                android:text=" will WebRtc Floating point version  Acoustic echo sound Eliminator Memory block  Save  To the extension directory WebRtcAecMem File ， In order to shorten the next initialization  Time  Convergence Time "/>
 
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="删除内存块文件"
+                android:text=" Delete memory block file "
                 android:onClick="OnClickWebRtcAecDelMemFile" />
 
         </LinearLayout>
@@ -118,7 +118,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="确定"
+            android:text=" determine "
             android:onClick="OnClickWebRtcAecSettingOk" />
 
     </LinearLayout>

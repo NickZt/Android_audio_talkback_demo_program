@@ -1,57 +1,57 @@
 package HeavenTao.Data;
 
-//动态字符串类。
+// dynamic digit符串类。
 public class VarStr
 {
-    private long m_VarStrPt; //存放动态字符串的内存指针。
+    private long m_VarStrPt; //存放 dynamic digit符串的内存指针。
 
     static
     {
         System.loadLibrary( "Func" ); //加载libFunc.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public VarStr()
     {
         m_VarStrPt = 0;
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
         Destroy();
     }
 
-    //获取动态字符串的内存指针。
+    //获取 dynamic digit符串的内存指针。
     public long GetVarStrPt()
     {
         return m_VarStrPt;
     }
 
-    //创建并初始化动态字符串。
+    //创建并初始化 dynamic digit符串。
     public native int Init();
 
-    //复制字符串到动态字符串。
+    //复制digit符串到 dynamic digit符串。
     public native int Cpy( String StrPt );
 
-    //插入字符串到动态字符串的指定位置。
+    //插入digit符串到 dynamic digit符串的指定位置。
     public native int Ins( long Pos, String StrPt );
 
-    //追加字符串到动态字符串的末尾。
+    //追加digit符串到 dynamic digit符串的末尾。
     public native int Cat( String StrPt );
 
-    //清空动态字符串的字符串。
+    //Empty dynamic digit符串的digit符串。
     public native int SetEmpty();
 
-    //设置动态字符串的字符串内存大小。
+    //Настраивать dynamic digit符串的digit符串内存大小。
     public native int SetSz( long StrSz );
 
-    //获取动态字符串的字符串内存大小。
+    //获取 dynamic digit符串的digit符串内存大小。
     public native int GetSz( HTLong StrSzPt );
 
-    //获取动态字符串的字符串。
+    //获取 dynamic digit符串的digit符串。
     public native String GetStr();
 
-    //销毁动态字符串。
+    //destroy dynamic digit符串。
     public native int Destroy();
 }

@@ -14,13 +14,13 @@ public class LibYUV
         System.loadLibrary( "LibYUV" ); //加载libLibYUV.so。
     }
 
-    //构造函数。
+    //构造函 number 。
     public LibYUV()
     {
 
     }
 
-    //析构函数。
+    //析构函 number 。
     public void finalize()
     {
 
